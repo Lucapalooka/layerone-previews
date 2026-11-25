@@ -1,0 +1,18 @@
+{
+  "business_id": 6860,
+  "archetype": "guest_house",
+  "archetype_label": "Guest House & B&B",
+  "skeleton": "editorial_split",
+  "palette": "crimson",
+  "accent": "#c2241c",
+  "fonts": [
+    "'Syne',system-ui,sans-serif",
+    "'Space Grotesk',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 1503735882
+}
