@@ -19,7 +19,7 @@ h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px;padding-block:8px}
 .nav--centered .wrap{flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px/1.1 var(--display);min-width:0;max-width:75%}
-.brand-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brand-name{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
 .brand-logo{display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:8px}
 .brand-logo img{height:38px;width:auto;max-width:150px;display:block;object-fit:contain}
 .logo-pill--dark{background:#14161a;padding:5px 10px}
@@ -39,7 +39,12 @@ h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance}
 .eyebrow{display:inline-block;font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-t);margin-bottom:12px}
 .hero h1{font-size:clamp(34px,5.8vw,72px)}.tag{font-size:clamp(16.5px,2vw,20px);color:var(--muted);margin-top:14px;max-width:40ch}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.hero-art{max-width:340px;width:100%;margin:0 auto}.scene-svg{width:100%;height:auto;display:block}
+.hero-photo{position:relative;border-radius:calc(var(--r) + 4px);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);aspect-ratio:4/3;width:100%;background:var(--tint)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.skel-cinema_bleed .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,14,.55))}
+.photo-pill{position:absolute;bottom:10px;left:10px;z-index:2;padding:4px 10px;border-radius:999px;background:rgba(15,15,18,.74);color:#fff;font-size:.72rem;font-weight:600;backdrop-filter:blur(6px)}
+.ey{display:inline-block;font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-t);margin-bottom:8px}
+.mod-sec{padding:clamp(44px,6vw,78px) 0}.mod-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin-bottom:20px}.mod-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:var(--tint);color:var(--accent-t);font-size:.76rem;font-weight:700;letter-spacing:.04em}.mod-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}.mod-tab{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.84rem;font-weight:600;cursor:pointer;transition:.15s}.mod-tab.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.prop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:16px}.prop-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}.prop-img-wrap{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--tint)}.prop-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}.prop-tag{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.prop-body{padding:16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}.prop-price{font-family:var(--display);font-size:1.35rem;font-weight:700;color:var(--accent-t)}.prop-specs{display:flex;flex-wrap:wrap;gap:8px;font-size:.8rem;color:var(--muted)}.prop-specs span{padding:3px 9px;border-radius:999px;background:var(--tint)}.prop-cta{margin-top:auto;padding-top:8px;font-size:.85rem;font-weight:700;color:var(--accent-t);display:inline-flex;align-items:center;gap:6px}.menu-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}.menu-row{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.menu-row b{display:block;font-size:.98rem;margin-bottom:3px}.menu-row p{margin:0;font-size:.84rem;color:var(--muted)}.menu-price{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--accent-t);white-space:nowrap}.gal-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.gal-item{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;grid-column:span 4;background:var(--tint)}.gal-item.wide{grid-column:span 6}.gal-item img{width:100%;height:100%;object-fit:cover;display:block}.gal-cap{position:absolute;bottom:8px;left:8px;padding:4px 9px;border-radius:999px;background:rgba(15,15,18,.72);color:#fff;font-size:.7rem;font-weight:600;backdrop-filter:blur(6px)}@media(max-width:768px){.gal-item,.gal-item.wide{grid-column:span 12}}
 .marq{background:var(--dark);color:var(--dark-ink);overflow:hidden;border-block:1px solid var(--line);padding:12px 0}
 .marq .track{display:flex;gap:34px;width:max-content;animation:marq 28s linear infinite}.marq span{display:inline-flex;align-items:center;gap:34px;font:700 22px/1 var(--display);white-space:nowrap}.marq span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
 section{padding:clamp(42px,5.5vw,78px) 0}.sec-h{max-width:640px;margin-bottom:26px}.sec-h h2{font-size:clamp(26px,4.2vw,44px)}.sec-h p{color:var(--muted);margin-top:10px}
@@ -71,12 +76,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
 .bar{display:none}.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.js .rv.in{opacity:1;transform:none}
 @keyframes marq{to{transform:translateX(-50%)}}
 @media(max-width:860px){.hero-grid,.bento-grid,.ledger-row{grid-template-columns:1fr}.hero-bento{grid-row:auto}.links{display:none}.menu-btn{display:grid}}
-@media(max-width:560px){footer{padding-bottom:88px}.btn{width:100%}.bar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;gap:8px;padding:8px;border-radius:16px;background:color-mix(in srgb,var(--dark) 94%,transparent);backdrop-filter:blur(10px);box-shadow:var(--shadow)}
+@media(max-width:768px){body{padding-bottom:88px}.btn{width:100%}.bar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;gap:8px;padding:8px;border-radius:16px;background:color-mix(in srgb,var(--dark) 94%,transparent);backdrop-filter:blur(10px);box-shadow:var(--shadow)}
 .bar a{flex:1;min-height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font:700 14px/1 var(--body);color:var(--dark-ink);background:color-mix(in srgb,var(--dark-ink) 12%,transparent)}.bar a.p{background:var(--accent);color:var(--accent-ink)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 </style>
 <script>
 document.documentElement.classList.add('js');
+window.filterCards=function(btn){
+  var sec=btn.closest('section'); if(!sec) return;
+  var f=btn.dataset.filter||'all';
+  sec.querySelectorAll('.mod-tab').forEach(function(b){b.classList.toggle('on',b===btn)});
+  sec.querySelectorAll('[data-cat]').forEach(function(el){
+    el.style.display=(f==='all'||el.dataset.cat===f)?'':'none';
+  });
+};
 addEventListener('DOMContentLoaded',function(){
   var mb=document.getElementById('menuBtn'),dr=document.getElementById('mobDrawer');
   if(mb&&dr){
@@ -124,16 +137,16 @@ addEventListener('DOMContentLoaded',function(){
 });
 </script>
 </head>
-<body id="top" class="skel-editorial_split"><div class="preview-banner" role="note" style="position:sticky;top:0;z-index:2147483647;margin:0;padding:10px 16px;background:#111;color:#fff;font:600 14px/1.4 system-ui,sans-serif;text-align:center">Concept preview only. This is not the official website of Gonzo Distilling; it is an unpublished design concept and is not affiliated with the business.</div>
+<body id="top" class="skel-editorial_split">
 <div class="banner">Concept preview made for Gonzo Distilling — not their official website</div>
 
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="#top"><span class="brand-logo"><img src="logo.svg" alt="Gonzo Distilling logo"></span><span class="brand-name">Gonzo Distilling</span></a>
-    <nav class="links" aria-label="Main"><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <nav class="links" aria-label="Main"><a href="#showcase">Menu</a><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
     <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Toggle menu"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   </div>
-  <nav class="mob-drawer" id="mobDrawer" aria-label="Mobile menu"><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+  <nav class="mob-drawer" id="mobDrawer" aria-label="Mobile menu"><a href="#showcase">Menu</a><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
 </header>
 <main>
   <section class="hero">
@@ -145,11 +158,13 @@ addEventListener('DOMContentLoaded',function(){
           <p class="tag">Estate, cellar, and bottles in Western Cape.</p>
           <div class="cta"><a class="btn pri" href="tel:+27722643181"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +27 72 264 3181</a><a class="btn sec" href="https://wa.me/27722643181" rel="noopener"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
         </div>
-        <div class="hero-art"><svg viewBox="0 0 360 320" class="scene-svg" aria-hidden="true"><circle cx="180" cy="160" r="126" fill="none" stroke="var(--accent)" stroke-opacity="0.35" stroke-width="1.5" stroke-dasharray="3 6"/><path d="M155,58 L205,58 L200,98 C236,125 244,175 224,232 L212,268 L148,268 L136,232 C116,175 124,125 160,98 Z" fill="var(--accent)" fill-opacity="0.2" stroke="var(--accent)" stroke-width="2"/><rect x="148" y="156" width="64" height="44" rx="4" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/><line x1="162" y1="174" x2="198" y2="174" stroke="var(--ink)" stroke-opacity="0.5" stroke-width="2"/><line x1="168" y1="184" x2="192" y2="184" stroke="var(--accent)" stroke-width="2"/></svg></div>
+        <div class="hero-art"><div class="hero-photo"><img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Vineyard estate and tasting cellar" loading="eager" decoding="async"><span class="photo-pill">Showcase photography</span></div></div>
       </div>
     </div>
   </section>
   <div class="marq" aria-hidden="true"><div class="track"><span>Estate</span><span>Cellar</span><span>Bottles</span><span>Visit</span><span>Estate</span><span>Cellar</span><span>Bottles</span><span>Visit</span><span>Estate</span><span>Cellar</span><span>Bottles</span><span>Visit</span><span>Estate</span><span>Cellar</span><span>Bottles</span><span>Visit</span></div></div>
+  <section id="showcase" class="mod-sec"><div class="wrap"><div class="mod-head"><div><div class="ey">Menu &amp; Kitchen</div><h2>House Menu &amp; Favourites</h2></div><span class="mod-badge">Sample Menu Layout — Customised With Your Exact Dishes &amp; Prices</span></div><div class="mod-tabs"><button type="button" class="mod-tab on" data-filter="all" onclick="filterCards(this)">All</button><button type="button" class="mod-tab" data-filter="pours" onclick="filterCards(this)">Pours &amp; Tastings</button><button type="button" class="mod-tab" data-filter="plates" onclick="filterCards(this)">Sharing Boards</button></div><div class="menu-board"><div class="menu-row" data-cat="pours"><div><b>Signature Tasting Flight</b><p>4 curated estate or taproom pours</p></div><div class="menu-price">R 110</div></div><div class="menu-row" data-cat="pours"><div><b>House Botanical G&amp;T / Draught</b><p>Chilled glass with fresh citrus garnish</p></div><div class="menu-price">R 68</div></div><div class="menu-row" data-cat="plates"><div><b>Sharing Board for Two</b><p>Selection of cheeses, olives, preserves, crackers</p></div><div class="menu-price">R 185</div></div><div class="menu-row" data-cat="plates"><div><b>Crispy Salt &amp; Pepper Squid</b><p>Aioli dip and charred lemon</p></div><div class="menu-price">R 115</div></div></div><div style="margin-top:18px"><a class="btn p" href="https://wa.me/27722643181">Book a Table / Order &rarr;</a></div></div></section>
+  <section class="mod-sec" style="padding-top:12px"><div class="wrap"><div class="mod-head"><div><div class="ey">Visual Gallery</div><h2>Inside Gonzo Distilling</h2></div><span class="mod-badge">Replace anytime with your own store, team & project photos</span></div><div class="gal-grid"><div class="gal-item"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Wine tasting glasses and reserve bottles" loading="lazy"><span class="gal-cap">Showcase photography</span></div><div class="gal-item"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Barrel room and tasting bar" loading="lazy"><span class="gal-cap">Showcase photography</span></div><div class="gal-item"><img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Craft spirit pours" loading="lazy"><span class="gal-cap">Showcase photography</span></div></div></div></section>
   
   <section id="overview">
     <div class="wrap">
