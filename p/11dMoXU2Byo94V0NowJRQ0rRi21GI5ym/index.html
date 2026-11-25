@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Couzens Incorporated - Concept preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --navy-950: #07111e;
+      --navy-900: #0b192c;
+      --navy-800: #132846;
+      --navy-700: #1e3a5f;
+      --silver-50: #f6f8fb;
+      --silver-100: #edf1f7;
+      --silver-200: #dce3ec;
+      --silver-300: #c3cddb;
+      --silver-400: #94a3b8;
+      --silver-500: #64748b;
+      --ink-900: #0f172a;
+      --ink-700: #334155;
+      --white: #ffffff;
+      --font-display: 'Spectral', Georgia, 'Times New Roman', serif;
+      --font-body: 'Libre Franklin', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --container: 1200px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0 0 72px 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink-900);
+      background-color: var(--white);
+      overflow-x: clip;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    .site-wrap {
+      overflow-x: clip;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--navy-700);
+      outline-offset: 3px;
+    }
+
+    .on-dark :focus-visible {
+      outline-color: var(--silver-200);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Preview Banner */
+    .preview-banner {
+      background-color: var(--navy-950);
+      color: var(--silver-200);
+      font-size: 12px;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+      text-align: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(195, 205, 219, 0.2);
+    }
+
+    /* Layout Grid */
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-inline: 32px;
+      }
+    }
+
+    .grid-12 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-12 {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 24px;
+      }
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--silver-200);
+      transition: box-shadow 0.25s var(--ease-out);
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 24px -8px rgba(11, 25, 44, 0.14);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 44px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      color: var(--navy-900);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy-900);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--silver-500);
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--silver-300);
+      background-color: var(--white);
+      color: var(--navy-900);
+      border-radius: 2px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      background-color: var(--silver-50);
+      border-color: var(--navy-700);
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .nav-toggle .icon-close {
+      display: none;
+    }
+
+    .nav-toggle[aria-expanded="true"] .icon-menu {
+      display: none;
+    }
+
+    .nav-toggle[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s var(--ease-out);
+      background-color: var(--white);
+      border-top: 1px solid transparent;
+    }
+
+    .mobile-nav.is-open {
+      grid-template-rows: 1fr;
+      border-top-color: var(--silver-200);
+    }
+
+    .mobile-nav-inner {
+      overflow: hidden;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 8px 20px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 46px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--navy-900);
+      border-bottom: 1px solid var(--silver-100);
+    }
+
+    .mobile-nav-list li:last-child a {
+      border-bottom: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-toggle,
+      .mobile-nav {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .desktop-nav a {
+        position: relative;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--ink-700);
+        padding: 10px 2px;
+        transition: color 0.2s ease;
+      }
+
+      .desktop-nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 4px;
+        height: 1px;
+        background-color: var(--navy-900);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s var(--ease-out);
+      }
+
+      .desktop-nav a:hover {
+        color: var(--navy-900);
+      }
+
+      .desktop-nav a:hover::after {
+        transform: scaleX(1);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px !important;
+        background-color: var(--navy-900);
+        color: var(--white) !important;
+        border-radius: 2px;
+        font-size: 13px !important;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-cta::after {
+        display: none !important;
+      }
+
+      .nav-cta:hover {
+        background-color: var(--navy-700);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      background-color: var(--navy-900);
+      color: var(--white);
+      border-color: var(--navy-900);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy-700);
+      border-color: var(--navy-700);
+    }
+
+    .btn-outline {
+      background-color: var(--white);
+      color: var(--navy-900);
+      border-color: var(--silver-300);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--navy-900);
+      background-color: var(--silver-50);
+    }
+
+    .btn-silver {
+      background-color: transparent;
+      color: var(--white);
+      border-color: rgba(195, 205, 219, 0.45);
+    }
+
+    .btn-silver:hover {
+      border-color: var(--white);
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(180deg, var(--silver-50) 0%, var(--white) 100%);
+      border-bottom: 1px solid var(--silver-200);
+      padding: 28px 0 40px;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 56px 0 64px;
+      }
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(to right, rgba(195, 205, 219, 0.22) 1px, transparent 1px);
+      background-size: 8.3333% 100%;
+      opacity: 0.55;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero-content {
+        grid-column: 1 / 8;
+        padding-right: 16px;
+      }
+
+      .hero-visual {
+        grid-column: 8 / 13;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--navy-700);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background-color: var(--navy-700);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 5.2vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--navy-900);
+      margin: 0 0 18px;
+    }
+
+    .hero-lead {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink-700);
+      max-width: 52ch;
+      margin: 0 0 24px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-lead {
+        font-size: 17px;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .hero-meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--silver-200);
+      font-size: 13px;
+      color: var(--ink-700);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta-item svg {
+      width: 15px;
+      height: 15px;
+      color: var(--navy-700);
+    }
+
+    /* Hero Architectural Columns Motif */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .columns-stage {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      background-color: var(--navy-900);
+      border: 1px solid var(--navy-800);
+      padding: 20px 20px 0;
+      box-shadow: 0 20px 44px -20px rgba(11, 25, 44, 0.35);
+      overflow: hidden;
+    }
+
+    .columns-stage::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(195, 205, 219, 0.22);
+      pointer-events: none;
+    }
+
+    .columns-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 210px;
+    }
+
+    @media (min-width: 768px) {
+      .columns-svg {
+        max-height: 360px;
+      }
+    }
+
+    .columns-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background-color: var(--navy-950);
+      border-top: 1px solid rgba(195, 205, 219, 0.2);
+      color: var(--silver-200);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* Section Commons */
+    .section {
+      padding: 56px 0;
+    }
+
+    @media (min-width: 768px) {
+      .section {
+        padding: 84px 0;
+      }
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--silver-500);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--navy-900);
+      margin: 0 0 16px;
+    }
+
+    /* Section 2: How We Work (Stepped Architectural Ledger) */
+    .work-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--silver-200);
+    }
+
+    .work-intro {
+      margin-bottom: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .work-intro {
+        grid-column: 1 / 5;
+        position: sticky;
+        top: 96px;
+        align-self: start;
+      }
+
+      .work-ledger {
+        grid-column: 6 / 13;
+      }
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy-800);
+      background-color: var(--silver-50);
+      border: 1px solid var(--silver-200);
+    }
+
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      padding: 26px 0;
+      border-top: 1px solid var(--silver-200);
+      align-items: start;
+      transition: background-color 0.25s ease;
+    }
+
+    .ledger-row:last-child {
+      border-bottom: 1px solid var(--silver-200);
+    }
+
+    .ledger-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--silver-400);
+      transition: color 0.25s ease;
+    }
+
+    .ledger-row:hover .ledger-num {
+      color: var(--navy-900);
+    }
+
+    .ledger-heading {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy-900);
+      margin: 0 0 6px;
+    }
+
+    .ledger-meta {
+      font-size: 14px;
+      color: var(--ink-700);
+      margin: 0;
+    }
+
+    /* Section 3: Consultations (Full-bleed Navy Band + Interactive Scales) */
+    .consult-section {
+      background-color: var(--navy-900);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .consult-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(195, 205, 219, 0.4), transparent);
+    }
+
+    .consult-panel {
+      border: 1px solid rgba(195, 205, 219, 0.25);
+      background-color: rgba(7, 17, 30, 0.55);
+      padding: 28px 24px;
+    }
+
+    @media (min-width: 768px) {
+      .consult-panel {
+        grid-column: 1 / 7;
+        padding: 40px;
+      }
+
+      .scales-panel {
+        grid-column: 8 / 13;
+      }
+    }
+
+    .consult-section .section-eyebrow {
+      color: var(--silver-400);
+    }
+
+    .consult-section .section-title {
+      color: var(--white);
+    }
+
+    .consult-copy {
+      color: var(--silver-200);
+      font-size: 15px;
+      margin: 0 0 24px;
+    }
+
+    .consult-details {
+      display: grid;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(195, 205, 219, 0.2);
+      border-bottom: 1px solid rgba(195, 205, 219, 0.2);
+      margin-bottom: 24px;
+    }
+
+    .consult-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--silver-100);
+    }
+
+    .consult-line svg {
+      width: 17px;
+      height: 17px;
+      color: var(--silver-300);
+      flex-shrink: 0;
+    }
+
+    .scales-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(195, 205, 219, 0.22);
+      background: radial-gradient(circle at 50% 40%, rgba(30, 58, 95, 0.55) 0%, rgba(7, 17, 30, 0.85) 100%);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .scales-trigger {
+      background: none;
+      border: none;
+      padding: 8px;
+      color: inherit;
+      width: 100%;
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .scales-svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .scales-beam-group {
+      transform-origin: 140px 64px;
+      transition: transform 0.7s var(--ease-out);
+    }
+
+    .scales-pan-left,
+    .scales-pan-right {
+      transition: transform 0.7s var(--ease-out);
+    }
+
+    .scales-trigger:hover .scales-beam-group,
+    .scales-trigger:focus-visible .scales-beam-group,
+    .scales-trigger.is-tipped .scales-beam-group {
+      transform: rotate(-7deg);
+    }
+
+    .scales-trigger:hover .scales-pan-left,
+    .scales-trigger:focus-visible .scales-pan-left,
+    .scales-trigger.is-tipped .scales-pan-left {
+      transform: translateY(7px);
+    }
+
+    .scales-trigger:hover .scales-pan-right,
+    .scales-trigger:focus-visible .scales-pan-right,
+    .scales-trigger.is-tipped .scales-pan-right {
+      transform: translateY(-7px);
+    }
+
+    .scales-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--silver-300);
+    }
+
+    /* Section 4: Unfolding Document Enquiry Composer */
+    .enquire-section {
+      background-color: var(--silver-50);
+      border-bottom: 1px solid var(--silver-200);
+    }
+
+    .document-folio {
+      max-width: 880px;
+      margin-inline: auto;
+      background-color: var(--white);
+      border: 1px solid var(--silver-300);
+      box-shadow: 0 18px 40px -24px rgba(11, 25, 44, 0.22);
+    }
+
+    .document-cover {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 28px 24px;
+      border-bottom: 1px solid var(--silver-200);
+      background: linear-gradient(135deg, var(--white) 0%, var(--silver-50) 100%);
+    }
+
+    @media (min-width: 768px) {
+      .document-cover {
+        padding: 36px 40px;
+      }
+    }
+
+    .document-cover-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .document-seal {
+      width: 54px;
+      height: 54px;
+      flex-shrink: 0;
+      color: var(--navy-900);
+    }
+
+    .document-unfold-btn {
+      min-height: 46px;
+      padding: 10px 20px;
+      background-color: var(--navy-900);
+      color: var(--white);
+      border: 1px solid var(--navy-900);
+      border-radius: 2px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .document-unfold-btn:hover {
+      background-color: var(--navy-700);
+    }
+
+    .document-unfold-btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.35s var(--ease-out);
+    }
+
+    .document-unfold-btn[aria-expanded="true"] svg {
+      transform: rotate(90deg);
+    }
+
+    .document-sheet {
+      display: grid;
+      grid-template-rows: 1fr;
+      transition: grid-template-rows 0.45s var(--ease-out), opacity 0.35s ease;
+      opacity: 1;
+    }
+
+    .js .document-sheet.is-folded {
+      grid-template-rows: 0fr;
+      opacity: 0;
+    }
+
+    .document-sheet-inner {
+      overflow: hidden;
+    }
+
+    .enquiry-form {
+      padding: 28px 24px 36px;
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .enquiry-form {
+        padding: 36px 40px 44px;
+      }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--navy-900);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--ink-900);
+      background-color: var(--white);
+      border: 1px solid var(--silver-300);
+      border-radius: 2px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--navy-900);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(19, 40, 70, 0.1);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 6px;
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--ink-700);
+      margin: 0;
+    }
+
+    /* Section 5: Contact Ledger & Questions Accordion */
+    .contact-section {
+      background-color: var(--white);
+    }
+
+    @media (min-width: 768px) {
+      .contact-ledger {
+        grid-column: 1 / 6;
+      }
+
+      .faq-col {
+        grid-column: 7 / 13;
+      }
+    }
+
+    .contact-item {
+      padding: 18px 0;
+      border-top: 1px solid var(--silver-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .contact-item:last-of-type {
+      border-bottom: 1px solid var(--silver-200);
+    }
+
+    .contact-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--silver-500);
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--navy-900);
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--navy-800);
+      background-color: var(--silver-50);
+      border: 1px solid var(--silver-300);
+      border-radius: 2px;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--silver-100);
+      border-color: var(--navy-700);
+    }
+
+    .copy-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .contact-links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    /* Native Accordion */
+    .faq-list {
+      border-top: 1px solid var(--silver-200);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--silver-200);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 54px;
+      padding: 16px 0;
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--navy-900);
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary svg {
+      width: 18px;
+      height: 18px;
+      color: var(--silver-500);
+      flex-shrink: 0;
+      transition: transform 0.25s var(--ease-out);
+    }
+
+    .faq-item[open] summary svg {
+      transform: rotate(90deg);
+      color: var(--navy-900);
+    }
+
+    .faq-answer {
+      padding: 0 0 20px;
+      font-size: 15px;
+      color: var(--ink-700);
+      margin: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--navy-950);
+      color: var(--silver-300);
+      padding: 36px 0;
+      border-top: 1px solid var(--navy-800);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .footer-note {
+      color: var(--silver-400);
+      margin: 0;
+    }
+
+    /* Sticky Mobile Action Bar */
+    .mobile-action-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: var(--navy-950);
+      border-top: 1px solid rgba(195, 205, 219, 0.25);
+    }
+
+    .mobile-action-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 56px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      border-right: 1px solid rgba(195, 205, 219, 0.16);
+    }
+
+    .mobile-action-bar a:last-child {
+      border-right: none;
+    }
+
+    .mobile-action-bar svg {
+      width: 16px;
+      height: 16px;
+      color: var(--silver-300);
+    }
+
+    @media (min-width: 768px) {
+      .mobile-action-bar {
+        display: none;
+      }
+    }
+
+    /* Reveal Animations (progressive enhancement with .js on html) */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js .hero-stagger {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroFadeUp 0.7s var(--ease-out) forwards;
+    }
+
+    .js .hero-stagger-1 { animation-delay: 0.05s; }
+    .js .hero-stagger-2 { animation-delay: 0.14s; }
+    .js .hero-stagger-3 { animation-delay: 0.22s; }
+    .js .hero-stagger-4 { animation-delay: 0.30s; }
+
+    @keyframes heroFadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      .js .reveal,
+      .js .hero-stagger {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        transition: none;
+      }
+      .scales-beam-group,
+      .scales-pan-left,
+      .scales-pan-right,
+      .document-sheet,
+      .mobile-nav {
+        transition: none;
+      }
+    }
+  </style>
+<style id="contrast-fix">body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(2)>div:nth-child(1)>div:nth-child(2)>article:nth-child(1)>div:nth-child(1){color:#111111 !important}body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(2)>div:nth-child(1)>div:nth-child(2)>article:nth-child(2)>div:nth-child(1){color:#111111 !important}body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(2)>div:nth-child(1)>div:nth-child(2)>article:nth-child(3)>div:nth-child(1){color:#111111 !important}</style></head>
+<body>
+  <div class="site-wrap">
+    <div class="preview-banner" role="note">Concept preview made for Couzens Incorporated — not their official website</div>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand-link">
+          <svg class="brand-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="33" height="33" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 9h20M10 12v14M18 12v14M26 12v14M7 28h22" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+          </svg>
+          <span class="brand-text">
+            <span class="brand-name">Couzens Incorporated</span>
+            <span class="brand-sub">Attorneys</span>
+          </span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a href="#how-we-work">How we work</a>
+          <a href="#consultations">Consultations</a>
+          <a href="#enquire">Enquire</a>
+          <a href="#contact">Contact</a>
+          <a href="tel:+27622430311" class="nav-cta">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            +27 62 243 0311
+          </a>
+        </nav>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-inner">
+          <ul class="mobile-nav-list">
+            <li><a href="#how-we-work">How we work</a></li>
+            <li><a href="#consultations">Consultations</a></li>
+            <li><a href="#enquire">Enquire</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Section 1: Asymmetric Hero with Classical Columns Motif -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-grid-bg" aria-hidden="true"></div>
+        <div class="container grid-12">
+          <div class="hero-content">
+            <div class="eyebrow hero-stagger hero-stagger-1">Attorneys · Gordon's Bay</div>
+            <h1 id="hero-title" class="hero-stagger hero-stagger-2">Couzens Incorporated</h1>
+            <p class="hero-lead hero-stagger hero-stagger-3">
+              Attorneys in Gordon's Bay. Reach us at 35 Beach Road, call +27 62 243 0311, or send an enquiry via WhatsApp to arrange a consultation.
+            </p>
+            <div class="hero-actions hero-stagger hero-stagger-4">
+              <a href="#enquire" class="btn btn-primary" data-unfold-trigger>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                Enquire via WhatsApp
+              </a>
+              <a href="tel:+27622430311" class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                Call +27 62 243 0311
+              </a>
+            </div>
+            <div class="hero-meta-strip hero-stagger hero-stagger-4">
+              <span class="hero-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                35 Beach Road, Gordon's Bay
+              </span>
+              <a href="https://www.google.com/maps/search/?api=1&query=35%20Beach%20Road%2C%20Gordon%27s%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer" class="hero-meta-item">
+                Directions
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual hero-stagger hero-stagger-3">
+            <div class="columns-stage">
+              <svg class="columns-svg" viewBox="0 0 400 340" fill="none" role="img" aria-label="Architectural classical columns">
+                <defs>
+                  <linearGradient id="colGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#94a3b8"/>
+                    <stop offset="35%" stop-color="#e2e8f0"/>
+                    <stop offset="70%" stop-color="#cbd5e1"/>
+                    <stop offset="100%" stop-color="#64748b"/>
+                  </linearGradient>
+                  <linearGradient id="pedimentGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1e3a5f"/>
+                    <stop offset="100%" stop-color="#0b192c"/>
+                  </linearGradient>
+                </defs>
+                <!-- Drafting grid lines -->
+                <line x1="20" y1="30" x2="380" y2="30" stroke="#94a3b8" stroke-opacity="0.18" stroke-width="1"/>
+                <line x1="20" y1="312" x2="380" y2="312" stroke="#94a3b8" stroke-opacity="0.28" stroke-width="1"/>
+                <!-- Pediment -->
+                <polygon points="36,88 200,26 364,88" fill="url(#pedimentGrad)" stroke="#cbd5e1" stroke-width="1.2"/>
+                <polygon points="62,82 200,36 338,82" fill="none" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="1"/>
+                <!-- Subtle scales emblem inside pediment -->
+                <g stroke="#e2e8f0" stroke-width="1.1" opacity="0.85">
+                  <line x1="200" y1="50" x2="200" y2="74"/>
+                  <line x1="184" y1="57" x2="216" y2="57"/>
+                  <circle cx="184" cy="64" r="3"/>
+                  <circle cx="216" cy="64" r="3"/>
+                </g>
+                <!-- Entablature -->
+                <rect x="36" y="88" width="328" height="14" fill="#132846" stroke="#cbd5e1" stroke-width="1.2"/>
+                <rect x="44" y="102" width="312" height="10" fill="#1e3a5f" stroke="#94a3b8" stroke-width="1"/>
+                <!-- Column 1 -->
+                <g>
+                  <rect x="64" y="112" width="52" height="10" fill="#cbd5e1"/>
+                  <rect x="70" y="122" width="40" height="168" fill="url(#colGrad)"/>
+                  <line x1="80" y1="126" x2="80" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="90" y1="126" x2="90" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="100" y1="126" x2="100" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <rect x="64" y="290" width="52" height="10" fill="#94a3b8"/>
+                </g>
+                <!-- Column 2 (Center) -->
+                <g>
+                  <rect x="174" y="112" width="52" height="10" fill="#cbd5e1"/>
+                  <rect x="180" y="122" width="40" height="168" fill="url(#colGrad)"/>
+                  <line x1="190" y1="126" x2="190" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="200" y1="126" x2="200" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="210" y1="126" x2="210" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <rect x="174" y="290" width="52" height="10" fill="#94a3b8"/>
+                </g>
+                <!-- Column 3 -->
+                <g>
+                  <rect x="284" y="112" width="52" height="10" fill="#cbd5e1"/>
+                  <rect x="290" y="122" width="40" height="168" fill="url(#colGrad)"/>
+                  <line x1="300" y1="126" x2="300" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="310" y1="126" x2="310" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <line x1="320" y1="126" x2="320" y2="286" stroke="#0b192c" stroke-opacity="0.32" stroke-width="1.2"/>
+                  <rect x="284" y="290" width="52" height="10" fill="#94a3b8"/>
+                </g>
+                <!-- Stylobate / Steps -->
+                <rect x="36" y="300" width="328" height="10" fill="#1e3a5f" stroke="#cbd5e1" stroke-width="1"/>
+                <rect x="24" y="310" width="352" height="12" fill="#132846" stroke="#94a3b8" stroke-width="1"/>
+              </svg>
+              <div class="columns-caption">
+                <span>Attorneys</span>
+                <span>Gordon's Bay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: How We Work (3-step Stepped Ledger) -->
+      <section class="section work-section" id="how-we-work" aria-labelledby="work-title">
+        <div class="container grid-12">
+          <div class="work-intro reveal">
+            <div class="section-eyebrow">How we work</div>
+            <h2 class="section-title" id="work-title">Contact, Consult, Advise</h2>
+            <div class="work-tags">
+              <span class="tag-pill">Attorneys</span>
+              <span class="tag-pill">Legal advice</span>
+              <span class="tag-pill">Consultation</span>
+              <span class="tag-pill">Enquiries</span>
+            </div>
+          </div>
+
+          <div class="work-ledger reveal">
+            <article class="ledger-row">
+              <div class="ledger-num">01</div>
+              <div>
+                <h3 class="ledger-heading">Contact</h3>
+                <p class="ledger-meta">Call +27 62 243 0311 or send an enquiry via WhatsApp.</p>
+              </div>
+            </article>
+            <article class="ledger-row">
+              <div class="ledger-num">02</div>
+              <div>
+                <h3 class="ledger-heading">Consult</h3>
+                <p class="ledger-meta">Consultation at 35 Beach Road, Gordon's Bay.</p>
+              </div>
+            </article>
+            <article class="ledger-row">
+              <div class="ledger-num">03</div>
+              <div>
+                <h3 class="ledger-heading">Advise</h3>
+                <p class="ledger-meta">Legal advice.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Consultations Band with Interactive Scales of Justice -->
+      <section class="section consult-section on-dark" id="consultations" aria-labelledby="consult-title">
+        <div class="container grid-12">
+          <div class="consult-panel reveal">
+            <div class="section-eyebrow">Consultations</div>
+            <h2 class="section-title" id="consult-title">Arrange a consultation</h2>
+            <p class="consult-copy">
+              Enquiries for consultations and legal advice may be directed by telephone, WhatsApp, or in person at 35 Beach Road, Gordon's Bay.
+            </p>
+            <div class="consult-details">
+              <div class="consult-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                <span>+27 62 243 0311</span>
+              </div>
+              <div class="consult-line">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                <span>35 Beach Road, Gordon's Bay</span>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=35%20Beach%20Road%2C%20Gordon%27s%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer" class="btn btn-silver">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+              Find us on the map
+            </a>
+          </div>
+
+          <div class="scales-panel reveal">
+            <button type="button" class="scales-trigger" id="scales-btn" aria-pressed="false" aria-label="Tip the scales of justice">
+              <svg class="scales-svg" viewBox="0 0 280 230" fill="none" aria-hidden="true">
+                <!-- Base & Pillar -->
+                <rect x="88" y="204" width="104" height="10" fill="#94a3b8"/>
+                <rect x="104" y="194" width="72" height="10" fill="#cbd5e1"/>
+                <rect x="135" y="42" width="10" height="152" fill="#e2e8f0"/>
+                <circle cx="140" cy="36" r="8" stroke="#cbd5e1" stroke-width="2" fill="#132846"/>
+                <!-- Tipping Beam Group -->
+                <g class="scales-beam-group">
+                  <line x1="56" y1="64" x2="224" y2="64" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="140" cy="64" r="5" fill="#cbd5e1"/>
+                  <circle cx="56" cy="64" r="3.5" fill="#cbd5e1"/>
+                  <circle cx="224" cy="64" r="3.5" fill="#cbd5e1"/>
+                  <!-- Left Pan -->
+                  <g class="scales-pan-left">
+                    <line x1="56" y1="64" x2="32" y2="138" stroke="#94a3b8" stroke-width="1.2"/>
+                    <line x1="56" y1="64" x2="80" y2="138" stroke="#94a3b8" stroke-width="1.2"/>
+                    <path d="M26 138 Q56 164 86 138 Z" fill="#cbd5e1" stroke="#e2e8f0" stroke-width="1"/>
+                  </g>
+                  <!-- Right Pan -->
+                  <g class="scales-pan-right">
+                    <line x1="224" y1="64" x2="200" y2="138" stroke="#94a3b8" stroke-width="1.2"/>
+                    <line x1="224" y1="64" x2="248" y2="138" stroke="#94a3b8" stroke-width="1.2"/>
+                    <path d="M194 138 Q224 164 254 138 Z" fill="#cbd5e1" stroke="#e2e8f0" stroke-width="1"/>
+                  </g>
+                </g>
+              </svg>
+              <span class="scales-label">Couzens Incorporated · Attorneys</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Enquire (Unfolding Document Composer) -->
+      <section class="section enquire-section" id="enquire" aria-labelledby="enquire-title">
+        <div class="container">
+          <div class="document-folio reveal">
+            <div class="document-cover">
+              <div class="document-cover-left">
+                <svg class="document-seal" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                  <rect x="6" y="4" width="36" height="46" stroke="currentColor" stroke-width="1.5" fill="#ffffff"/>
+                  <line x1="13" y1="15" x2="35" y2="15" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="13" y1="22" x2="35" y2="22" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="13" y1="29" x2="28" y2="29" stroke="#94a3b8" stroke-width="1.5"/>
+                  <circle cx="38" cy="39" r="11" fill="#0b192c" stroke="#cbd5e1" stroke-width="1.5"/>
+                  <circle cx="38" cy="39" r="6" stroke="#e2e8f0" stroke-width="1"/>
+                </svg>
+                <div>
+                  <div class="section-eyebrow">Enquiries</div>
+                  <h2 class="section-title" id="enquire-title" style="margin-bottom:0;">Enquire via WhatsApp</h2>
+                </div>
+              </div>
+              <button type="button" class="document-unfold-btn" id="unfold-doc-btn" aria-expanded="false" aria-controls="enquiry-sheet">
+                <span class="unfold-btn-label">Unfold enquiry document</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+              </button>
+            </div>
+
+            <div class="document-sheet is-folded" id="enquiry-sheet">
+              <div class="document-sheet-inner">
+                <form class="enquiry-form" id="whatsapp-form">
+                  <div class="form-field">
+                    <label for="enquiry-name">Your name</label>
+                    <input type="text" id="enquiry-name" name="name" autocomplete="name" placeholder="Full name" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="enquiry-message">Enquiry</label>
+                    <textarea id="enquiry-message" name="message" rows="4" placeholder="Write your enquiry for Couzens Incorporated..." required></textarea>
+                  </div>
+                  <div class="form-actions">
+                    <p class="form-note">Opens WhatsApp directly with +27 62 243 0311.</p>
+                    <button type="submit" class="btn btn-primary">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                      Send via WhatsApp
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Contact Ledger & Questions Accordion -->
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="container grid-12">
+          <div class="contact-ledger reveal">
+            <div class="section-eyebrow">Contact</div>
+            <h2 class="section-title" id="contact-title">Get in touch</h2>
+
+            <div class="contact-item">
+              <div>
+                <div class="contact-label">Telephone</div>
+                <div class="contact-value"><a href="tel:+27622430311">+27 62 243 0311</a></div>
+              </div>
+              <button type="button" class="copy-btn" data-copy="+27 62 243 0311" aria-label="Copy phone number">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+
+            <div class="contact-item">
+              <div>
+                <div class="contact-label">Address</div>
+                <div class="contact-value">35 Beach Road, Gordon's Bay</div>
+              </div>
+              <button type="button" class="copy-btn" data-copy="35 Beach Road, Gordon's Bay" aria-label="Copy address">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+
+            <div class="contact-links-row">
+              <a href="https://wa.me/27622430311" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                WhatsApp
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=35%20Beach%20Road%2C%20Gordon%27s%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                Google Maps
+              </a>
+            </div>
+          </div>
+
+          <div class="faq-col reveal">
+            <div class="section-eyebrow">Questions</div>
+            <h2 class="section-title">Common enquiries</h2>
+            <div class="faq-list">
+              <details class="faq-item" open>
+                <summary>
+                  <span>How do I get in touch?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">
+                  Call +27 62 243 0311 directly, or send a message using the WhatsApp enquiry composer above.
+                </p>
+              </details>
+              <details class="faq-item">
+                <summary>
+                  <span>Where are you located?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">
+                  35 Beach Road, Gordon's Bay. You can open the Google Maps link on this page for directions.
+                </p>
+              </details>
+              <details class="faq-item">
+                <summary>
+                  <span>When can I call?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">
+                  You may call +27 62 243 0311 or submit a WhatsApp enquiry at your convenience.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-brand">Couzens Incorporated</div>
+          <div>Attorneys · 35 Beach Road, Gordon's Bay</div>
+        </div>
+        <p class="footer-note">Concept preview — final wording, photos and details to be supplied by the owner.</p>
+      </div>
+    </footer>
+
+    <!-- Sticky Mobile Action Bar -->
+    <nav class="mobile-action-bar" aria-label="Quick actions">
+      <a href="tel:+27622430311">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+        Call
+      </a>
+      <a href="https://wa.me/27622430311" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=35%20Beach%20Road%2C%20Gordon%27s%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+        Map
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      const header = document.querySelector('.site-header');
+      const navToggle = document.querySelector('.nav-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+      const mobileLinks = mobileNav ? mobileNav.querySelectorAll('a') : [];
+
+      // Header shadow on scroll
+      const onScroll = () => {
+        if (!header) return;
+        header.classList.toggle('is-scrolled', window.scrollY > 12);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mobile hamburger menu
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!isOpen));
+          mobileNav.classList.toggle('is-open', !isOpen);
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            navToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('is-open');
+          });
+        });
+      }
+
+      // Interactive Scales of Justice
+      const scalesBtn = document.getElementById('scales-btn');
+      if (scalesBtn) {
+        scalesBtn.addEventListener('click', () => {
+          const tipped = scalesBtn.classList.toggle('is-tipped');
+          scalesBtn.setAttribute('aria-pressed', String(tipped));
+        });
+      }
+
+      // Unfolding Enquiry Document
+      const unfoldBtn = document.getElementById('unfold-doc-btn');
+      const enquirySheet = document.getElementById('enquiry-sheet');
+      const unfoldTriggers = document.querySelectorAll('[data-unfold-trigger], a[href="#enquire"]');
+
+      const setDocumentFolded = (folded) => {
+        if (!unfoldBtn || !enquirySheet) return;
+        enquirySheet.classList.toggle('is-folded', folded);
+        unfoldBtn.setAttribute('aria-expanded', String(!folded));
+        const label = unfoldBtn.querySelector('.unfold-btn-label');
+        if (label) {
+          label.textContent = folded ? 'Unfold enquiry document' : 'Fold enquiry document';
+        }
+      };
+
+      if (unfoldBtn && enquirySheet) {
+        unfoldBtn.addEventListener('click', () => {
+          const isFolded = enquirySheet.classList.contains('is-folded');
+          setDocumentFolded(!isFolded);
+        });
+      }
+
+      unfoldTriggers.forEach((el) => {
+        el.addEventListener('click', () => {
+          setDocumentFolded(false);
+        });
+      });
+
+      // WhatsApp Enquiry Composer
+      const waForm = document.getElementById('whatsapp-form');
+      if (waForm) {
+        waForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameInput = document.getElementById('enquiry-name');
+          const msgInput = document.getElementById('enquiry-message');
+          const name = nameInput ? nameInput.value.trim() : '';
+          const msg = msgInput ? msgInput.value.trim() : '';
+          const fullText = name ? `Enquiry from ${name}:\n${msg}` : msg;
+          const url = 'https://wa.me/27622430311?text=' + encodeURIComponent(fullText);
+          window.open(url, '_blank', 'noopener,noreferrer');
+        });
+      }
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy');
+          const label = btn.querySelector('.copy-label');
+          if (!text || !label) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            label.textContent = 'Copied';
+            setTimeout(() => {
+              label.textContent = 'Copy';
+            }, 1800);
+          } catch (_) {
+            label.textContent = 'Copied';
+            setTimeout(() => {
+              label.textContent = 'Copy';
+            }, 1800);
+          }
+        });
+      });
+
+      // Scroll-reveal via IntersectionObserver
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -24px 0px' }
+        );
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-visible'));
+      }
+    })();
+  </script>
+</body>
+</html>

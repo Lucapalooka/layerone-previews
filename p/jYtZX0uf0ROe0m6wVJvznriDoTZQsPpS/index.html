@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Lance Khoury - Concept preview</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --wall: #faf9f6;
+      --wall-pure: #ffffff;
+      --plaster: #f1efe9;
+      --ink: #141413;
+      --ink-soft: #4c4a46;
+      --hairline: rgba(20, 20, 19, 0.14);
+      --frame: #1c1b19;
+      --p1: #d94f30;
+      --p2: #1f4e79;
+      --p3: #e3a72f;
+      --p4: #2c5e4f;
+      --p5: #d8c8b4;
+      --p6: #181817;
+      --font-display: "Gloock", Georgia, "Times New Roman", serif;
+      --font-body: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --shadow-sm: 0 4px 16px rgba(20, 20, 19, 0.06);
+      --shadow-frame: 0 18px 42px rgba(20, 20, 19, 0.11);
+    }
+
+    [data-palette="ochre"] {
+      --p1: #d94f30;
+      --p2: #1f4e79;
+      --p3: #e3a72f;
+      --p4: #2c5e4f;
+      --p5: #d8c8b4;
+    }
+    [data-palette="coastal"] {
+      --p1: #1d4ed8;
+      --p2: #0f766e;
+      --p3: #f59e0b;
+      --p4: #334155;
+      --p5: #cbd5e1;
+    }
+    [data-palette="earth"] {
+      --p1: #9a3412;
+      --p2: #3f6212;
+      --p3: #ca8a04;
+      --p4: #57534e;
+      --p5: #e7e5e4;
+    }
+    [data-palette="noir"] {
+      --p1: #dc2626;
+      --p2: #171717;
+      --p3: #a3a3a3;
+      --p4: #404040;
+      --p5: #e5e5e5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      background: var(--wall);
+      color: var(--ink);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: clip;
+      background: var(--wall);
+      color: var(--ink);
+      font-size: 1rem;
+      line-height: 1.55;
+      padding-bottom: 76px;
+    }
+
+    @media (min-width: 768px) {
+      body { padding-bottom: 0; }
+    }
+
+    .site-wrap {
+      overflow-x: clip;
+      position: relative;
+    }
+
+    :focus-visible {
+      outline: 2.5px solid var(--p1);
+      outline-offset: 3px;
+    }
+
+    img, svg { display: block; max-width: 100%; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Top Preview Banner */
+    .preview-banner {
+      background: var(--ink);
+      color: #faf9f6;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      line-height: 1.35;
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(250, 249, 246, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--hairline);
+      transition: box-shadow 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 8px 28px rgba(20, 20, 19, 0.09);
+    }
+
+    .nav-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+      min-height: 44px;
+    }
+
+    .brand-swatch {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--ink);
+      background: conic-gradient(from 45deg, var(--p1) 0 35%, var(--p3) 35% 65%, var(--p2) 65% 100%);
+      transition: background 0.4s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid var(--hairline);
+      background: var(--wall-pure);
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .menu-toggle svg { width: 22px; height: 22px; }
+    .menu-toggle .icon-close { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon-menu { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.5rem 1.25rem 1.25rem;
+      background: var(--wall);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0.5rem 0.25rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(20, 20, 19, 0.06);
+    }
+
+    .nav-links a:hover { color: var(--p1); }
+
+    @media (min-width: 768px) {
+      .menu-toggle { display: none; }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.75rem;
+        padding: 0;
+        background: transparent;
+        border-top: none;
+      }
+      .nav-links a {
+        border-bottom: none;
+        font-size: 0.9rem;
+        padding: 0.25rem 0;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        width: 100%;
+        height: 2px;
+        background: var(--p1);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s var(--ease-out);
+      }
+      .nav-links a:hover::after { transform: scaleX(1); }
+    }
+
+    /* Container & Section Base */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding: 0 2rem; }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 0.75rem;
+    }
+
+    .eyebrow-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--p1);
+      border-radius: 50%;
+      transition: background 0.35s ease;
+    }
+
+    /* HERO: Architectural Mural Wall */
+    .hero {
+      position: relative;
+      background: var(--wall-pure);
+      border-bottom: 1px solid var(--hairline);
+      padding: 2rem 0 2.75rem;
+      overflow: hidden;
+    }
+
+    @media (min-width: 900px) {
+      .hero { padding: 3.5rem 0 4.25rem; }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.02fr 1.18fr;
+        gap: 3rem;
+      }
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.85rem, 11vw, 5.25rem);
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+      color: var(--ink);
+    }
+
+    .hero-place {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      margin: 0 0 1.5rem;
+      max-width: 34ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 46px;
+      padding: 0.75rem 1.3rem;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--ink);
+      cursor: pointer;
+      transition: transform 0.2s var(--ease-out), background 0.25s ease, color 0.25s ease;
+    }
+
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--wall-pure);
+    }
+    .btn-primary:hover {
+      background: var(--p1);
+      border-color: var(--p1);
+    }
+
+    .btn-outline {
+      background: var(--wall-pure);
+      color: var(--ink);
+    }
+    .btn-outline:hover {
+      background: var(--plaster);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-pill {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--hairline);
+      background: var(--wall);
+      color: var(--ink);
+    }
+
+    /* Mural Wall Composition (Hero Motif) */
+    .mural-stage {
+      position: relative;
+      background: #f4f1ea;
+      border: 2px solid var(--ink);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-frame);
+    }
+
+    .mural-wall {
+      position: relative;
+      aspect-ratio: 4 / 3.3;
+      min-height: 290px;
+      background:
+        linear-gradient(90deg, rgba(20, 20, 19, 0.04) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(0deg, rgba(20, 20, 19, 0.04) 1px, transparent 1px) 0 0 / 36px 36px,
+        var(--wall-pure);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+    }
+
+    .mural-block {
+      position: absolute;
+      transition: background 0.45s ease, transform 0.6s var(--ease-out);
+    }
+
+    .mural-arch {
+      left: 6%;
+      bottom: 0;
+      width: 44%;
+      height: 78%;
+      background: var(--p2);
+      border-radius: 999px 999px 0 0;
+    }
+
+    .mural-sun {
+      right: 12%;
+      top: 10%;
+      width: 34%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--p3);
+      mix-blend-mode: multiply;
+    }
+
+    .mural-slab {
+      right: 0;
+      bottom: 0;
+      width: 56%;
+      height: 46%;
+      background: var(--p1);
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .mural-stripe {
+      left: 36%;
+      top: 16%;
+      width: 14%;
+      height: 54%;
+      background: var(--p4);
+      transform: rotate(-11deg);
+    }
+
+    .mural-frame-study {
+      position: absolute;
+      left: 11%;
+      top: 12%;
+      width: 26%;
+      aspect-ratio: 3 / 4;
+      background: var(--wall-pure);
+      border: 4px solid var(--ink);
+      padding: 6px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+      z-index: 2;
+    }
+
+    .mural-frame-study-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(155deg, var(--p5) 0 48%, var(--p1) 48% 100%);
+      transition: background 0.45s ease;
+    }
+
+    /* SVG Brush Stroke Overlay & Easel Geometry */
+    .mural-brush-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .brush-path {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 720;
+      stroke-dashoffset: 720;
+      transition: stroke-dashoffset 1.1s var(--ease-out);
+    }
+
+    .mural-stage.stroke-active .brush-path,
+    html:not(.js) .brush-path {
+      stroke-dashoffset: 0;
+    }
+
+    .brush-accent {
+      fill: none;
+      stroke: var(--wall-pure);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 520;
+      stroke-dashoffset: 520;
+      transition: stroke-dashoffset 1.25s var(--ease-out) 0.15s;
+    }
+
+    .mural-stage.stroke-active .brush-accent,
+    html:not(.js) .brush-accent {
+      stroke-dashoffset: 0;
+    }
+
+    .mural-caption-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .mural-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+    }
+
+    .stroke-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.45rem 0.9rem;
+      background: var(--wall-pure);
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .stroke-btn:hover {
+      background: var(--ink);
+      color: var(--wall-pure);
+    }
+
+    /* Staggered Hero Entrance */
+    .js .hero-stagger {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: heroRise 0.75s var(--ease-out) forwards;
+    }
+    .js .hero-stagger:nth-child(1) { animation-delay: 0.05s; }
+    .js .hero-stagger:nth-child(2) { animation-delay: 0.14s; }
+    .js .hero-stagger:nth-child(3) { animation-delay: 0.22s; }
+    .js .hero-stagger:nth-child(4) { animation-delay: 0.30s; }
+    .js .hero-stagger:nth-child(5) { animation-delay: 0.38s; }
+
+    @keyframes heroRise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION 2: THE WORK (Gallery Wall + Palette Picker) */
+    .gallery-section {
+      background: var(--wall-pure);
+      padding: 4rem 0 4.75rem;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .gallery-head {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (min-width: 820px) {
+      .gallery-head {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2rem, 6vw, 3.35rem);
+      line-height: 1.04;
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+
+    /* Signature Palette Picker */
+    .palette-picker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wall);
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--hairline);
+    }
+
+    .palette-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--ink-soft);
+      margin-right: 0.35rem;
+    }
+
+    .palette-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 44px;
+      padding: 0.35rem 0.7rem;
+      border: 1.5px solid transparent;
+      background: var(--wall-pure);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .palette-btn[aria-pressed="true"] {
+      border-color: var(--ink);
+      font-weight: 700;
+    }
+
+    .palette-dots {
+      display: inline-flex;
+      gap: 2px;
+    }
+    .palette-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Asymmetrical Salon Gallery Wall */
+    .salon-wall {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+
+    @media (min-width: 720px) {
+      .salon-wall {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    .canvas-piece {
+      position: relative;
+      margin: 0;
+    }
+
+    @media (min-width: 720px) {
+      .piece-1 { grid-column: 1 / 6; margin-top: 0; }
+      .piece-2 { grid-column: 6 / 13; margin-top: 2.5rem; }
+      .piece-3 { grid-column: 2 / 8; margin-top: -1rem; }
+      .piece-4 { grid-column: 8 / 13; margin-top: 1.25rem; }
+      .piece-5 { grid-column: 1 / 7; }
+    }
+
+    .canvas-frame {
+      background: var(--wall-pure);
+      border: 8px solid var(--frame);
+      padding: 12px;
+      box-shadow: var(--shadow-frame);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .canvas-mat {
+      position: relative;
+      overflow: hidden;
+      background: var(--wall);
+    }
+
+    .piece-1 .canvas-mat { aspect-ratio: 3 / 4; }
+    .piece-2 .canvas-mat { aspect-ratio: 16 / 10; }
+    .piece-3 .canvas-mat { aspect-ratio: 5 / 4; }
+    .piece-4 .canvas-mat { aspect-ratio: 4 / 5; }
+    .piece-5 .canvas-mat { aspect-ratio: 16 / 9; }
+
+    .art-field {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.65s var(--ease-out), background 0.45s ease;
+    }
+
+    .canvas-frame:hover .art-field {
+      transform: scale(1.06);
+    }
+
+    /* Pure CSS Colour-Field Artworks */
+    .art-1 {
+      background:
+        radial-gradient(circle at 72% 28%, var(--p3) 0 28%, transparent 28.5%),
+        linear-gradient(125deg, var(--p2) 0 54%, var(--p5) 54% 100%);
+    }
+    .art-1::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      bottom: 0;
+      width: 44%;
+      height: 58%;
+      background: var(--p1);
+      border-radius: 999px 999px 0 0;
+      mix-blend-mode: multiply;
+    }
+
+    .art-2 {
+      background:
+        linear-gradient(90deg, var(--p1) 0 32%, transparent 32% 100%),
+        linear-gradient(180deg, var(--p5) 0 52%, var(--p4) 52% 100%);
+    }
+    .art-2::before {
+      content: "";
+      position: absolute;
+      right: 12%;
+      top: 14%;
+      width: 34%;
+      height: 72%;
+      border-radius: 50%;
+      background: var(--p2);
+    }
+    .art-2::after {
+      content: "";
+      position: absolute;
+      left: 24%;
+      top: 22%;
+      width: 46%;
+      height: 22%;
+      background: var(--p3);
+      transform: rotate(-7deg);
+    }
+
+    .art-3 {
+      background:
+        conic-gradient(from 210deg at 42% 55%, var(--p4) 0 110deg, var(--p3) 110deg 220deg, var(--p1) 220deg 360deg);
+    }
+    .art-3::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border: 14px solid var(--wall-pure);
+      border-radius: 50% 0 50% 0;
+    }
+
+    .art-4 {
+      background:
+        linear-gradient(160deg, var(--p2) 0 46%, var(--p3) 46% 70%, var(--p5) 70% 100%);
+    }
+    .art-4::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 10%;
+      width: 68%;
+      height: 40%;
+      background: var(--p1);
+      clip-path: polygon(0 30%, 100% 0, 100% 100%, 18% 100%);
+    }
+
+    .art-5 {
+      background:
+        repeating-linear-gradient(90deg, var(--p5) 0 28px, var(--wall-pure) 28px 42px);
+    }
+    .art-5::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      top: 14%;
+      width: 42%;
+      height: 72%;
+      background: var(--p2);
+      border-radius: 0 120px 120px 0;
+    }
+    .art-5::after {
+      content: "";
+      position: absolute;
+      right: 10%;
+      bottom: 14%;
+      width: 34%;
+      height: 62%;
+      background: var(--p1);
+      transform: skewX(-14deg);
+    }
+
+    /* Paint-stroke wipe veil on gallery canvases */
+    .paint-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, var(--wall) 0 55%, transparent 56%);
+      transform: translateX(-105%);
+      pointer-events: none;
+      transition: transform 0.65s var(--ease-out);
+    }
+    .salon-wall.wiping .paint-veil {
+      transform: translateX(105%);
+    }
+
+    .canvas-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    /* SECTION 3: MARQUEE + THE STUDIO (Split & Overlapping Block) */
+    .ticker-band {
+      background: var(--ink);
+      color: var(--wall-pure);
+      overflow: hidden;
+      border-bottom: 1px solid var(--ink);
+      padding: 0.9rem 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 2.5rem;
+      animation: tickerMove 26s linear infinite;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+    }
+
+    .ticker-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5rem;
+      white-space: nowrap;
+    }
+
+    .ticker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--p3);
+    }
+
+    @keyframes tickerMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .studio-section {
+      padding: 4.5rem 0;
+      background: var(--plaster);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .studio-grid {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 4rem;
+      }
+    }
+
+    .studio-motif-panel {
+      position: relative;
+      background: var(--wall-pure);
+      border: 1.5px solid var(--ink);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .studio-motif-svg {
+      width: 100%;
+      height: auto;
+      max-height: 310px;
+    }
+
+    .studio-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .studio-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 0.5rem 0;
+    }
+
+    .pillar-chip {
+      border: 1px solid var(--hairline);
+      background: var(--wall-pure);
+      padding: 0.85rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pillar-chip::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--p2);
+    }
+    .pillar-chip:nth-child(2)::after { background: var(--p1); }
+    .pillar-chip:nth-child(3)::after { background: var(--p3); }
+    .pillar-chip:nth-child(4)::after { background: var(--p4); }
+
+    .studio-note {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+      max-width: 44ch;
+    }
+
+    /* SECTION 4: COMMISSIONS (Full-bleed Dark Architectural Band + Chip Composer) */
+    .commissions-section {
+      background: var(--ink);
+      color: var(--wall-pure);
+      padding: 4.5rem 0;
+    }
+
+    .commissions-section .eyebrow { color: rgba(250, 249, 246, 0.7); }
+    .commissions-section .section-title { color: var(--wall-pure); }
+
+    .commissions-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    @media (min-width: 860px) {
+      .commissions-layout {
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 3.5rem;
+        align-items: start;
+      }
+    }
+
+    .chip-group-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(250, 249, 246, 0.72);
+      margin: 0 0 0.75rem;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scope-chip {
+      min-height: 44px;
+      padding: 0.55rem 1rem;
+      background: transparent;
+      color: var(--wall-pure);
+      border: 1.5px solid rgba(250, 249, 246, 0.32);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .scope-chip[aria-pressed="true"] {
+      background: var(--p3);
+      border-color: var(--p3);
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .composer-card {
+      background: var(--wall-pure);
+      color: var(--ink);
+      padding: 1.5rem;
+      border: 2px solid var(--wall-pure);
+    }
+
+    @media (min-width: 600px) {
+      .composer-card { padding: 2rem; }
+    }
+
+    .field-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.45rem;
+    }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      padding: 0.75rem 0.9rem;
+      border: 1.5px solid var(--ink);
+      background: var(--wall);
+      color: var(--ink);
+      border-radius: 0;
+    }
+
+    .field-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    /* SECTION 5: CONTACT & FAQ (Asymmetric 2-Column + Native Accordion) */
+    .contact-section {
+      background: var(--wall);
+      padding: 4.5rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .contact-card {
+      background: var(--wall-pure);
+      border: 1.5px solid var(--ink);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .contact-row:last-child { border-bottom: none; padding-bottom: 0.25rem; }
+    .contact-row:first-child { padding-top: 0.25rem; }
+
+    .contact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .contact-kicker {
+      font-size: 0.74rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+    }
+
+    .contact-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 44px;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--hairline);
+      background: var(--wall);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .copy-btn:hover { border-color: var(--ink); }
+    .copy-btn svg { width: 16px; height: 16px; }
+
+    .contact-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Native Details Accordion */
+    .faq-list {
+      margin-top: 1.5rem;
+      border-top: 1.5px solid var(--ink);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 54px;
+      padding: 1rem 0;
+      font-weight: 600;
+      font-size: 1.02rem;
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.25s var(--ease-out);
+    }
+
+    .faq-item[open] .faq-icon {
+      transform: rotate(90deg);
+    }
+
+    .faq-answer {
+      margin: 0 0 1.25rem;
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--plaster);
+      border-top: 1px solid var(--hairline);
+      padding: 2rem 0 2.5rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    /* Mobile Sticky Action Bar */
+    .mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 45;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--ink);
+      border-top: 1px solid rgba(250, 249, 246, 0.2);
+    }
+
+    .mobile-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 54px;
+      color: var(--wall-pure);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-right: 1px solid rgba(250, 249, 246, 0.16);
+    }
+    .mobile-bar a:last-child { border-right: none; }
+    .mobile-bar svg { width: 18px; height: 18px; }
+
+    @media (min-width: 768px) {
+      .mobile-bar { display: none; }
+    }
+
+    /* Scroll Reveal */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      .js .hero-stagger,
+      .js .reveal {
+        opacity: 1;
+        transform: none;
+        animation: none;
+        transition: none;
+      }
+      .brush-path,
+      .brush-accent {
+        stroke-dashoffset: 0;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body data-palette="ochre">
+  <div class="site-wrap">
+    <div class="preview-banner">Concept preview made for Lance Khoury — not their official website</div>
+
+    <header class="site-header" id="site-header">
+      <div class="nav-bar">
+        <a href="#top" class="brand-mark">
+          <span class="brand-swatch" aria-hidden="true"></span>
+          <span>Lance Khoury</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <nav class="nav-links" id="primary-nav" aria-label="Primary">
+          <a href="#work">The work</a>
+          <a href="#studio">The studio</a>
+          <a href="#commissions">Commissions</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- SECTION 1: HERO (MURAL WALL MOTIF) -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow hero-stagger">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>Artist &amp; mural studio · Knysna</span>
+            </p>
+            <h1 id="hero-heading" class="hero-stagger">Lance Khoury</h1>
+            <p class="hero-place hero-stagger">24 Waterfront Drive, Knysna</p>
+            <div class="hero-actions hero-stagger">
+              <a class="btn btn-primary" href="https://wa.me/27609887575" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>WhatsApp</span>
+              </a>
+              <a class="btn btn-outline" href="tel:+27609887575">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                <span>+27 60 988 7575</span>
+              </a>
+            </div>
+            <div class="hero-tags hero-stagger" aria-label="Studio focus">
+              <span class="tag-pill">Murals</span>
+              <span class="tag-pill">Art</span>
+              <span class="tag-pill">Commissions</span>
+              <span class="tag-pill">Gallery</span>
+            </div>
+          </div>
+
+          <div class="mural-stage stroke-active" id="mural-stage" aria-label="Mural wall composition">
+            <div class="mural-wall">
+              <div class="mural-block mural-arch"></div>
+              <div class="mural-block mural-sun"></div>
+              <div class="mural-block mural-slab"></div>
+              <div class="mural-block mural-stripe"></div>
+              <div class="mural-frame-study" aria-hidden="true">
+                <div class="mural-frame-study-inner"></div>
+              </div>
+              <svg class="mural-brush-svg" viewBox="0 0 600 480" preserveAspectRatio="none" aria-hidden="true">
+                <path class="brush-path" d="M 38 380 C 145 290, 210 120, 355 150 C 460 172, 475 330, 568 255" />
+                <path class="brush-accent" d="M 48 392 C 155 302, 222 134, 365 162 C 468 182, 482 338, 560 266" />
+              </svg>
+            </div>
+            <div class="mural-caption-bar">
+              <span class="mural-label">Mural wall study</span>
+              <button type="button" class="stroke-btn" id="replay-stroke">Paint-stroke reveal</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: THE WORK (GALLERY WALL + PALETTE PICKER) -->
+      <section class="gallery-section" id="work" aria-labelledby="work-heading">
+        <div class="container">
+          <div class="gallery-head reveal">
+            <div>
+              <p class="eyebrow">
+                <span class="eyebrow-dot" aria-hidden="true"></span>
+                <span>Gallery wall</span>
+              </p>
+              <h2 id="work-heading" class="section-title">The work</h2>
+            </div>
+
+            <div class="palette-picker" role="group" aria-label="Gallery wall palette">
+              <span class="palette-label">Palette</span>
+              <button type="button" class="palette-btn" data-set-palette="ochre" aria-pressed="true">
+                <span class="palette-dots" aria-hidden="true">
+                  <span style="background:#d94f30"></span>
+                  <span style="background:#1f4e79"></span>
+                  <span style="background:#e3a72f"></span>
+                </span>
+                <span>Ochre</span>
+              </button>
+              <button type="button" class="palette-btn" data-set-palette="coastal" aria-pressed="false">
+                <span class="palette-dots" aria-hidden="true">
+                  <span style="background:#1d4ed8"></span>
+                  <span style="background:#0f766e"></span>
+                  <span style="background:#f59e0b"></span>
+                </span>
+                <span>Cobalt</span>
+              </button>
+              <button type="button" class="palette-btn" data-set-palette="earth" aria-pressed="false">
+                <span class="palette-dots" aria-hidden="true">
+                  <span style="background:#9a3412"></span>
+                  <span style="background:#3f6212"></span>
+                  <span style="background:#ca8a04"></span>
+                </span>
+                <span>Earth</span>
+              </button>
+              <button type="button" class="palette-btn" data-set-palette="noir" aria-pressed="false">
+                <span class="palette-dots" aria-hidden="true">
+                  <span style="background:#dc2626"></span>
+                  <span style="background:#171717"></span>
+                  <span style="background:#a3a3a3"></span>
+                </span>
+                <span>Charcoal</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="salon-wall" id="salon-wall">
+            <figure class="canvas-piece piece-1 reveal">
+              <div class="canvas-frame">
+                <div class="canvas-mat">
+                  <div class="art-field art-1"></div>
+                  <div class="paint-veil" aria-hidden="true"></div>
+                </div>
+              </div>
+              <figcaption class="canvas-caption"><span>Murals</span><span>01</span></figcaption>
+            </figure>
+
+            <figure class="canvas-piece piece-2 reveal">
+              <div class="canvas-frame">
+                <div class="canvas-mat">
+                  <div class="art-field art-2"></div>
+                  <div class="paint-veil" aria-hidden="true"></div>
+                </div>
+              </div>
+              <figcaption class="canvas-caption"><span>Art</span><span>02</span></figcaption>
+            </figure>
+
+            <figure class="canvas-piece piece-3 reveal">
+              <div class="canvas-frame">
+                <div class="canvas-mat">
+                  <div class="art-field art-3"></div>
+                  <div class="paint-veil" aria-hidden="true"></div>
+                </div>
+              </div>
+              <figcaption class="canvas-caption"><span>Gallery</span><span>03</span></figcaption>
+            </figure>
+
+            <figure class="canvas-piece piece-4 reveal">
+              <div class="canvas-frame">
+                <div class="canvas-mat">
+                  <div class="art-field art-4"></div>
+                  <div class="paint-veil" aria-hidden="true"></div>
+                </div>
+              </div>
+              <figcaption class="canvas-caption"><span>Studio</span><span>04</span></figcaption>
+            </figure>
+
+            <figure class="canvas-piece piece-5 reveal">
+              <div class="canvas-frame">
+                <div class="canvas-mat">
+                  <div class="art-field art-5"></div>
+                  <div class="paint-veil" aria-hidden="true"></div>
+                </div>
+              </div>
+              <figcaption class="canvas-caption"><span>Commissions</span><span>05</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- TICKER -->
+      <div class="ticker-band" aria-hidden="true">
+        <div class="ticker-track">
+          <span>ART <i class="ticker-dot"></i> MURALS <i class="ticker-dot"></i> STUDIO <i class="ticker-dot"></i> COMMISSIONS <i class="ticker-dot"></i> GALLERY <i class="ticker-dot"></i> KNYSNA <i class="ticker-dot"></i></span>
+          <span>ART <i class="ticker-dot"></i> MURALS <i class="ticker-dot"></i> STUDIO <i class="ticker-dot"></i> COMMISSIONS <i class="ticker-dot"></i> GALLERY <i class="ticker-dot"></i> KNYSNA <i class="ticker-dot"></i></span>
+        </div>
+      </div>
+
+      <!-- SECTION 3: THE STUDIO (SPLIT PANEL + EASEL / PALETTE GEOMETRY) -->
+      <section class="studio-section" id="studio" aria-labelledby="studio-heading">
+        <div class="container studio-grid">
+          <div class="studio-motif-panel reveal" aria-hidden="true">
+            <svg class="studio-motif-svg" viewBox="0 0 420 320" fill="none">
+              <!-- Easel frame geometry -->
+              <line x1="210" y1="22" x2="115" y2="298" stroke="#141413" stroke-width="6" stroke-linecap="round"/>
+              <line x1="210" y1="22" x2="305" y2="298" stroke="#141413" stroke-width="6" stroke-linecap="round"/>
+              <line x1="210" y1="22" x2="210" y2="280" stroke="#141413" stroke-width="4" stroke-dasharray="6 6"/>
+              <!-- Canvas on easel -->
+              <rect x="112" y="54" width="196" height="156" fill="#ffffff" stroke="#141413" stroke-width="5"/>
+              <path d="M117 205 L117 120 Q180 85 240 135 T303 105 L303 205 Z" fill="var(--p2)"/>
+              <circle cx="242" cy="108" r="28" fill="var(--p3)"/>
+              <rect x="134" y="80" width="54" height="72" fill="var(--p1)" opacity="0.88"/>
+              <line x1="94" y1="214" x2="326" y2="214" stroke="#141413" stroke-width="8" stroke-linecap="round"/>
+              <!-- Artist palette motif -->
+              <path d="M58 242 C24 242 16 286 44 298 C66 308 112 296 112 268 C112 246 84 242 58 242 Z" fill="#faf9f6" stroke="#141413" stroke-width="3.5"/>
+              <circle cx="48" cy="264" r="7" fill="var(--p1)"/>
+              <circle cx="70" cy="257" r="7" fill="var(--p3)"/>
+              <circle cx="92" cy="268" r="7" fill="var(--p2)"/>
+              <circle cx="52" cy="285" r="5" fill="#141413"/>
+            </svg>
+          </div>
+
+          <div class="studio-copy reveal">
+            <div>
+              <p class="eyebrow">
+                <span class="eyebrow-dot" aria-hidden="true"></span>
+                <span>Knysna</span>
+              </p>
+              <h2 id="studio-heading" class="section-title">The studio</h2>
+            </div>
+
+            <div class="studio-pillars" aria-label="Disciplines">
+              <div class="pillar-chip">Art</div>
+              <div class="pillar-chip">Murals</div>
+              <div class="pillar-chip">Commissions</div>
+              <div class="pillar-chip">Gallery</div>
+            </div>
+
+            <p class="studio-note">Visit the studio at 24 Waterfront Drive, Knysna, or reach out by phone or WhatsApp to arrange a visit or discuss a wall.</p>
+
+            <div class="hero-actions" style="margin-bottom:0">
+              <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=24%20Waterfront%20Drive%2C%20Knysna%2C%20South%20Africa" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                <span>Directions</span>
+              </a>
+              <a class="btn btn-outline" href="#commissions">
+                <span>Commissions</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: COMMISSIONS (CHIP COMPOSER + WHATSAPP FORM) -->
+      <section class="commissions-section" id="commissions" aria-labelledby="commissions-heading">
+        <div class="container">
+          <p class="eyebrow">
+            <span class="eyebrow-dot" aria-hidden="true"></span>
+            <span>Enquiries</span>
+          </p>
+          <h2 id="commissions-heading" class="section-title">Commissions</h2>
+
+          <div class="commissions-layout">
+            <div class="reveal">
+              <p class="chip-group-label">Select wall type or focus</p>
+              <div class="chip-grid" role="group" aria-label="Commission categories">
+                <button type="button" class="scope-chip" data-chip="Murals" aria-pressed="true">Murals</button>
+                <button type="button" class="scope-chip" data-chip="Interior wall" aria-pressed="false">Interior wall</button>
+                <button type="button" class="scope-chip" data-chip="Exterior wall" aria-pressed="false">Exterior wall</button>
+                <button type="button" class="scope-chip" data-chip="Art" aria-pressed="false">Art</button>
+                <button type="button" class="scope-chip" data-chip="Gallery" aria-pressed="false">Gallery</button>
+                <button type="button" class="scope-chip" data-chip="Large wall" aria-pressed="false">Large wall</button>
+              </div>
+              <p style="color:rgba(250,249,246,0.78); max-width:38ch; margin:0;">
+                Choose any focus tags and send a direct WhatsApp message to +27 60 988 7575.
+              </p>
+            </div>
+
+            <form class="composer-card reveal" id="wa-form">
+              <div class="field-group">
+                <label for="wa-name">Your name</label>
+                <input id="wa-name" name="name" type="text" autocomplete="name" placeholder="Name" required>
+              </div>
+              <div class="field-group">
+                <label for="wa-message">Message</label>
+                <textarea id="wa-message" name="message" placeholder="Share wall details, dimensions, or a preferred time to chat." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>Send via WhatsApp</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: CONTACT & FAQ -->
+      <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+        <div class="container contact-grid">
+          <div class="reveal">
+            <p class="eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>Visit or call</span>
+            </p>
+            <h2 id="contact-heading" class="section-title">Contact</h2>
+
+            <div class="contact-card">
+              <div class="contact-row">
+                <div class="contact-meta">
+                  <span class="contact-kicker">Phone</span>
+                  <a class="contact-value" href="tel:+27609887575">+27 60 988 7575</a>
+                </div>
+                <button type="button" class="copy-btn" data-copy="+27 60 988 7575">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <div class="contact-row">
+                <div class="contact-meta">
+                  <span class="contact-kicker">Address</span>
+                  <span class="contact-value">24 Waterfront Drive, Knysna</span>
+                </div>
+                <button type="button" class="copy-btn" data-copy="24 Waterfront Drive, Knysna">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-cta-row">
+              <a class="btn btn-primary" href="tel:+27609887575">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                <span>Call studio</span>
+              </a>
+              <a class="btn btn-outline" href="https://wa.me/27609887575" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>WhatsApp</span>
+              </a>
+              <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=24%20Waterfront%20Drive%2C%20Knysna%2C%20South%20Africa" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                <span>Map</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <p class="eyebrow">
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>Details</span>
+            </p>
+            <h2 class="section-title">Questions</h2>
+
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary>
+                  <span>How do I get in touch?</span>
+                  <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">You can call +27 60 988 7575 or send a message directly on WhatsApp using the composer above.</p>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  <span>Where is the studio located?</span>
+                  <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">Lance Khoury is at 24 Waterfront Drive, Knysna.</p>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  <span>When can I call?</span>
+                  <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <p class="faq-answer">Call +27 60 988 7575 anytime to enquire, or send a WhatsApp message and we will respond when available.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>Lance Khoury · 24 Waterfront Drive, Knysna</span>
+        <span>Concept preview — final wording, photos and details to be supplied by the owner.</span>
+      </div>
+    </footer>
+
+    <nav class="mobile-bar" aria-label="Quick actions">
+      <a href="tel:+27609887575">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+        <span>Call</span>
+      </a>
+      <a href="https://wa.me/27609887575" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=24%20Waterfront%20Drive%2C%20Knysna%2C%20South%20Africa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+        <span>Map</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      var header = document.getElementById('site-header');
+      var menuBtn = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 12) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }, { passive: true });
+
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function () {
+          var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', String(!expanded));
+          nav.classList.toggle('open', !expanded);
+        });
+
+        nav.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            menuBtn.setAttribute('aria-expanded', 'false');
+            nav.classList.remove('open');
+          });
+        });
+      }
+
+      // Paint-stroke reveal replay
+      var muralStage = document.getElementById('mural-stage');
+      var replayBtn = document.getElementById('replay-stroke');
+      if (muralStage && replayBtn) {
+        replayBtn.addEventListener('click', function () {
+          muralStage.classList.remove('stroke-active');
+          void muralStage.offsetWidth;
+          muralStage.classList.add('stroke-active');
+        });
+      }
+
+      // Signature Gallery Palette Picker + Paint-stroke wipe
+      var paletteBtns = document.querySelectorAll('[data-set-palette]');
+      var salonWall = document.getElementById('salon-wall');
+      paletteBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var chosen = btn.getAttribute('data-set-palette');
+          document.body.setAttribute('data-palette', chosen);
+          paletteBtns.forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b === btn));
+          });
+          if (salonWall) {
+            salonWall.classList.remove('wiping');
+            void salonWall.offsetWidth;
+            salonWall.classList.add('wiping');
+            setTimeout(function () { salonWall.classList.remove('wiping'); }, 700);
+          }
+        });
+      });
+
+      // Commission focus chips
+      var scopeChips = document.querySelectorAll('.scope-chip');
+      scopeChips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var active = chip.getAttribute('aria-pressed') === 'true';
+          chip.setAttribute('aria-pressed', String(!active));
+        });
+      });
+
+      // WhatsApp composer
+      var waForm = document.getElementById('wa-form');
+      if (waForm) {
+        waForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = document.getElementById('wa-name').value.trim();
+          var msg = document.getElementById('wa-message').value.trim();
+          var selected = [];
+          scopeChips.forEach(function (chip) {
+            if (chip.getAttribute('aria-pressed') === 'true') {
+              selected.push(chip.getAttribute('data-chip'));
+            }
+          });
+          var prefix = selected.length ? '[' + selected.join(', ') + '] ' : '';
+          var fullText = 'Hi Lance Khoury, ' + prefix + (name ? 'my name is ' + name + '. ' : '') + msg;
+          var url = 'https://wa.me/27609887575?text=' + encodeURIComponent(fullText);
+          window.open(url, '_blank', 'noopener');
+        });
+      }
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var value = btn.getAttribute('data-copy');
+          var label = btn.querySelector('span');
+          if (!navigator.clipboard || !value) return;
+          navigator.clipboard.writeText(value).then(function () {
+            if (label) {
+              var orig = label.textContent;
+              label.textContent = 'Copied';
+              setTimeout(function () { label.textContent = orig; }, 1600);
+            }
+          });
+        });
+      });
+
+      // Scroll reveal
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          io.observe(el);
+        });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          el.classList.add('visible');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

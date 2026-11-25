@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Fisheries Muizenberg - Concept preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Titan+One&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --sky:#56B4E9;
+  --sky-deep:#1E6FA8;
+  --sky-pale:#E4F4FD;
+  --coral:#FF5A4E;
+  --coral-deep:#C93429;
+  --cream:#FFF8EE;
+  --cream-card:#FFFDF9;
+  --ink:#10253F;
+  --ink-soft:#2B4566;
+  --sun:#FFD147;
+  --border:#10253F;
+  --shadow:4px 4px 0 #10253F;
+  --shadow-lg:7px 7px 0 #10253F;
+  --font-display:'Titan One',Impact,'Arial Black',sans-serif;
+  --font-body:'Nunito',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  --radius:18px;
+  --radius-sm:12px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  overflow-x:clip;
+  font-size:16px;
+}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.55;
+  overflow-x:clip;
+  padding-bottom:78px;
+}
+.site-wrap{overflow-x:clip;position:relative}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{
+  outline:3px solid var(--sun);
+  outline-offset:3px;
+  border-radius:6px;
+}
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  background:var(--ink);color:var(--cream);
+  padding:10px 16px;z-index:200;font-weight:800;
+}
+.skip-link:focus{left:12px;top:12px}
+
+/* Top preview banner */
+.preview-banner{
+  background:var(--ink);
+  color:var(--cream);
+  text-align:center;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  padding:8px 14px;
+  border-bottom:2px solid var(--sun);
+}
+
+/* Header & Nav */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:90;
+  background:rgba(255,248,238,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:2.5px solid var(--border);
+  transition:box-shadow .22s ease;
+}
+.site-header.scrolled{box-shadow:0 6px 0 rgba(16,37,63,.16)}
+.nav-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand-mark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font-family:var(--font-display);
+  font-size:1.12rem;
+  letter-spacing:.01em;
+  color:var(--ink);
+  min-height:44px;
+}
+.brand-dot{
+  width:32px;height:32px;
+  border-radius:50%;
+  background:var(--coral);
+  border:2.5px solid var(--border);
+  box-shadow:2px 2px 0 var(--border);
+  display:grid;place-items:center;
+  flex-shrink:0;
+}
+.brand-dot svg{width:18px;height:18px;color:var(--cream)}
+.menu-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;height:46px;
+  border-radius:12px;
+  border:2.5px solid var(--border);
+  background:var(--sun);
+  box-shadow:3px 3px 0 var(--border);
+  cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.menu-toggle:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--border)}
+.menu-toggle svg{width:22px;height:22px}
+.menu-toggle .icon-close{display:none}
+.menu-toggle[aria-expanded="true"] .icon-open{display:none}
+.menu-toggle[aria-expanded="true"] .icon-close{display:block}
+
+.primary-nav{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  padding:10px 16px 16px;
+  background:var(--cream);
+  border-top:2px solid var(--border);
+}
+.primary-nav.open{display:flex}
+.primary-nav a{
+  text-decoration:none;
+  font-weight:800;
+  padding:11px 14px;
+  border-radius:10px;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  transition:background .15s ease;
+}
+.primary-nav a:hover{background:var(--sky-pale)}
+.primary-nav .nav-cta{
+  background:var(--coral);
+  color:#fff;
+  border:2px solid var(--border);
+  box-shadow:3px 3px 0 var(--border);
+  justify-content:center;
+  margin-top:4px;
+}
+
+/* Shared layout helpers */
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--sun);
+  color:var(--ink);
+  border:2px solid var(--border);
+  box-shadow:3px 3px 0 var(--border);
+  border-radius:999px;
+  padding:5px 14px;
+  font-size:.82rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:48px;
+  padding:11px 20px;
+  border-radius:999px;
+  border:2.5px solid var(--border);
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.btn svg{width:19px;height:19px;flex-shrink:0}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--border)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--border)}
+.btn-primary{background:var(--coral);color:#fff}
+.btn-primary:hover{background:var(--coral-deep)}
+.btn-secondary{background:var(--cream-card);color:var(--ink)}
+.btn-secondary:hover{background:var(--sky-pale)}
+.btn-sky{background:var(--sky);color:var(--ink)}
+
+/* Hero: Seaside kiosk restaurant poster with overhead plate motif */
+.hero{
+  position:relative;
+  background:linear-gradient(165deg,var(--sky-pale) 0%,#BFE5FA 48%,var(--cream) 100%);
+  padding:28px 0 42px;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  align-items:center;
+}
+.hero-copy{position:relative;z-index:2}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.25rem,9vw,4.35rem);
+  line-height:1.02;
+  margin:14px 0 12px;
+  color:var(--ink);
+  letter-spacing:.01em;
+  text-shadow:3px 3px 0 var(--cream),5px 5px 0 rgba(86,180,233,.45);
+}
+.hero-lead{
+  font-size:1.06rem;
+  font-weight:700;
+  color:var(--ink-soft);
+  max-width:44ch;
+  margin:0 0 20px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.sticker-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:var(--cream-card);
+  border:2px solid var(--border);
+  border-radius:10px;
+  padding:6px 12px;
+  font-size:.86rem;
+  font-weight:800;
+  box-shadow:3px 3px 0 var(--border);
+  transform:rotate(-1.5deg);
+}
+.sticker-badge--alt{
+  background:var(--sky);
+  transform:rotate(1.5deg);
+}
+.sticker-badge svg{width:16px;height:16px;color:var(--coral-deep)}
+
+/* Bespoke Hero Visual: Overhead Set Table starring a Ceramic Plate */
+.hero-stage{
+  position:relative;
+  display:grid;
+  place-items:center;
+  padding:12px 0;
+}
+.table-placemat{
+  position:relative;
+  width:min(100%,430px);
+  aspect-ratio:1/1;
+  background:repeating-linear-gradient(
+    -45deg,
+    var(--sky),
+    var(--sky) 14px,
+    #78C6F0 14px,
+    #78C6F0 28px
+  );
+  border:3px solid var(--border);
+  border-radius:28px;
+  box-shadow:var(--shadow-lg);
+  display:grid;
+  place-items:center;
+  padding:18px;
+}
+.sun-emblem{
+  position:absolute;
+  top:-18px;
+  right:-14px;
+  width:78px;
+  height:78px;
+  z-index:4;
+  animation:spin-slow 24s linear infinite;
+}
+@keyframes spin-slow{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+.table-svg{
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+}
+.hero-ticket{
+  position:absolute;
+  bottom:-12px;
+  left:12px;
+  background:var(--sun);
+  border:2.5px solid var(--border);
+  border-radius:10px;
+  padding:7px 14px;
+  font-weight:800;
+  font-size:.82rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  box-shadow:var(--shadow);
+  transform:rotate(-2.5deg);
+  z-index:4;
+}
+
+/* Staggered hero entrance */
+.js .stagger{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.js .stagger.in{opacity:1;transform:none}
+
+/* Scalloped wave divider */
+.wave-divider{
+  display:block;
+  width:100%;
+  height:34px;
+  overflow:hidden;
+  line-height:0;
+}
+.wave-divider svg{width:100%;height:100%;display:block}
+
+/* Section 2: Ticker / Marquee strip */
+.ticker-band{
+  background:var(--ink);
+  color:var(--cream);
+  border-top:2.5px solid var(--border);
+  border-bottom:2.5px solid var(--border);
+  padding:12px 0;
+  overflow:hidden;
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  gap:28px;
+  animation:ticker 26s linear infinite;
+  font-family:var(--font-display);
+  font-size:1.05rem;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.ticker-item{display:inline-flex;align-items:center;gap:28px;white-space:nowrap}
+.ticker-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--coral);border:2px solid var(--sun);
+}
+@keyframes ticker{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* Section headings */
+.section-pad{padding:56px 0}
+.section-head{
+  margin-bottom:28px;
+}
+.section-head h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.85rem,5.5vw,2.85rem);
+  line-height:1.08;
+  margin:10px 0 6px;
+}
+.section-head p{
+  margin:0;
+  color:var(--ink-soft);
+  font-weight:700;
+  max-width:50ch;
+}
+
+/* Section 3: The Table — Overlapping Panels + Signature Reservation-Slip Builder */
+.table-section{background:var(--cream)}
+.table-layout{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:26px;
+  align-items:start;
+}
+.ticket-stack{
+  display:grid;
+  gap:16px;
+}
+.ticket-block{
+  display:grid;
+  grid-template-columns:68px 1fr;
+  align-items:center;
+  background:var(--cream-card);
+  border:2.5px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  transition:transform .18s ease;
+}
+.ticket-block:hover{transform:translateY(-2px)}
+.ticket-num{
+  height:100%;
+  min-height:76px;
+  display:grid;
+  place-items:center;
+  background:var(--sky);
+  border-right:2.5px dashed var(--border);
+  font-family:var(--font-display);
+  font-size:1.45rem;
+}
+.ticket-block:nth-child(2) .ticket-num{background:var(--sun)}
+.ticket-block:nth-child(3) .ticket-num{background:var(--coral);color:#fff}
+.ticket-label{padding:16px 18px}
+.ticket-label h3{
+  font-family:var(--font-display);
+  font-size:1.25rem;
+  margin:0 0 2px;
+}
+.ticket-label span{
+  font-size:.84rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+}
+
+/* Signature Interaction: Reservation-Slip Builder */
+.slip-card{
+  background:var(--sky-pale);
+  border:3px solid var(--border);
+  border-radius:22px;
+  box-shadow:var(--shadow-lg);
+  padding:22px;
+  position:relative;
+}
+.slip-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding-bottom:14px;
+  border-bottom:2.5px dashed var(--border);
+  margin-bottom:18px;
+}
+.slip-header h3{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  margin:0;
+}
+.slip-badge{
+  background:var(--coral);
+  color:#fff;
+  font-size:.75rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  padding:4px 10px;
+  border-radius:999px;
+  border:2px solid var(--border);
+}
+.slip-group{margin-bottom:16px}
+.slip-group-label{
+  display:block;
+  font-size:.84rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:8px;
+}
+.chip-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.chip-btn{
+  min-height:44px;
+  padding:8px 15px;
+  border-radius:12px;
+  border:2px solid var(--border);
+  background:var(--cream-card);
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:2px 2px 0 var(--border);
+  transition:background .15s ease,transform .12s ease,box-shadow .12s ease;
+}
+.chip-btn:hover{background:#fff}
+.chip-btn[aria-pressed="true"]{
+  background:var(--sun);
+  transform:translate(1px,1px);
+  box-shadow:1px 1px 0 var(--border);
+}
+.slip-preview{
+  background:var(--cream-card);
+  border:2px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+  margin:16px 0;
+  font-size:.94rem;
+  font-weight:700;
+}
+.slip-preview strong{
+  display:block;
+  font-size:.76rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+  margin-bottom:4px;
+}
+.slip-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+/* Section 4: Eat & Drink — Poster Menu-Card Board (Headings Only) */
+.menu-section{
+  background:var(--sky-pale);
+  border-top:2.5px solid var(--border);
+  border-bottom:2.5px solid var(--border);
+}
+.menu-board{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.menu-panel{
+  background:var(--cream-card);
+  border:2.5px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:16px;
+}
+.menu-panel--tall{
+  background:var(--sun);
+}
+.menu-panel-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:2px dashed var(--border);
+  padding-bottom:12px;
+}
+.menu-panel h3{
+  font-family:var(--font-display);
+  font-size:1.55rem;
+  margin:0;
+}
+.menu-tag{
+  font-size:.76rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  background:var(--ink);
+  color:var(--cream);
+  padding:4px 10px;
+  border-radius:999px;
+}
+.menu-rule-lines{
+  display:grid;
+  gap:10px;
+}
+.menu-rule{
+  height:12px;
+  border-bottom:2px dotted rgba(16,37,63,.35);
+}
+.menu-foot{
+  font-size:.84rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+}
+
+/* Section 5: Booking Strip — Full-bleed Coral Band */
+.booking-strip{
+  background:var(--coral);
+  color:#fff;
+  padding:48px 0;
+  position:relative;
+}
+.booking-strip-inner{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.booking-strip h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,5.5vw,2.7rem);
+  line-height:1.08;
+  margin:8px 0 8px;
+  color:#fff;
+  text-shadow:3px 3px 0 var(--border);
+}
+.booking-strip p{
+  margin:0;
+  font-weight:700;
+  max-width:46ch;
+  color:#FFF8EE;
+}
+.booking-strip .eyebrow{background:var(--cream);color:var(--ink)}
+.booking-strip-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* Section 6: Contact, WhatsApp Composer & FAQ Accordion */
+.contact-section{background:var(--cream)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  align-items:start;
+}
+.contact-card,.composer-card,.faq-card{
+  background:var(--cream-card);
+  border:2.5px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+.info-rows{display:grid;gap:14px;margin-top:16px}
+.info-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  background:var(--sky-pale);
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+}
+.info-main{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+.info-main svg{width:20px;height:20px;color:var(--coral-deep);flex-shrink:0}
+.info-label{
+  display:block;
+  font-size:.74rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink-soft);
+}
+.info-value{
+  display:block;
+  font-weight:800;
+  word-break:break-word;
+  text-decoration:none;
+}
+.copy-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:44px;
+  padding:8px 12px;
+  border-radius:10px;
+  border:2px solid var(--border);
+  background:var(--cream-card);
+  font-size:.82rem;
+  font-weight:800;
+  cursor:pointer;
+  flex-shrink:0;
+  box-shadow:2px 2px 0 var(--border);
+  transition:background .15s ease;
+}
+.copy-btn svg{width:16px;height:16px}
+.copy-btn.copied{background:var(--sun)}
+
+.composer-card{margin-top:20px;background:var(--sky-pale)}
+.composer-card h3,.faq-card h3{
+  font-family:var(--font-display);
+  font-size:1.35rem;
+  margin:0 0 6px;
+}
+.composer-card p{margin:0 0 14px;font-size:.94rem;font-weight:700;color:var(--ink-soft)}
+.field{margin-bottom:14px}
+.field label{
+  display:block;
+  font-size:.84rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:6px;
+}
+.field input,.field textarea{
+  width:100%;
+  padding:11px 13px;
+  border:2px solid var(--border);
+  border-radius:12px;
+  background:var(--cream-card);
+  font-weight:700;
+}
+.field textarea{min-height:96px;resize:vertical}
+
+/* FAQ Accordion */
+.faq-list{display:grid;gap:12px;margin-top:16px}
+.faq-item{
+  border:2px solid var(--border);
+  border-radius:var(--radius-sm);
+  background:var(--cream);
+  overflow:hidden;
+}
+.faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 16px;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-weight:800;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary svg{
+  width:18px;height:18px;flex-shrink:0;
+  transition:transform .2s ease;
+}
+.faq-item[open] summary svg{transform:rotate(90deg)}
+.faq-answer{
+  padding:0 16px 15px;
+  font-weight:700;
+  color:var(--ink-soft);
+  border-top:2px dashed rgba(16,37,63,.2);
+  padding-top:12px;
+}
+
+/* Footer */
+.site-footer{
+  background:var(--ink);
+  color:var(--cream);
+  padding:34px 0 38px;
+  border-top:3px solid var(--border);
+}
+.footer-inner{
+  display:grid;
+  gap:14px;
+}
+.footer-brand{
+  font-family:var(--font-display);
+  font-size:1.35rem;
+}
+.footer-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  font-weight:700;
+  font-size:.94rem;
+}
+.footer-meta a{color:var(--sun);text-decoration:none}
+.footer-meta a:hover{text-decoration:underline}
+.footer-note{
+  margin:6px 0 0;
+  font-size:.84rem;
+  color:#CFE5F7;
+  font-weight:600;
+}
+
+/* Sticky Mobile Action Bar */
+.mobile-bar{
+  position:fixed;
+  left:0;right:0;bottom:0;
+  z-index:95;
+  background:var(--cream-card);
+  border-top:2.5px solid var(--border);
+  padding:8px 10px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.mobile-bar a{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:.88rem;
+  border-radius:10px;
+  border:2px solid var(--border);
+  background:var(--sky-pale);
+  box-shadow:2px 2px 0 var(--border);
+}
+.mobile-bar a.bar-wa{background:var(--coral);color:#fff}
+.mobile-bar a svg{width:17px;height:17px}
+
+/* Scroll reveal */
+.js .reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.visible{opacity:1;transform:none}
+
+/* Responsive scaling */
+@media(min-width:760px){
+  body{padding-bottom:0}
+  .mobile-bar{display:none}
+  .menu-toggle{display:none}
+  .nav-inner{padding:12px 24px}
+  .primary-nav{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:6px;
+    padding:0;
+    border-top:none;
+    background:transparent;
+  }
+  .primary-nav .nav-cta{margin-top:0;margin-left:8px;padding:9px 18px}
+  .hero{padding:44px 0 56px}
+  .hero-grid{grid-template-columns:1.08fr .92fr;gap:36px}
+  .table-layout{grid-template-columns:.9fr 1.1fr;gap:30px}
+  .menu-board{grid-template-columns:1.25fr 1fr 1fr}
+  .booking-strip-inner{flex-direction:row;align-items:center}
+  .contact-grid{grid-template-columns:1.05fr .95fr;gap:28px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sun-emblem,.ticker-track{animation:none}
+  .js .stagger,.js .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+<style id="contrast-fix">body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(1)>div:nth-child(1)>div:nth-child(1)>div:nth-child(4)>a:nth-child(1)>span:nth-child(2){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(3)>div:nth-child(1){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>span:nth-child(2){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(4)>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(5)>a:nth-child(1)>span:nth-child(2){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(6)>div:nth-child(1)>div:nth-child(1)>p:nth-child(3){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>main:nth-child(2)>section:nth-child(7)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>form:nth-child(2)>button:nth-child(5)>span:nth-child(2){color:#111111 !important}body:nth-child(2)>nav:nth-child(4)>a:nth-child(2)>span:nth-child(2){color:#111111 !important}body:nth-child(2)>div:nth-child(3)>header:nth-child(1)>div:nth-child(1)>nav:nth-child(3)>a:nth-child(5){color:#111111 !important}</style></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="preview-banner">Concept preview made for Fisheries Muizenberg — not their official website</div>
+
+<div class="site-wrap">
+  <header class="site-header" id="site-header">
+    <div class="nav-inner">
+      <a class="brand-mark" href="#top">
+        <span class="brand-dot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/></svg>
+        </span>
+        <span>Fisheries Muizenberg</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <a href="#the-table">The Table</a>
+        <a href="#eat-and-drink">Eat &amp; Drink</a>
+        <a href="#bookings">Bookings</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="https://wa.me/27627217608" target="_blank" rel="noopener">Reserve</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. HERO: Unmistakably a restaurant (overhead set table starring a large plate) -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow stagger">Restaurant &middot; Cape Town</span>
+          <h1 class="stagger">Fisheries Muizenberg</h1>
+          <p class="hero-lead stagger">Table bookings and dining enquiries at 1 Atlantic Road, Cape Town. Call or message on WhatsApp to reserve a table.</p>
+          <div class="hero-actions stagger">
+            <a class="btn btn-primary" href="#reserve-slip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+              <span>Reserve a table</span>
+            </a>
+            <a class="btn btn-secondary" href="tel:+27627217608">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <span>+27 62 721 7608</span>
+            </a>
+          </div>
+          <div class="hero-meta stagger">
+            <span class="sticker-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+              1 Atlantic Road
+            </span>
+            <span class="sticker-badge sticker-badge--alt">Dining &middot; Table Bookings</span>
+          </div>
+        </div>
+
+        <div class="hero-stage stagger" aria-hidden="true">
+          <div class="table-placemat">
+            <!-- Slowly spinning poster sun -->
+            <svg class="sun-emblem" viewBox="0 0 100 100">
+              <g fill="#FFD147" stroke="#10253F" stroke-width="3" stroke-linejoin="round">
+                <polygon points="50,4 58,20 75,11 72,29 91,31 78,45 94,58 76,63 83,81 65,76 60,94 49,80 36,93 34,75 16,80 23,62 6,56 22,44 9,30 28,28 25,10 42,19"/>
+                <circle cx="50" cy="50" r="22" fill="#FF5A4E"/>
+              </g>
+            </svg>
+
+            <!-- Overhead set table geometry: Plate as the star + fork, knife, napkin, glass -->
+            <svg class="table-svg" viewBox="0 0 360 360" role="img" aria-label="Overhead restaurant table setting with plate, cutlery, napkin and glass">
+              <!-- Folded napkin on the left -->
+              <rect x="26" y="92" width="54" height="176" rx="10" fill="#FF5A4E" stroke="#10253F" stroke-width="4"/>
+              <line x1="36" y1="114" x2="70" y2="114" stroke="#FFF8EE" stroke-width="3" stroke-linecap="round"/>
+              <line x1="36" y1="246" x2="70" y2="246" stroke="#FFF8EE" stroke-width="3" stroke-linecap="round"/>
+
+              <!-- Fork resting on napkin -->
+              <g transform="translate(53 180)">
+                <rect x="-4" y="6" width="8" height="72" rx="4" fill="#FFFDF9" stroke="#10253F" stroke-width="3"/>
+                <path d="M-10,-54 L-10,-12 Q-10,6 0,6 Q10,6 10,-12 L10,-54" fill="#FFFDF9" stroke="#10253F" stroke-width="3" stroke-linejoin="round"/>
+                <line x1="-4" y1="-54" x2="-4" y2="-16" stroke="#10253F" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="4" y1="-54" x2="4" y2="-16" stroke="#10253F" stroke-width="2.5" stroke-linecap="round"/>
+              </g>
+
+              <!-- Star Motif: Large Overhead Ceramic Plate -->
+              <g transform="translate(184 188)">
+                <!-- Drop shadow -->
+                <circle cx="7" cy="8" r="108" fill="#10253F"/>
+                <!-- Outer plate rim -->
+                <circle cx="0" cy="0" r="108" fill="#FFFDF9" stroke="#10253F" stroke-width="4"/>
+                <!-- Coral & sky poster rim rings -->
+                <circle cx="0" cy="0" r="94" fill="none" stroke="#FF5A4E" stroke-width="6"/>
+                <circle cx="0" cy="0" r="82" fill="none" stroke="#56B4E9" stroke-width="3" stroke-dasharray="10 7"/>
+                <!-- Inner plate well -->
+                <circle cx="0" cy="0" r="70" fill="#FFF8EE" stroke="#10253F" stroke-width="3"/>
+                <!-- Subtle ceramic highlight arc -->
+                <path d="M-46,-26 A52,52 0 0,1 28,-44" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+                <!-- Center table-setting crest -->
+                <circle cx="0" cy="0" r="24" fill="#FFD147" stroke="#10253F" stroke-width="3"/>
+                <circle cx="0" cy="0" r="8" fill="#10253F"/>
+              </g>
+
+              <!-- Knife on the right -->
+              <g transform="translate(314 182)">
+                <rect x="-5" y="10" width="10" height="70" rx="5" fill="#FFFDF9" stroke="#10253F" stroke-width="3"/>
+                <path d="M-6,10 L-6,-62 Q8,-56 8,-24 L6,10 Z" fill="#FFFDF9" stroke="#10253F" stroke-width="3" stroke-linejoin="round"/>
+              </g>
+
+              <!-- Glass top-right -->
+              <g transform="translate(302 58)">
+                <circle cx="3" cy="4" r="28" fill="#10253F"/>
+                <circle cx="0" cy="0" r="28" fill="#E4F4FD" stroke="#10253F" stroke-width="3.5"/>
+                <circle cx="0" cy="0" r="18" fill="#56B4E9" stroke="#10253F" stroke-width="2.5"/>
+                <circle cx="-6" cy="-6" r="5" fill="#FFFFFF"/>
+              </g>
+            </svg>
+            <div class="hero-ticket">Table &middot; Cape Town</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scalloped wave divider -->
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 34" preserveAspectRatio="none">
+        <path d="M0,0 L1200,0 L1200,34 L0,34 Z" fill="#FFF8EE"/>
+        <path d="M0,18 Q30,0 60,18 T120,18 T180,18 T240,18 T300,18 T360,18 T420,18 T480,18 T540,18 T600,18 T660,18 T720,18 T780,18 T840,18 T900,18 T960,18 T1020,18 T1080,18 T1140,18 T1200,18 L1200,34 L0,34 Z" fill="#10253F"/>
+      </svg>
+    </div>
+
+    <!-- 2. TICKER / MARQUEE STRIP -->
+    <div class="ticker-band" aria-hidden="true">
+      <div class="ticker-track">
+        <span class="ticker-item">Fisheries Muizenberg <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Restaurant <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Table Bookings <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Dining &amp; Drinks <span class="ticker-dot"></span></span>
+        <span class="ticker-item">1 Atlantic Road, Cape Town <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Fisheries Muizenberg <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Restaurant <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Table Bookings <span class="ticker-dot"></span></span>
+        <span class="ticker-item">Dining &amp; Drinks <span class="ticker-dot"></span></span>
+        <span class="ticker-item">1 Atlantic Road, Cape Town <span class="ticker-dot"></span></span>
+      </div>
+    </div>
+
+    <!-- 3. THE TABLE: Ticket-numbered blocks + Reservation-Slip Builder -->
+    <section class="section-pad table-section" id="the-table">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The Table</span>
+          <h2>Reserve a table</h2>
+          <p>Select a party size and preferred time below to prepare a WhatsApp booking enquiry.</p>
+        </div>
+
+        <div class="table-layout">
+          <div class="ticket-stack reveal">
+            <div class="ticket-block">
+              <div class="ticket-num">01</div>
+              <div class="ticket-label">
+                <h3>Table</h3>
+                <span>Dining</span>
+              </div>
+            </div>
+            <div class="ticket-block">
+              <div class="ticket-num">02</div>
+              <div class="ticket-label">
+                <h3>Menu</h3>
+                <span>Eat &amp; Drink</span>
+              </div>
+            </div>
+            <div class="ticket-block">
+              <div class="ticket-num">03</div>
+              <div class="ticket-label">
+                <h3>Bookings</h3>
+                <span>Reserve</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slip-card reveal" id="reserve-slip">
+            <div class="slip-header">
+              <h3>Reservation Slip</h3>
+              <span class="slip-badge">WhatsApp</span>
+            </div>
+
+            <div class="slip-group">
+              <span class="slip-group-label" id="party-label">Party size</span>
+              <div class="chip-row" role="group" aria-labelledby="party-label" id="party-chips">
+                <button class="chip-btn" type="button" data-party="2" aria-pressed="true">2 guests</button>
+                <button class="chip-btn" type="button" data-party="4" aria-pressed="false">4 guests</button>
+                <button class="chip-btn" type="button" data-party="6" aria-pressed="false">6 guests</button>
+                <button class="chip-btn" type="button" data-party="8+" aria-pressed="false">8+ guests</button>
+              </div>
+            </div>
+
+            <div class="slip-group">
+              <span class="slip-group-label" id="time-label">Preferred time</span>
+              <div class="chip-row" role="group" aria-labelledby="time-label" id="time-chips">
+                <button class="chip-btn" type="button" data-time="Morning" aria-pressed="false">Morning</button>
+                <button class="chip-btn" type="button" data-time="Afternoon" aria-pressed="true">Afternoon</button>
+                <button class="chip-btn" type="button" data-time="Evening" aria-pressed="false">Evening</button>
+              </div>
+            </div>
+
+            <div class="slip-preview" aria-live="polite">
+              <strong>Prepared WhatsApp message</strong>
+              <span id="slip-preview-text">Hello Fisheries Muizenberg, I would like to ask about a table for 2 guests (Afternoon).</span>
+            </div>
+
+            <div class="slip-actions">
+              <a class="btn btn-primary" id="slip-wa-link" href="https://wa.me/27627217608" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>Ask on WhatsApp</span>
+              </a>
+              <button class="btn btn-secondary" type="button" id="slip-fill-btn">Copy to enquiry form</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EAT & DRINK: Menu-card layout with headings only -->
+    <section class="section-pad menu-section" id="eat-and-drink">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Eat &amp; Drink</span>
+          <h2>Menu &amp; Dining</h2>
+        </div>
+
+        <div class="menu-board">
+          <article class="menu-panel menu-panel--tall reveal">
+            <div>
+              <div class="menu-panel-top">
+                <h3>Menu</h3>
+                <span class="menu-tag">01</span>
+              </div>
+              <div class="menu-rule-lines" aria-hidden="true">
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+              </div>
+            </div>
+            <div class="menu-foot">Dining</div>
+          </article>
+
+          <article class="menu-panel reveal">
+            <div>
+              <div class="menu-panel-top">
+                <h3>Dining</h3>
+                <span class="menu-tag">02</span>
+              </div>
+              <div class="menu-rule-lines" aria-hidden="true">
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+              </div>
+            </div>
+            <div class="menu-foot">Table</div>
+          </article>
+
+          <article class="menu-panel reveal">
+            <div>
+              <div class="menu-panel-top">
+                <h3>Drinks</h3>
+                <span class="menu-tag">03</span>
+              </div>
+              <div class="menu-rule-lines" aria-hidden="true">
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+                <div class="menu-rule"></div>
+              </div>
+            </div>
+            <div class="menu-foot">Bookings</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BOOKING STRIP: Full-bleed Coral Band -->
+    <section class="booking-strip" id="bookings">
+      <div class="container booking-strip-inner reveal">
+        <div>
+          <span class="eyebrow">Bookings</span>
+          <h2>Book a table by call or WhatsApp</h2>
+          <p>Reach Fisheries Muizenberg directly on +27 62 721 7608 or send a WhatsApp message for table enquiries.</p>
+        </div>
+        <div class="booking-strip-actions">
+          <a class="btn btn-secondary" href="tel:+27627217608">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            <span>Call now</span>
+          </a>
+          <a class="btn btn-sky" href="https://wa.me/27627217608" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=1%20Atlantic%20Road%2C%20Cape%20Town%2C%20South%20Africa" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+            <span>Find us on the map</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CONTACT, WHATSAPP ENQUIRY COMPOSER & FAQ -->
+    <section class="section-pad contact-section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>Visit or get in touch</h2>
+          <p>Find Fisheries Muizenberg at 1 Atlantic Road, Cape Town, or send a direct WhatsApp message.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <div class="contact-card reveal">
+              <div class="info-rows">
+                <div class="info-row">
+                  <div class="info-main">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                    <div>
+                      <span class="info-label">Phone</span>
+                      <a class="info-value" href="tel:+27627217608">+27 62 721 7608</a>
+                    </div>
+                  </div>
+                  <button class="copy-btn" type="button" data-copy="+27 62 721 7608" aria-label="Copy phone number">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+
+                <div class="info-row">
+                  <div class="info-main">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                    <div>
+                      <span class="info-label">Address</span>
+                      <a class="info-value" href="https://www.google.com/maps/search/?api=1&query=1%20Atlantic%20Road%2C%20Cape%20Town%2C%20South%20Africa" target="_blank" rel="noopener">1 Atlantic Road, Cape Town</a>
+                    </div>
+                  </div>
+                  <button class="copy-btn" type="button" data-copy="1 Atlantic Road, Cape Town" aria-label="Copy address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <form class="composer-card reveal" id="wa-form">
+              <h3>WhatsApp enquiry</h3>
+              <p>Write your name and message below to open a pre-filled WhatsApp chat.</p>
+              <div class="field">
+                <label for="wa-name">Your name</label>
+                <input id="wa-name" name="name" type="text" placeholder="Your name" required>
+              </div>
+              <div class="field">
+                <label for="wa-msg">Message</label>
+                <textarea id="wa-msg" name="message" placeholder="Ask about a table or booking..." required></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>Open in WhatsApp</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="faq-card reveal">
+            <h3>Quick questions</h3>
+            <div class="faq-list">
+              <details class="faq-item" open>
+                <summary>
+                  <span>How do I get in touch?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-answer">You can call +27 62 721 7608 or send a message on WhatsApp using the enquiry form or booking buttons.</div>
+              </details>
+              <details class="faq-item">
+                <summary>
+                  <span>Where is Fisheries Muizenberg located?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-answer">1 Atlantic Road, Cape Town. Use the map link to open directions in Google Maps.</div>
+              </details>
+              <details class="faq-item">
+                <summary>
+                  <span>When can I call for bookings?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-answer">Call +27 62 721 7608 to ask about table bookings, or send a WhatsApp message with your preferred time.</div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">Fisheries Muizenberg</div>
+      <div class="footer-meta">
+        <span>1 Atlantic Road, Cape Town</span>
+        <a href="tel:+27627217608">+27 62 721 7608</a>
+        <a href="https://wa.me/27627217608" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=1%20Atlantic%20Road%2C%20Cape%20Town%2C%20South%20Africa" target="_blank" rel="noopener">Map</a>
+      </div>
+      <p class="footer-note">Concept preview — final wording, photos and details to be supplied by the owner.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- Sticky Mobile Action Bar -->
+<nav class="mobile-bar" aria-label="Quick actions">
+  <a href="tel:+27627217608">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+    <span>Call</span>
+  </a>
+  <a class="bar-wa" href="https://wa.me/27627217608" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=1%20Atlantic%20Road%2C%20Cape%20Town%2C%20South%20Africa" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+    <span>Map</span>
+  </a>
+</nav>
+
+<script>
+(function(){
+  const WA_BASE = 'https://wa.me/27627217608?text=';
+
+  // Mobile hamburger menu
+  const menuBtn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', function () {
+      const open = nav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Header shadow on scroll
+  const header = document.getElementById('site-header');
+  if (header) {
+    const onScroll = function () {
+      header.classList.toggle('scrolled', window.scrollY > 12);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Staggered hero entrance
+  const staggers = document.querySelectorAll('.stagger');
+  staggers.forEach(function (el, idx) {
+    setTimeout(function () { el.classList.add('in'); }, 70 * idx);
+  });
+
+  // Scroll-reveal via IntersectionObserver
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Signature Interaction: Reservation-Slip Builder
+  let party = '2';
+  let prefTime = 'Afternoon';
+  const previewEl = document.getElementById('slip-preview-text');
+  const slipWaLink = document.getElementById('slip-wa-link');
+  const slipFillBtn = document.getElementById('slip-fill-btn');
+  const waMsgInput = document.getElementById('wa-msg');
+
+  function buildSlipText() {
+    return 'Hello Fisheries Muizenberg, I would like to ask about a table for ' + party + ' guests (' + prefTime + ').';
+  }
+
+  function updateSlip() {
+    const msg = buildSlipText();
+    if (previewEl) previewEl.textContent = msg;
+    if (slipWaLink) slipWaLink.href = WA_BASE + encodeURIComponent(msg);
+  }
+
+  function bindChipGroup(containerId, onPick) {
+    const box = document.getElementById(containerId);
+    if (!box) return;
+    box.addEventListener('click', function (e) {
+      const btn = e.target.closest('.chip-btn');
+      if (!btn) return;
+      box.querySelectorAll('.chip-btn').forEach(function (b) {
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.setAttribute('aria-pressed', 'true');
+      onPick(btn);
+      updateSlip();
+    });
+  }
+
+  bindChipGroup('party-chips', function (btn) { party = btn.dataset.party || '2'; });
+  bindChipGroup('time-chips', function (btn) { prefTime = btn.dataset.time || 'Afternoon'; });
+  updateSlip();
+
+  if (slipFillBtn && waMsgInput) {
+    slipFillBtn.addEventListener('click', function () {
+      waMsgInput.value = buildSlipText();
+      waMsgInput.focus();
+      waMsgInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  // WhatsApp enquiry composer
+  const waForm = document.getElementById('wa-form');
+  const waName = document.getElementById('wa-name');
+  if (waForm && waName && waMsgInput) {
+    waForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nameVal = waName.value.trim();
+      const msgVal = waMsgInput.value.trim();
+      if (!msgVal) return;
+      const fullText = nameVal ? ('Hi, my name is ' + nameVal + '. ' + msgVal) : msgVal;
+      window.open(WA_BASE + encodeURIComponent(fullText), '_blank', 'noopener');
+    });
+  }
+
+  // Copy buttons for phone and address
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const val = btn.dataset.copy;
+      const label = btn.querySelector('span');
+      if (!val || !navigator.clipboard) return;
+      navigator.clipboard.writeText(val).then(function () {
+        if (!label) return;
+        const prev = label.textContent;
+        label.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          label.textContent = prev;
+          btn.classList.remove('copied');
+        }, 1600);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

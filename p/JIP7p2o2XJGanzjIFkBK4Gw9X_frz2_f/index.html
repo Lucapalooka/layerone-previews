@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>MUD Modern - Concept preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --bone: #f2ebe0;
+      --bone-deep: #e4d8c5;
+      --bone-light: #faf6ef;
+      --clay: #9c5338;
+      --clay-dark: #743a24;
+      --clay-soft: #c58468;
+      --ink: #1d1714;
+      --ink-muted: #4e423b;
+      --rule: #2a211c;
+      --rule-soft: rgba(42, 33, 28, 0.22);
+      --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+      --font-body: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --radius: 2px;
+      --max-w: 1200px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      background: var(--bone);
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0 0 76px 0;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--bone);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle concrete & clay grain overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 90;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    }
+
+    .site-wrap {
+      overflow-x: clip;
+      position: relative;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--clay);
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 18px;
+    }
+
+    /* Top preview banner */
+    .preview-banner {
+      background: var(--ink);
+      color: var(--bone-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+      padding: 8px 14px;
+      border-bottom: 2px solid var(--clay);
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(242, 235, 224, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--rule);
+      transition: box-shadow 0.25s var(--ease);
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 24px rgba(29, 23, 20, 0.12);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 62px;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      padding: 8px 0;
+      min-height: 44px;
+    }
+
+    .brand-tag {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--clay-dark);
+      border: 1px solid var(--clay-dark);
+      padding: 2px 6px;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 2px solid var(--rule);
+      color: var(--ink);
+      border-radius: var(--radius);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .menu-toggle:hover {
+      background: var(--ink);
+      color: var(--bone-light);
+    }
+
+    .menu-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .menu-toggle .icon-close {
+      display: none;
+    }
+
+    .menu-toggle[aria-expanded="true"] .icon-open {
+      display: none;
+    }
+
+    .menu-toggle[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .nav-drawer {
+      display: none;
+      flex-direction: column;
+      border-top: 2px solid var(--rule);
+      background: var(--bone-light);
+      padding: 12px 18px 18px;
+      gap: 6px;
+    }
+
+    .nav-drawer.is-open {
+      display: flex;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding: 8px 10px;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--rule-soft);
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--clay-dark);
+      background: var(--bone-deep);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 16px;
+      margin-top: 6px;
+      background: var(--clay);
+      color: var(--bone-light);
+      border: 2px solid var(--rule);
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      background: var(--clay-dark);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 2px solid var(--rule);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: transform 0.16s var(--ease), background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      background: var(--clay);
+      color: var(--bone-light);
+      box-shadow: 4px 4px 0 var(--rule);
+    }
+
+    .btn-primary:hover {
+      background: var(--clay-dark);
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--rule);
+    }
+
+    .btn-secondary {
+      background: var(--bone-light);
+      color: var(--ink);
+      box-shadow: 4px 4px 0 var(--rule);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bone-deep);
+      transform: translate(-1px, -1px);
+      box-shadow: 5px 5px 0 var(--rule);
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: var(--bone-light);
+      border-color: var(--ink);
+      box-shadow: 4px 4px 0 var(--clay-dark);
+    }
+
+    .btn-dark:hover {
+      background: #2f2621;
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 6px 12px;
+      background: var(--bone);
+      color: var(--ink);
+      border: 1.5px solid var(--rule);
+      border-radius: var(--radius);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--ink);
+      color: var(--bone-light);
+    }
+
+    .copy-btn.is-copied {
+      background: var(--clay-dark);
+      color: var(--bone-light);
+      border-color: var(--clay-dark);
+    }
+
+    .copy-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* HERO: Unmistakable Restaurant Table Setting + Napkin Star */
+    .hero {
+      position: relative;
+      border-bottom: 3px solid var(--rule);
+      background:
+        radial-gradient(circle at 82% 24%, rgba(156, 83, 56, 0.16) 0%, transparent 52%),
+        linear-gradient(180deg, var(--bone-light) 0%, var(--bone) 100%);
+      padding: 26px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--bone-light);
+      padding: 5px 12px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 500;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--clay-soft);
+    }
+
+    .eyebrow-route {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      border-bottom: 1.5px solid var(--clay);
+      padding-bottom: 2px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(3.35rem, 15vw, 7.6rem);
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      margin: 0 0 14px;
+      color: var(--ink);
+    }
+
+    .hero-sub {
+      max-width: 44ch;
+      margin: 0 0 22px;
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 2px solid var(--rule);
+      border-bottom: 2px solid var(--rule);
+      background: var(--bone-deep);
+    }
+
+    .hero-meta-cell {
+      padding: 10px 12px;
+      font-size: 0.75rem;
+    }
+
+    .hero-meta-cell:first-child {
+      border-right: 2px solid var(--rule);
+    }
+
+    .hero-meta-label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clay-dark);
+      font-size: 0.6875rem;
+      margin-bottom: 2px;
+    }
+
+    /* Overhead Table-Setting Stage (Napkin as Star) */
+    .table-stage {
+      position: relative;
+      border: 3px solid var(--rule);
+      background: var(--bone-deep);
+      box-shadow: 8px 8px 0 var(--rule);
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .table-stage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--rule);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+    }
+
+    .table-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 360px;
+    }
+
+    .napkin-float {
+      transform-origin: center;
+      animation: napkinSettle 7s ease-in-out infinite;
+    }
+
+    @keyframes napkinSettle {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(0.6deg); }
+    }
+
+    /* Slow Marquee Band */
+    .marquee-band {
+      background: var(--ink);
+      color: var(--bone-light);
+      border-bottom: 3px solid var(--rule);
+      overflow: hidden;
+      padding: 12px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: slowMarquee 32s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-right: 28px;
+      white-space: nowrap;
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      letter-spacing: 0.02em;
+    }
+
+    .marquee-sep {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--clay-soft);
+    }
+
+    @keyframes slowMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Section shared typography */
+    .section {
+      padding: 54px 0;
+      border-bottom: 3px solid var(--rule);
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--rule);
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--clay-dark);
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.25rem, 8vw, 4rem);
+      line-height: 0.96;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .section-note {
+      margin: 0;
+      max-width: 50ch;
+      color: var(--ink-muted);
+      font-size: 0.9rem;
+    }
+
+    /* SECTION 1: THE TABLE (Split layout + Reservation-Slip Builder) */
+    .table-section {
+      background: var(--bone-light);
+    }
+
+    .table-builder-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .builder-controls {
+      background: var(--bone);
+      border: 2px solid var(--rule);
+      padding: 20px;
+    }
+
+    .control-group {
+      margin-bottom: 20px;
+    }
+
+    .control-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .control-label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip-btn {
+      min-width: 48px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 2px solid var(--rule);
+      background: var(--bone-light);
+      color: var(--ink);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      transition: background-color 0.18s ease, color 0.18s ease, transform 0.15s ease;
+    }
+
+    .chip-btn:hover {
+      background: var(--bone-deep);
+    }
+
+    .chip-btn[aria-pressed="true"] {
+      background: var(--clay);
+      color: var(--bone-light);
+      box-shadow: 3px 3px 0 var(--rule);
+    }
+
+    .field-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 2px solid var(--rule);
+      border-radius: var(--radius);
+      background: var(--bone-light);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    .field-input:focus {
+      outline: none;
+      border-color: var(--clay);
+      background: #fffdf9;
+    }
+
+    /* Printed Reservation Slip Card */
+    .reservation-slip {
+      position: relative;
+      background: var(--bone);
+      border: 3px solid var(--rule);
+      box-shadow: 8px 8px 0 var(--clay);
+      padding: 22px;
+    }
+
+    .slip-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px dashed var(--rule);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .slip-brand {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .slip-stamp {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 4px 8px;
+      border: 1.5px solid var(--clay-dark);
+      color: var(--clay-dark);
+    }
+
+    .slip-rows {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .slip-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule-soft);
+      font-size: 0.875rem;
+    }
+
+    .slip-key {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+
+    .slip-val {
+      font-weight: 500;
+      text-align: right;
+      color: var(--ink);
+    }
+
+    .slip-preview-msg {
+      background: var(--bone-deep);
+      border-left: 4px solid var(--clay);
+      padding: 12px 14px;
+      font-size: 0.8125rem;
+      color: var(--ink);
+      margin-bottom: 18px;
+      word-break: break-word;
+    }
+
+    /* SECTION 2: EAT & DRINK (Menu-Card Ledger Layout — Headings Only) */
+    .menu-section {
+      background: var(--bone);
+    }
+
+    .menu-card-frame {
+      border: 3px solid var(--rule);
+      background: var(--bone-light);
+      box-shadow: 10px 10px 0 var(--bone-deep);
+    }
+
+    .menu-card-banner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 20px;
+      background: var(--ink);
+      color: var(--bone-light);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .menu-ledger {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .menu-item-block {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 20px;
+      border-bottom: 2px solid var(--rule);
+      transition: background-color 0.2s ease;
+    }
+
+    .menu-item-block:hover {
+      background: var(--bone-deep);
+    }
+
+    .menu-num {
+      font-size: 0.8125rem;
+      letter-spacing: 0.14em;
+      color: var(--clay-dark);
+      font-weight: 500;
+    }
+
+    .menu-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 7vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .menu-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+      border: 1px solid var(--rule);
+      padding: 4px 9px;
+      white-space: nowrap;
+    }
+
+    .menu-card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bone-deep);
+    }
+
+    .menu-card-footer-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+
+    /* SECTION 3: FULL-BLEED CLAY BOOKING STRIP */
+    .booking-strip {
+      background: var(--clay);
+      color: var(--bone-light);
+      border-bottom: 3px solid var(--rule);
+      padding: 48px 0;
+    }
+
+    .booking-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .booking-strip .section-kicker {
+      color: var(--bone-deep);
+    }
+
+    .booking-strip .section-title {
+      color: var(--bone-light);
+    }
+
+    .booking-strip-note {
+      color: var(--bone-light);
+      opacity: 0.94;
+      margin: 8px 0 0;
+      max-width: 46ch;
+    }
+
+    .booking-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* SECTION 4: CONTACT, WHATSAPP COMPOSER & ACCORDION */
+    .contact-section {
+      background: var(--bone-light);
+      border-bottom: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 40px;
+    }
+
+    .info-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-card {
+      background: var(--bone);
+      border: 2px solid var(--rule);
+      padding: 18px;
+    }
+
+    .info-card-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--clay-dark);
+      margin-bottom: 8px;
+    }
+
+    .info-card-label svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .info-card-value {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      line-height: 1.15;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+
+    .info-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* WhatsApp Composer */
+    .composer-card {
+      background: var(--bone);
+      border: 3px solid var(--rule);
+      box-shadow: 8px 8px 0 var(--rule);
+      padding: 22px;
+    }
+
+    .composer-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 6px;
+      line-height: 1.05;
+    }
+
+    .composer-sub {
+      margin: 0 0 18px;
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+    }
+
+    .form-field {
+      margin-bottom: 16px;
+    }
+
+    .form-textarea {
+      width: 100%;
+      min-height: 112px;
+      padding: 12px;
+      border: 2px solid var(--rule);
+      border-radius: var(--radius);
+      background: var(--bone-light);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      resize: vertical;
+    }
+
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--clay);
+      background: #fffdf9;
+    }
+
+    /* Native Details/Summary Accordion */
+    .faq-block {
+      border-top: 3px solid var(--rule);
+      padding-top: 28px;
+    }
+
+    .faq-heading {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0 0 16px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 2px solid var(--rule);
+      background: var(--bone);
+    }
+
+    .faq-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 52px;
+      padding: 14px 18px;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      cursor: pointer;
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-summary svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      transition: transform 0.2s var(--ease);
+    }
+
+    .faq-item[open] .faq-summary {
+      background: var(--bone-deep);
+      border-bottom: 2px solid var(--rule);
+    }
+
+    .faq-item[open] .faq-summary svg {
+      transform: rotate(90deg);
+    }
+
+    .faq-body {
+      padding: 16px 18px;
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      background: var(--bone-light);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: var(--bone-light);
+      border-top: 3px solid var(--rule);
+      padding: 34px 0 36px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(250, 246, 239, 0.2);
+      margin-bottom: 18px;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      line-height: 1;
+      margin: 0 0 6px;
+    }
+
+    .footer-meta {
+      font-size: 0.8125rem;
+      color: var(--bone-deep);
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .footer-link {
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--clay-soft);
+      padding: 6px 0;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--bone-deep);
+      margin: 0;
+    }
+
+    /* Mobile Sticky Bottom Action Bar */
+    .mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 75;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--ink);
+      border-top: 3px solid var(--clay);
+    }
+
+    .mobile-bar-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 56px;
+      padding: 8px 6px;
+      color: var(--bone-light);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-right: 1px solid rgba(250, 246, 239, 0.18);
+    }
+
+    .mobile-bar-btn:last-child {
+      border-right: none;
+    }
+
+    .mobile-bar-btn svg {
+      width: 17px;
+      height: 17px;
+      color: var(--clay-soft);
+    }
+
+    /* Scroll reveal & staggered entrance (progressive with .js) */
+    .js .hero-stagger {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: heroRise 0.65s var(--ease) forwards;
+    }
+
+    .js .hero-stagger-1 { animation-delay: 0.05s; }
+    .js .hero-stagger-2 { animation-delay: 0.14s; }
+    .js .hero-stagger-3 { animation-delay: 0.24s; }
+    .js .hero-stagger-4 { animation-delay: 0.32s; }
+
+    @keyframes heroRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Desktop / Tablet Scaling */
+    @media (min-width: 760px) {
+      body {
+        padding-bottom: 0;
+      }
+
+      .mobile-bar {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .nav-drawer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-top: none;
+        background: transparent;
+        padding: 0;
+        gap: 6px;
+      }
+
+      .nav-link {
+        border-bottom: none;
+        padding: 8px 12px;
+        font-size: 0.78rem;
+      }
+
+      .nav-cta {
+        margin-top: 0;
+        margin-left: 8px;
+      }
+
+      .hero {
+        padding: 44px 0 52px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 38px;
+      }
+
+      .table-builder-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .menu-ledger {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .menu-item-block:nth-child(odd) {
+        border-right: 2px solid var(--rule);
+      }
+
+      .menu-item-block:nth-child(n+3) {
+        border-bottom: none;
+      }
+
+      .booking-strip-inner {
+        grid-template-columns: 1.2fr auto;
+      }
+
+      .contact-grid {
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 32px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .napkin-float,
+      .marquee-track,
+      .js .hero-stagger {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .js .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+<style id="contrast-fix">body:nth-child(2)>div:nth-child(2)>main:nth-child(2)>section:nth-child(5)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>span:nth-child(1){color:#ffffff !important}</style></head>
+<body>
+  <div class="preview-banner">Concept preview made for MUD Modern — not their official website</div>
+
+  <div class="site-wrap">
+    <header class="site-header" id="siteHeader">
+      <div class="container">
+        <div class="nav-bar">
+          <a href="#top" class="brand-mark">
+            <span>MUD Modern</span>
+            <span class="brand-tag">Restaurant</span>
+          </a>
+
+          <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Toggle navigation menu">
+            <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+
+          <nav class="nav-drawer" id="navDrawer" aria-label="Primary navigation">
+            <a href="#the-table" class="nav-link">The table</a>
+            <a href="#eat-and-drink" class="nav-link">Eat &amp; drink</a>
+            <a href="#book" class="nav-link">Bookings</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="tel:+27820775980" class="nav-cta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <span>Reserve</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO: Overhead Table Setting with Folded Napkin as Primary Star -->
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow-row hero-stagger hero-stagger-1">
+                <span class="eyebrow-pill"><span class="eyebrow-dot" aria-hidden="true"></span>Restaurant</span>
+                <span class="eyebrow-route">9 Ladimsmith route</span>
+              </div>
+
+              <h1 class="hero-title hero-stagger hero-stagger-2" id="heroTitle">MUD Modern</h1>
+
+              <p class="hero-sub hero-stagger hero-stagger-3">
+                A place at the table on 9 Ladimsmith route. Call or message on WhatsApp to enquire about bookings.
+              </p>
+
+              <div class="hero-actions hero-stagger hero-stagger-3">
+                <a href="#the-table" class="btn btn-primary">
+                  <span>Reserve a table</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </a>
+                <a href="tel:+27820775980" class="btn btn-secondary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  <span>+27 82 077 5980</span>
+                </a>
+              </div>
+
+              <div class="hero-meta-strip hero-stagger hero-stagger-4">
+                <div class="hero-meta-cell">
+                  <span class="hero-meta-label">Dining &amp; bookings</span>
+                  <span>+27 82 077 5980</span>
+                </div>
+                <div class="hero-meta-cell">
+                  <span class="hero-meta-label">Directions</span>
+                  <a href="https://www.google.com/maps/search/?api=1&query=9%20Ladimsmith%20route%2C%20South%20Africa" target="_blank" rel="noopener">9 Ladimsmith route &rarr;</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Overhead Table Geometry: Napkin as Star -->
+            <div class="table-stage hero-stagger hero-stagger-3" aria-hidden="true">
+              <div class="table-stage-header">
+                <span>Table Setting · Top View</span>
+                <span>01 / Napkin &amp; Plate</span>
+              </div>
+              <svg class="table-svg" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="tableGrid" width="26" height="26" patternUnits="userSpaceOnUse">
+                    <path d="M 26 0 L 0 0 0 26" stroke="#2A211C" stroke-opacity="0.09" stroke-width="1"/>
+                  </pattern>
+                  <linearGradient id="plateGrad" x1="120" y1="80" x2="360" y2="340" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FAF6EF"/>
+                    <stop offset="100%" stop-color="#DFD1BC"/>
+                  </linearGradient>
+                  <linearGradient id="napkinClay" x1="165" y1="95" x2="335" y2="330" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#B96F53"/>
+                    <stop offset="55%" stop-color="#9C5338"/>
+                    <stop offset="100%" stop-color="#743A24"/>
+                  </linearGradient>
+                  <linearGradient id="napkinFold" x1="200" y1="120" x2="320" y2="290" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#DFD1BC"/>
+                    <stop offset="100%" stop-color="#C8B69B"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Table surface -->
+                <rect x="8" y="8" width="504" height="404" fill="url(#tableGrid)" stroke="#1D1714" stroke-width="2.5"/>
+
+                <!-- Pass-through / Place mat rule -->
+                <rect x="44" y="42" width="432" height="336" fill="#F2EBE0" stroke="#1D1714" stroke-width="2"/>
+                <line x1="44" y1="330" x2="476" y2="330" stroke="#1D1714" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+                <!-- Supporting Detail: Water Glass (top right) -->
+                <g>
+                  <circle cx="412" cy="108" r="36" fill="#FAF6EF" stroke="#1D1714" stroke-width="2.5"/>
+                  <circle cx="412" cy="108" r="26" fill="#E4D8C5" stroke="#1D1714" stroke-width="1.5"/>
+                  <path d="M395 94 A22 22 0 0 1 426 92" stroke="#9C5338" stroke-width="2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Supporting Detail: Fork (left) -->
+                <g stroke="#1D1714" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="86" y1="138" x2="86" y2="310" stroke-width="5"/>
+                  <path d="M74 110 V142 C74 152 98 152 98 142 V110" fill="none"/>
+                  <line x1="82" y1="110" x2="82" y2="146"/>
+                  <line x1="90" y1="110" x2="90" y2="146"/>
+                </g>
+
+                <!-- Supporting Detail: Knife (right) -->
+                <g stroke="#1D1714" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="432" y1="215" x2="432" y2="310" stroke-width="5.5"/>
+                  <path d="M432 135 C444 152 444 195 432 215 Z" fill="#FAF6EF"/>
+                </g>
+
+                <!-- Supporting Detail: Dinner Plate -->
+                <g>
+                  <circle cx="256" cy="214" r="126" fill="url(#plateGrad)" stroke="#1D1714" stroke-width="3"/>
+                  <circle cx="256" cy="214" r="92" fill="none" stroke="#1D1714" stroke-width="1.5" stroke-opacity="0.45"/>
+                </g>
+
+                <!-- PRIMARY HERO MOTIF (THE STAR): Sculptural Folded Napkin -->
+                <g class="napkin-float">
+                  <!-- Napkin drop shadow -->
+                  <polygon points="186,104 338,126 306,332 154,310" fill="#1D1714" fill-opacity="0.16"/>
+                  <!-- Main clay napkin body -->
+                  <polygon points="178,96 330,118 298,324 146,302" fill="url(#napkinClay)" stroke="#1D1714" stroke-width="3" stroke-linejoin="round"/>
+                  <!-- Diagonal pocket fold -->
+                  <polygon points="178,96 330,118 228,236" fill="url(#napkinFold)" stroke="#1D1714" stroke-width="2.5" stroke-linejoin="round"/>
+                  <!-- Crisp inner crease & stitched hem -->
+                  <line x1="166" y1="290" x2="286" y2="308" stroke="#FAF6EF" stroke-width="1.75" stroke-dasharray="4 4"/>
+                  <line x1="184" y1="108" x2="292" y2="312" stroke="#1D1714" stroke-width="1.5" stroke-opacity="0.35"/>
+                  <!-- Reservation card tucked into napkin fold -->
+                  <g transform="translate(226 146) rotate(8)">
+                    <rect x="0" y="0" width="94" height="54" fill="#FAF6EF" stroke="#1D1714" stroke-width="2"/>
+                    <line x1="10" y1="18" x2="62" y2="18" stroke="#9C5338" stroke-width="2.5"/>
+                    <line x1="10" y1="30" x2="80" y2="30" stroke="#1D1714" stroke-width="1.5"/>
+                    <line x1="10" y1="40" x2="54" y2="40" stroke="#1D1714" stroke-width="1.5"/>
+                  </g>
+                </g>
+
+                <!-- Table Number / Seat Marker -->
+                <g transform="translate(64 342)">
+                  <rect x="0" y="0" width="124" height="24" fill="#1D1714"/>
+                  <text x="10" y="16" fill="#FAF6EF" font-family="DM Mono, monospace" font-size="10" letter-spacing="1.5">RESERVE A TABLE</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLOW MARQUEE OF THE NAME -->
+      <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>MUD Modern</span><span class="marquee-sep">Restaurant</span>
+            <span>MUD Modern</span><span class="marquee-sep">The table</span>
+            <span>MUD Modern</span><span class="marquee-sep">Dining</span>
+            <span>MUD Modern</span><span class="marquee-sep">9 Ladimsmith route</span>
+            <span>MUD Modern</span><span class="marquee-sep">Bookings</span>
+          </div>
+          <div class="marquee-group">
+            <span>MUD Modern</span><span class="marquee-sep">Restaurant</span>
+            <span>MUD Modern</span><span class="marquee-sep">The table</span>
+            <span>MUD Modern</span><span class="marquee-sep">Dining</span>
+            <span>MUD Modern</span><span class="marquee-sep">9 Ladimsmith route</span>
+            <span>MUD Modern</span><span class="marquee-sep">Bookings</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: THE TABLE (Signature Interaction: Reservation-Slip Builder) -->
+      <section class="section table-section" id="the-table">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-kicker">01 · Bookings</span>
+            <h2 class="section-title">The table</h2>
+            <p class="section-note">Choose your party size and preferred time to prepare a WhatsApp table enquiry.</p>
+          </div>
+
+          <div class="table-builder-grid">
+            <div class="builder-controls reveal">
+              <div class="control-group">
+                <span class="control-label" id="partyLabel">Party size</span>
+                <div class="chip-row" role="group" aria-labelledby="partyLabel" id="partyChips">
+                  <button type="button" class="chip-btn" data-party="1" aria-pressed="false">1</button>
+                  <button type="button" class="chip-btn" data-party="2" aria-pressed="true">2</button>
+                  <button type="button" class="chip-btn" data-party="4" aria-pressed="false">4</button>
+                  <button type="button" class="chip-btn" data-party="6" aria-pressed="false">6</button>
+                  <button type="button" class="chip-btn" data-party="8+" aria-pressed="false">8+</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label" id="timeLabel">Preferred time (your preference)</span>
+                <div class="chip-row" role="group" aria-labelledby="timeLabel" id="timeChips">
+                  <button type="button" class="chip-btn" data-time="Morning" aria-pressed="false">Morning</button>
+                  <button type="button" class="chip-btn" data-time="Afternoon" aria-pressed="true">Afternoon</button>
+                  <button type="button" class="chip-btn" data-time="Evening" aria-pressed="false">Evening</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label" for="slipGuestName">Your name (optional)</label>
+                <input class="field-input" id="slipGuestName" type="text" placeholder="Enter your name" autocomplete="name">
+              </div>
+            </div>
+
+            <div class="reservation-slip reveal" aria-live="polite">
+              <div class="slip-top">
+                <span class="slip-brand">MUD Modern</span>
+                <span class="slip-stamp">Table Slip</span>
+              </div>
+
+              <div class="slip-rows">
+                <div class="slip-row">
+                  <span class="slip-key">Party</span>
+                  <span class="slip-val" id="slipPartyVal">2</span>
+                </div>
+                <div class="slip-row">
+                  <span class="slip-key">Preference</span>
+                  <span class="slip-val" id="slipTimeVal">Afternoon</span>
+                </div>
+                <div class="slip-row">
+                  <span class="slip-key">Guest</span>
+                  <span class="slip-val" id="slipGuestVal">—</span>
+                </div>
+                <div class="slip-row">
+                  <span class="slip-key">Address</span>
+                  <span class="slip-val">9 Ladimsmith route</span>
+                </div>
+              </div>
+
+              <div class="slip-preview-msg" id="slipMessagePreview">
+                Hello MUD Modern, I would like to ask about a table for 2 (preferred time: Afternoon).
+              </div>
+
+              <a href="https://wa.me/27820775980" id="slipWaLink" class="btn btn-primary" target="_blank" rel="noopener" style="width:100%;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>Ask on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: EAT & DRINK (Menu-Card Layout — Headings Only) -->
+      <section class="section menu-section" id="eat-and-drink">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-kicker">02 · Menu card</span>
+            <h2 class="section-title">Eat &amp; drink</h2>
+          </div>
+
+          <div class="menu-card-frame reveal">
+            <div class="menu-card-banner">
+              <span>MUD Modern · Restaurant</span>
+              <span>9 Ladimsmith route</span>
+            </div>
+
+            <div class="menu-ledger">
+              <div class="menu-item-block">
+                <div>
+                  <span class="menu-num">01</span>
+                  <h3 class="menu-heading">Dining</h3>
+                </div>
+                <span class="menu-tag">Table</span>
+              </div>
+
+              <div class="menu-item-block">
+                <div>
+                  <span class="menu-num">02</span>
+                  <h3 class="menu-heading">Menu</h3>
+                </div>
+                <span class="menu-tag">Dining</span>
+              </div>
+
+              <div class="menu-item-block">
+                <div>
+                  <span class="menu-num">03</span>
+                  <h3 class="menu-heading">Drinks</h3>
+                </div>
+                <span class="menu-tag">Table</span>
+              </div>
+
+              <div class="menu-item-block">
+                <div>
+                  <span class="menu-num">04</span>
+                  <h3 class="menu-heading">Reserve</h3>
+                </div>
+                <span class="menu-tag">Bookings</span>
+              </div>
+            </div>
+
+            <div class="menu-card-footer">
+              <span class="menu-card-footer-title">Bookings &amp; table enquiries</span>
+              <div class="chip-row">
+                <a href="#the-table" class="btn btn-secondary">Reserve</a>
+                <a href="tel:+27820775980" class="btn btn-primary">Call</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: FULL-BLEED CLAY BOOKING STRIP -->
+      <section class="booking-strip" id="book" aria-labelledby="bookTitle">
+        <div class="container">
+          <div class="booking-strip-inner reveal">
+            <div>
+              <span class="section-kicker">03 · Direct line</span>
+              <h2 class="section-title" id="bookTitle">Book a table by call or WhatsApp</h2>
+              <p class="booking-strip-note">Call +27 82 077 5980 or send a WhatsApp message to enquire about a table at MUD Modern.</p>
+            </div>
+
+            <div class="booking-strip-actions">
+              <a href="tel:+27820775980" class="btn btn-dark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                <span>Call +27 82 077 5980</span>
+              </a>
+              <a href="https://wa.me/27820775980" target="_blank" rel="noopener" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: CONTACT, WHATSAPP ENQUIRY COMPOSER & FAQ ACCORDION -->
+      <section class="section contact-section" id="contact">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="section-kicker">04 · Visit &amp; enquire</span>
+            <h2 class="section-title">Contact &amp; directions</h2>
+            <p class="section-note">Find MUD Modern at 9 Ladimsmith route or write a WhatsApp message below.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="info-stack reveal">
+              <div class="info-card">
+                <div class="info-card-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  <span>Phone</span>
+                </div>
+                <p class="info-card-value">+27 82 077 5980</p>
+                <div class="info-card-actions">
+                  <a href="tel:+27820775980" class="btn btn-primary">Call now</a>
+                  <button type="button" class="copy-btn" data-copy="+27 82 077 5980" aria-label="Copy phone number">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="info-card-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+                  <span>Address</span>
+                </div>
+                <p class="info-card-value">9 Ladimsmith route</p>
+                <div class="info-card-actions">
+                  <a href="https://www.google.com/maps/search/?api=1&query=9%20Ladimsmith%20route%2C%20South%20Africa" target="_blank" rel="noopener" class="btn btn-secondary">Open in Maps</a>
+                  <button type="button" class="copy-btn" data-copy="9 Ladimsmith route" aria-label="Copy address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span class="copy-label">Copy</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Enquiry Composer -->
+            <form class="composer-card reveal" id="waComposer">
+              <h3 class="composer-title">WhatsApp enquiry</h3>
+              <p class="composer-sub">Write your message below and open WhatsApp directly with MUD Modern.</p>
+
+              <div class="form-field">
+                <label class="control-label" for="waName">Your name</label>
+                <input class="field-input" id="waName" name="name" type="text" placeholder="Your name" required>
+              </div>
+
+              <div class="form-field">
+                <label class="control-label" for="waMessage">Message</label>
+                <textarea class="form-textarea" id="waMessage" name="message" placeholder="Ask about a table or bookings..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+                <span>Open in WhatsApp</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Native <details>/<summary> Accordion -->
+          <div class="faq-block reveal">
+            <h3 class="faq-heading">Quick answers</h3>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-summary">
+                  <span>How do I get in touch?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-body">
+                  Call +27 82 077 5980 or send a message on WhatsApp using the table slip or enquiry form above.
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-summary">
+                  <span>Where do I find MUD Modern?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-body">
+                  9 Ladimsmith route. Use the Maps link in the contact section for directions.
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-summary">
+                  <span>When can I call about bookings?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                </summary>
+                <div class="faq-body">
+                  Phone and WhatsApp enquiries can be sent to +27 82 077 5980; if there is no immediate reply, leave a WhatsApp message.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <p class="footer-name">MUD Modern</p>
+            <p class="footer-meta">Restaurant · 9 Ladimsmith route · +27 82 077 5980</p>
+          </div>
+          <div class="footer-links">
+            <a href="tel:+27820775980" class="footer-link">Call</a>
+            <a href="https://wa.me/27820775980" target="_blank" rel="noopener" class="footer-link">WhatsApp</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=9%20Ladimsmith%20route%2C%20South%20Africa" target="_blank" rel="noopener" class="footer-link">Map</a>
+          </div>
+        </div>
+        <p class="footer-disclaimer">Concept preview — final wording, photos and details to be supplied by the owner.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile Sticky Bottom Action Bar -->
+  <nav class="mobile-bar" aria-label="Quick actions">
+    <a href="tel:+27820775980" class="mobile-bar-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/27820775980" target="_blank" rel="noopener" class="mobile-bar-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=9%20Ladimsmith%20route%2C%20South%20Africa" target="_blank" rel="noopener" class="mobile-bar-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg>
+      <span>Map</span>
+    </a>
+  </nav>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var menuToggle = document.getElementById('menuToggle');
+      var navDrawer = document.getElementById('navDrawer');
+
+      // Header shadow on scroll
+      function onScroll() {
+        if (!header) return;
+        header.classList.toggle('is-scrolled', window.scrollY > 12);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mobile hamburger toggle
+      if (menuToggle && navDrawer) {
+        menuToggle.addEventListener('click', function () {
+          var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', String(!expanded));
+          navDrawer.classList.toggle('is-open', !expanded);
+        });
+
+        navDrawer.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navDrawer.classList.remove('is-open');
+          });
+        });
+      }
+
+      // Scroll reveal via IntersectionObserver
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      // Signature Interaction: Reservation-Slip Builder
+      var state = { party: '2', time: 'Afternoon', guest: '' };
+      var partyChips = document.querySelectorAll('#partyChips .chip-btn');
+      var timeChips = document.querySelectorAll('#timeChips .chip-btn');
+      var guestInput = document.getElementById('slipGuestName');
+      var slipPartyVal = document.getElementById('slipPartyVal');
+      var slipTimeVal = document.getElementById('slipTimeVal');
+      var slipGuestVal = document.getElementById('slipGuestVal');
+      var slipPreview = document.getElementById('slipMessagePreview');
+      var slipWaLink = document.getElementById('slipWaLink');
+
+      function updateSlip() {
+        if (slipPartyVal) slipPartyVal.textContent = state.party;
+        if (slipTimeVal) slipTimeVal.textContent = state.time;
+        if (slipGuestVal) slipGuestVal.textContent = state.guest ? state.guest : '—';
+
+        var namePart = state.guest ? 'My name is ' + state.guest + '. ' : '';
+        var msg = 'Hello MUD Modern, ' + namePart + 'I would like to ask about a table for ' + state.party + ' (preferred time: ' + state.time + ').';
+        if (slipPreview) slipPreview.textContent = msg;
+        if (slipWaLink) {
+          slipWaLink.href = 'https://wa.me/27820775980?text=' + encodeURIComponent(msg);
+        }
+      }
+
+      partyChips.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          partyChips.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          state.party = btn.getAttribute('data-party') || '2';
+          updateSlip();
+        });
+      });
+
+      timeChips.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          timeChips.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          state.time = btn.getAttribute('data-time') || 'Afternoon';
+          updateSlip();
+        });
+      });
+
+      if (guestInput) {
+        guestInput.addEventListener('input', function () {
+          state.guest = guestInput.value.trim();
+          updateSlip();
+        });
+      }
+      updateSlip();
+
+      // WhatsApp Enquiry Composer
+      var waComposer = document.getElementById('waComposer');
+      if (waComposer) {
+        waComposer.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = (document.getElementById('waName').value || '').trim();
+          var message = (document.getElementById('waMessage').value || '').trim();
+          var fullText = (name ? 'Name: ' + name + '\n' : '') + message;
+          var url = 'https://wa.me/27820775980?text=' + encodeURIComponent(fullText);
+          window.open(url, '_blank', 'noopener');
+        });
+      }
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var value = btn.getAttribute('data-copy') || '';
+          var label = btn.querySelector('.copy-label');
+          if (!navigator.clipboard || !value) return;
+          navigator.clipboard.writeText(value).then(function () {
+            btn.classList.add('is-copied');
+            if (label) label.textContent = 'Copied';
+            setTimeout(function () {
+              btn.classList.remove('is-copied');
+              if (label) label.textContent = 'Copy';
+            }, 1800);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

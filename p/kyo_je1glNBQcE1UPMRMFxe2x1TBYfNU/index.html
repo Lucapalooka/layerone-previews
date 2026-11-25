@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Blaize &amp; Barrel - Concept preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --bg-char: #0b0908;
+      --bg-stave: #130f0d;
+      --bg-panel: #1b1411;
+      --bg-elevated: #241a15;
+      --copper: #d18652;
+      --copper-bright: #e6a370;
+      --copper-dim: #7a4b2b;
+      --ember: #cf3d25;
+      --ember-glow: #ef5b36;
+      --cream: #f5efe6;
+      --sand: #d4c6b6;
+      --muted: #a99887;
+      --border-hoop: rgba(209, 134, 82, 0.36);
+      --border-subtle: rgba(245, 239, 230, 0.12);
+      --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+      --font-body: "Barlow Semi Condensed", system-ui, -apple-system, sans-serif;
+      --max-w: 1200px;
+      --radius: 4px;
+      --shadow-deep: 0 22px 48px rgba(0, 0, 0, 0.65);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: clip;
+      background: var(--bg-char);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: clip;
+      background-color: var(--bg-char);
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.014) 0px,
+          rgba(255, 255, 255, 0.014) 1px,
+          transparent 1px,
+          transparent 64px
+        ),
+        radial-gradient(ellipse 80% 50% at 75% 12%, rgba(207, 61, 37, 0.16), transparent 65%),
+        radial-gradient(ellipse 60% 45% at 15% 40%, rgba(209, 134, 82, 0.1), transparent 60%);
+      padding-bottom: 74px;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    .page-wrap {
+      overflow-x: clip;
+      width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-inline: 32px;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--copper-bright);
+      outline-offset: 3px;
+    }
+
+    /* Top Preview Banner */
+    .preview-banner {
+      background: #1c1511;
+      border-bottom: 1px solid var(--border-hoop);
+      color: var(--sand);
+      text-align: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      padding: 8px 14px;
+    }
+
+    /* Header & Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(11, 9, 8, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.72);
+      border-bottom-color: var(--border-hoop);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+    }
+
+    .brand-flame {
+      width: 22px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .flame-core {
+      transform-origin: 50% 88%;
+      animation: flame-flicker 2.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes flame-flicker {
+      0% { transform: scaleY(1) scaleX(1) rotate(-1.5deg); opacity: 0.92; }
+      45% { transform: scaleY(1.07) scaleX(0.96) rotate(1.5deg); opacity: 1; }
+      100% { transform: scaleY(0.96) scaleX(1.03) rotate(-0.8deg); opacity: 0.95; }
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--bg-panel);
+      color: var(--cream);
+      border: 1px solid var(--border-hoop);
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .nav-toggle svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .nav-toggle .icon-close {
+      display: none;
+    }
+
+    .nav-toggle[aria-expanded="true"] .icon-menu {
+      display: none;
+    }
+
+    .nav-toggle[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .nav-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 18px 18px;
+      background: var(--bg-stave);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 2px solid var(--copper-dim);
+    }
+
+    .nav-drawer.is-open {
+      display: flex;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 8px 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sand);
+      border-radius: var(--radius);
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--cream);
+      background: rgba(209, 134, 82, 0.12);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 18px;
+      background: var(--ember);
+      color: var(--cream);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--ember-glow);
+    }
+
+    .nav-cta:active {
+      transform: translateY(1px);
+    }
+
+    .nav-desktop {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-toggle,
+      .nav-drawer {
+        display: none !important;
+      }
+
+      .nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-desktop .nav-cta {
+        margin-left: 10px;
+      }
+    }
+
+    /* Barrel-hoop border utility */
+    .hoop-frame {
+      position: relative;
+      border: 1px solid var(--border-hoop);
+      box-shadow: inset 0 0 0 4px var(--bg-char), inset 0 0 0 5px rgba(209, 134, 82, 0.22);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 22px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-ember {
+      background: var(--ember);
+      color: var(--cream);
+      border-color: rgba(245, 239, 230, 0.2);
+      box-shadow: 0 8px 24px rgba(207, 61, 37, 0.35);
+    }
+
+    .btn-ember:hover {
+      background: var(--ember-glow);
+    }
+
+    .btn-copper {
+      background: transparent;
+      color: var(--copper-bright);
+      border-color: var(--copper);
+    }
+
+    .btn-copper:hover {
+      background: rgba(209, 134, 82, 0.14);
+      color: var(--cream);
+    }
+
+    .btn-dark {
+      background: var(--bg-char);
+      color: var(--cream);
+      border-color: rgba(245, 239, 230, 0.28);
+    }
+
+    .btn-dark:hover {
+      background: #1e1612;
+      border-color: var(--cream);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 26px 0 44px;
+      border-bottom: 1px solid var(--border-hoop);
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 48px 0 68px;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 42px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      background: rgba(209, 134, 82, 0.12);
+      border: 1px solid var(--border-hoop);
+      border-radius: 2px;
+      color: var(--copper-bright);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--ember-glow);
+      box-shadow: 0 0 10px var(--ember-glow);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(3.35rem, 11vw, 6.2rem);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      margin: 0 0 22px;
+      max-width: 44ch;
+      font-size: 1.15rem;
+      color: var(--sand);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 22px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .hero-meta svg {
+      width: 16px;
+      height: 16px;
+      color: var(--copper);
+    }
+
+    /* Hero Table-From-Above Stage (Glass as primary motif) */
+    .hero-stage {
+      position: relative;
+      background:
+        radial-gradient(circle at 62% 38%, rgba(209, 134, 82, 0.2), transparent 55%),
+        radial-gradient(circle at 30% 72%, rgba(207, 61, 37, 0.16), transparent 50%),
+        linear-gradient(160deg, #1a120e 0%, #0d0a09 100%);
+      padding: 18px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-deep);
+    }
+
+    .table-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 410px;
+    }
+
+    .glass-aura {
+      transform-origin: 268px 132px;
+      animation: pulse-aura 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-aura {
+      0% { opacity: 0.68; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1.03); }
+    }
+
+    /* Staggered Hero Entrance */
+    .js .hero-stagger {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: hero-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .js .hero-stagger-1 { animation-delay: 0.05s; }
+    .js .hero-stagger-2 { animation-delay: 0.14s; }
+    .js .hero-stagger-3 { animation-delay: 0.22s; }
+    .js .hero-stagger-4 { animation-delay: 0.30s; }
+    .js .hero-stagger-5 { animation-delay: 0.26s; }
+
+    @keyframes hero-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Section 2: Ticker / Marquee Band */
+    .ticker-band {
+      background: var(--bg-stave);
+      border-bottom: 1px solid var(--border-hoop);
+      overflow: hidden;
+      padding: 12px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 32px;
+      animation: marquee 28s linear infinite;
+    }
+
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-shrink: 0;
+    }
+
+    .ticker-item {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      letter-spacing: 0.14em;
+      color: var(--copper-bright);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-sep {
+      width: 7px;
+      height: 7px;
+      background: var(--ember);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Shared Section Headings */
+    .sec {
+      padding: 58px 0;
+    }
+
+    @media (min-width: 768px) {
+      .sec {
+        padding: 84px 0;
+      }
+    }
+
+    .sec-kicker {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 8px;
+    }
+
+    .sec-title {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      line-height: 0.96;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
+
+    .sec-lead {
+      margin: 0 0 28px;
+      max-width: 52ch;
+      color: var(--sand);
+      font-size: 1.08rem;
+    }
+
+    /* Section 3: 'The table' (Split + Overlapping Reservation-Slip Builder) */
+    .table-sec {
+      background:
+        linear-gradient(180deg, rgba(27, 20, 17, 0.55) 0%, rgba(11, 9, 8, 0.95) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .table-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .table-split {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 44px;
+      }
+    }
+
+    .slip-builder {
+      background: var(--bg-panel);
+      padding: 24px 20px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-deep);
+    }
+
+    @media (min-width: 768px) {
+      .slip-builder {
+        padding: 32px;
+      }
+    }
+
+    .slip-group {
+      margin-bottom: 22px;
+    }
+
+    .slip-label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper-bright);
+      margin-bottom: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip-btn {
+      min-width: 48px;
+      min-height: 44px;
+      padding: 8px 16px;
+      background: var(--bg-char);
+      color: var(--sand);
+      border: 1px solid var(--border-hoop);
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--copper-bright);
+      color: var(--cream);
+    }
+
+    .chip-btn.is-active {
+      background: var(--copper);
+      color: var(--bg-char);
+      border-color: var(--copper-bright);
+    }
+
+    .slip-preview {
+      background: #100c0a;
+      border: 1px dashed var(--copper);
+      border-radius: 4px;
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .slip-preview-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      color: var(--copper-bright);
+    }
+
+    .slip-preview-text {
+      margin: 0;
+      color: var(--cream);
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .slip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Right column of 'The table': Pass-through / Reservation Card Geometry */
+    .table-card-panel {
+      background: var(--bg-elevated);
+      padding: 26px 22px;
+      border-radius: 6px;
+      border: 1px solid var(--border-hoop);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .table-card-visual {
+      width: 100%;
+      max-width: 340px;
+      margin-inline: auto;
+      display: block;
+    }
+
+    .table-facts {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .table-facts li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: rgba(11, 9, 8, 0.65);
+      border-left: 3px solid var(--ember);
+      font-size: 0.96rem;
+      letter-spacing: 0.04em;
+    }
+
+    .table-facts strong {
+      color: var(--copper-bright);
+      text-transform: uppercase;
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section 4: 'Eat & drink' (Menu-card layout with headings only, big numerals) */
+    .menu-sec {
+      position: relative;
+      background: var(--bg-char);
+      border-bottom: 1px solid var(--border-hoop);
+    }
+
+    .menu-board {
+      background: var(--bg-stave);
+      padding: 26px 20px;
+      border-radius: 6px;
+      box-shadow: var(--shadow-deep);
+    }
+
+    @media (min-width: 768px) {
+      .menu-board {
+        padding: 42px 44px;
+      }
+    }
+
+    .menu-board-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 22px;
+      margin-bottom: 26px;
+      border-bottom: 2px solid var(--copper-dim);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 20px;
+      }
+    }
+
+    .menu-col {
+      display: grid;
+      gap: 16px;
+    }
+
+    .menu-card-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--copper);
+      border-radius: 3px;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .menu-card-row:hover {
+      border-color: var(--copper-bright);
+      background: var(--bg-elevated);
+      transform: translateX(4px);
+    }
+
+    .menu-card-row.is-featured {
+      border-left-color: var(--ember);
+      padding: 28px 24px;
+    }
+
+    .menu-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--copper);
+      letter-spacing: 0.04em;
+    }
+
+    .menu-heading {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      text-transform: uppercase;
+    }
+
+    .menu-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Section 5: Booking Strip (Full-bleed Ember & Copper Band) */
+    .booking-strip {
+      position: relative;
+      background:
+        radial-gradient(circle at 85% 50%, rgba(11, 9, 8, 0.35), transparent 55%),
+        linear-gradient(125deg, #9c2b18 0%, #cf3d25 48%, #b96d3b 100%);
+      color: var(--cream);
+      padding: 46px 0;
+      border-bottom: 1px solid var(--border-hoop);
+    }
+
+    .booking-strip-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 820px) {
+      .booking-strip-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .booking-strip-title {
+      margin: 6px 0 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      line-height: 0.98;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .booking-strip-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Section 6: Contact, WhatsApp Composer & FAQ Accordion */
+    .contact-sec {
+      background: var(--bg-stave);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    @media (min-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 36px;
+        align-items: start;
+      }
+    }
+
+    .contact-card {
+      background: var(--bg-panel);
+      padding: 24px 20px;
+      border-radius: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-card {
+        padding: 30px;
+      }
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .info-row:last-of-type {
+      border-bottom: 0;
+    }
+
+    .info-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 8px 12px;
+      background: var(--bg-char);
+      color: var(--sand);
+      border: 1px solid var(--border-hoop);
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(209, 134, 82, 0.16);
+      color: var(--cream);
+    }
+
+    .copy-btn.is-copied {
+      background: var(--copper);
+      color: var(--bg-char);
+      border-color: var(--copper-bright);
+    }
+
+    .copy-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    /* WhatsApp Composer */
+    .composer-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper-bright);
+      margin-bottom: 6px;
+    }
+
+    .field-input,
+    .field-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--bg-char);
+      color: var(--cream);
+      border: 1px solid var(--border-hoop);
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .field-input:focus,
+    .field-textarea:focus {
+      outline: none;
+      border-color: var(--copper-bright);
+    }
+
+    .field-textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    /* FAQ Accordion */
+    .faq-wrap {
+      margin-top: 38px;
+      padding-top: 34px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-hoop);
+      border-radius: 4px;
+    }
+
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 52px;
+      padding: 14px 18px;
+      font-weight: 700;
+      font-size: 1.06rem;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary svg {
+      width: 18px;
+      height: 18px;
+      color: var(--copper);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] summary svg {
+      transform: rotate(90deg);
+    }
+
+    .faq-body {
+      padding: 0 18px 16px;
+      color: var(--sand);
+      font-size: 0.98rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #070504;
+      border-top: 1px solid var(--border-hoop);
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+    }
+
+    /* Sticky Mobile Action Bar */
+    .mobile-dock {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: rgba(11, 9, 8, 0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--copper);
+      padding: 6px 8px;
+      gap: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-dock {
+        display: none;
+      }
+    }
+
+    .dock-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-height: 48px;
+      padding: 6px 4px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .dock-btn.is-primary {
+      background: var(--ember);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .dock-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Scroll Reveal */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .flame-core, .glass-aura, .ticker-track, .js .hero-stagger {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .js .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+<style id="contrast-fix">body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(1)>div:nth-child(1)>div:nth-child(1)>div:nth-child(4)>a:nth-child(1)>span:nth-child(2){color:#ffffff !important}body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(3)>div:nth-child(1)>div:nth-child(4)>div:nth-child(1)>div:nth-child(4)>button:nth-child(1)>span:nth-child(2){color:#ffffff !important}body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(6)>div:nth-child(1)>div:nth-child(4)>div:nth-child(1)>div:nth-child(3)>a:nth-child(2)>span:nth-child(2){color:#ffffff !important}body:nth-child(2)>div:nth-child(1)>main:nth-child(3)>section:nth-child(6)>div:nth-child(1)>div:nth-child(4)>div:nth-child(2)>form:nth-child(1)>button:nth-child(3)>span:nth-child(2){color:#ffffff !important}body:nth-child(2)>div:nth-child(1)>nav:nth-child(5)>a:nth-child(2)>span:nth-child(2){color:#ffffff !important}body:nth-child(2)>div:nth-child(1)>header:nth-child(2)>div:nth-child(1)>nav:nth-child(2)>a:nth-child(5){color:#ffffff !important}</style></head>
+<body>
+  <div class="page-wrap">
+    <div class="preview-banner">Concept preview made for Blaize &amp; Barrel — not their official website</div>
+
+    <header class="site-header" id="site-header">
+      <div class="container nav-bar">
+        <a href="#top" class="brand-mark">
+          <svg class="brand-flame" viewBox="0 0 28 34" fill="none" aria-hidden="true">
+            <path d="M14 2C14 2 24 12.2 24 20.5C24 26.8 19.5 32 14 32C8.5 32 4 26.8 4 20.5C4 16 6.4 11.8 9.2 8.8C9.2 12.2 11.2 13.8 11.2 13.8C11.2 13.8 11 7.6 14 2Z" fill="#cf3d25" class="flame-core"/>
+            <path d="M14 13.5C14 13.5 18.8 18.6 18.8 22.8C18.8 25.8 16.7 28.4 14 28.4C11.3 28.4 9.2 25.8 9.2 22.8C9.2 19.5 11.5 16.4 14 13.5Z" fill="#e6a370"/>
+          </svg>
+          <span>Blaize &amp; Barrel</span>
+        </a>
+
+        <nav class="nav-desktop" aria-label="Primary">
+          <a href="#the-table" class="nav-link">The table</a>
+          <a href="#eat-and-drink" class="nav-link">Eat &amp; drink</a>
+          <a href="#bookings" class="nav-link">Bookings</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a href="#the-table" class="nav-cta">Reserve</a>
+        </nav>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-drawer" aria-label="Toggle navigation menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+        <a href="#the-table" class="nav-link">The table</a>
+        <a href="#eat-and-drink" class="nav-link">Eat &amp; drink</a>
+        <a href="#bookings" class="nav-link">Bookings</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="tel:+27643351501" class="nav-cta">Call +27 64 335 1501</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Section 1: Asymmetric Hero with Set-Table-From-Above SVG (Glass as primary motif) -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-eyebrow hero-stagger hero-stagger-1">
+              <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+              <span>Restaurant &middot; Mossel Bay</span>
+            </div>
+            <h1 class="hero-stagger hero-stagger-2">Blaize &amp; Barrel</h1>
+            <p class="hero-sub hero-stagger hero-stagger-3">
+              Dining &amp; drinks on Marsh Street, Mossel Bay. Call or message on WhatsApp to enquire about a table.
+            </p>
+            <div class="hero-actions hero-stagger hero-stagger-4">
+              <a href="#the-table" class="btn btn-ember">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                <span>Reserve a table</span>
+              </a>
+              <a href="tel:+27643351501" class="btn btn-copper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>+27 64 335 1501</span>
+              </a>
+            </div>
+            <div class="hero-meta hero-stagger hero-stagger-4">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                Marsh Street, Mossel Bay
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Table bookings by phone &amp; WhatsApp
+              </span>
+            </div>
+          </div>
+
+          <!-- Overhead Set Table SVG: Primary Motif = Glass -->
+          <div class="hero-stage hoop-frame hero-stagger hero-stagger-5">
+            <svg class="table-svg" viewBox="0 0 420 360" fill="none" role="img" aria-label="Overhead geometric illustration of a restaurant table setting featuring a glass, plate, cutlery, napkin and reservation card">
+              <defs>
+                <radialGradient id="glassAmber" cx="45%" cy="40%" r="58%">
+                  <stop offset="0%" stop-color="#f3b67a" stop-opacity="0.95"/>
+                  <stop offset="55%" stop-color="#c96d35" stop-opacity="0.88"/>
+                  <stop offset="100%" stop-color="#6e2314" stop-opacity="0.95"/>
+                </radialGradient>
+                <radialGradient id="glassHalo" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ef5b36" stop-opacity="0.45"/>
+                  <stop offset="65%" stop-color="#d18652" stop-opacity="0.14"/>
+                  <stop offset="100%" stop-color="#0b0908" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="plateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#29201b"/>
+                  <stop offset="100%" stop-color="#120d0b"/>
+                </linearGradient>
+                <linearGradient id="copperRim" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e6a370"/>
+                  <stop offset="50%" stop-color="#a86234"/>
+                  <stop offset="100%" stop-color="#e6a370"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Charred wood stave lines -->
+              <g stroke="#2a1f19" stroke-width="1">
+                <line x1="0" y1="60" x2="420" y2="60"/>
+                <line x1="0" y1="120" x2="420" y2="120"/>
+                <line x1="0" y1="180" x2="420" y2="180"/>
+                <line x1="0" y1="240" x2="420" y2="240"/>
+                <line x1="0" y1="300" x2="420" y2="300"/>
+              </g>
+
+              <!-- Barrel-hoop charger ring -->
+              <circle cx="176" cy="198" r="118" stroke="#7a4b2b" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <circle cx="176" cy="198" r="108" stroke="url(#copperRim)" stroke-width="2"/>
+              <g fill="#d18652">
+                <circle cx="176" cy="90" r="2.5"/>
+                <circle cx="284" cy="198" r="2.5"/>
+                <circle cx="176" cy="306" r="2.5"/>
+                <circle cx="68" cy="198" r="2.5"/>
+              </g>
+
+              <!-- Supporting Plate (overhead circles) -->
+              <circle cx="176" cy="198" r="90" fill="url(#plateGrad)" stroke="#d18652" stroke-width="2"/>
+              <circle cx="176" cy="198" r="76" stroke="rgba(245,239,230,0.16)" stroke-width="1"/>
+              <circle cx="176" cy="198" r="56" fill="#140f0d" stroke="rgba(209,134,82,0.38)" stroke-width="1.25"/>
+
+              <!-- Supporting Napkin (folded geometric rectangle) -->
+              <g transform="translate(110 218) rotate(-14)">
+                <rect x="0" y="0" width="76" height="54" rx="2" fill="#231a15" stroke="#d18652" stroke-width="1.4"/>
+                <line x1="8" y1="10" x2="68" y2="10" stroke="#7a4b2b" stroke-width="1"/>
+                <line x1="8" y1="44" x2="68" y2="44" stroke="#7a4b2b" stroke-width="1"/>
+              </g>
+
+              <!-- Supporting Cutlery: Fork (left) -->
+              <g stroke="#d4c6b6" stroke-width="2.2" stroke-linecap="round">
+                <line x1="48" y1="138" x2="48" y2="262"/>
+                <line x1="41" y1="138" x2="41" y2="168"/>
+                <line x1="55" y1="138" x2="55" y2="168"/>
+                <path d="M41 168 Q48 176 55 168" fill="none"/>
+              </g>
+
+              <!-- Supporting Cutlery: Knife (right) -->
+              <g>
+                <path d="M306 134 C314 146 314 176 306 194 L302 194 L302 134 Z" fill="#d4c6b6"/>
+                <rect x="301" y="194" width="6" height="68" rx="2" fill="#7a4b2b" stroke="#d18652" stroke-width="1"/>
+              </g>
+
+              <!-- Supporting Reservation Card -->
+              <g transform="translate(22 28)">
+                <rect x="0" y="0" width="132" height="58" rx="3" fill="#17110e" stroke="url(#copperRim)" stroke-width="1.5"/>
+                <text x="14" y="24" fill="#e6a370" font-family="Bebas Neue, sans-serif" font-size="16" letter-spacing="2">RESERVED</text>
+                <text x="14" y="42" fill="#d4c6b6" font-family="Barlow Semi Condensed, sans-serif" font-size="11" letter-spacing="1.4">TABLE · MOSSEL BAY</text>
+              </g>
+
+              <!-- PRIMARY MOTIF: THE GLASS (seen from above, oversized focal star) -->
+              <circle cx="294" cy="112" r="96" fill="url(#glassHalo)" class="glass-aura"/>
+              <g transform="translate(294 112)">
+                <!-- Coaster / barrel-hoop base -->
+                <circle cx="0" cy="0" r="68" fill="#120d0b" stroke="url(#copperRim)" stroke-width="2.5"/>
+                <circle cx="0" cy="0" r="60" stroke="#7a4b2b" stroke-width="1" stroke-dasharray="3 4"/>
+                <!-- Outer crystal rim -->
+                <circle cx="0" cy="0" r="52" fill="rgba(245,239,230,0.06)" stroke="#f5efe6" stroke-width="2.2"/>
+                <!-- Liquid surface -->
+                <circle cx="0" cy="0" r="42" fill="url(#glassAmber)" stroke="#e6a370" stroke-width="1.2"/>
+                <!-- Cut-glass geometric facets -->
+                <polygon points="0,-48 34,-34 48,0 34,34 0,48 -34,34 -48,0 -34,-34" stroke="rgba(245,239,230,0.28)" stroke-width="1" fill="none"/>
+                <circle cx="0" cy="0" r="24" stroke="rgba(245,239,230,0.34)" stroke-width="1.2" fill="none"/>
+                <!-- Specular highlight arc & ice/refraction geometry -->
+                <path d="M-28 -22 A36 36 0 0 1 18 -31" stroke="#f5efe6" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+                <rect x="-14" y="-13" width="22" height="22" rx="3" transform="rotate(18)" fill="rgba(245,239,230,0.16)" stroke="rgba(245,239,230,0.45)" stroke-width="1"/>
+                <!-- Subtle flickering flame reflection inside the glass -->
+                <path d="M2 -10 C2 -10 10 -2 10 4 C10 9 6 13 2 13 C-2 13 -6 9 -6 4 C-6 0 -3 -4 -1 -6 C-1 -3 1 -2 1 -2 C1 -2 0 -6 2 -10 Z" fill="#ef5b36" opacity="0.82" class="flame-core"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Ticker Band -->
+      <div class="ticker-band" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-group">
+            <span class="ticker-item">Restaurant</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Blaize &amp; Barrel</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Mossel Bay</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Marsh Street</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Table Bookings</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Dining &amp; Drinks</span><span class="ticker-sep"></span>
+          </div>
+          <div class="ticker-group">
+            <span class="ticker-item">Restaurant</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Blaize &amp; Barrel</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Mossel Bay</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Marsh Street</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Table Bookings</span><span class="ticker-sep"></span>
+            <span class="ticker-item">Dining &amp; Drinks</span><span class="ticker-sep"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: 'The table' (Reservation-Slip Builder) -->
+      <section class="sec table-sec" id="the-table">
+        <div class="container">
+          <span class="sec-kicker">The table</span>
+          <h2 class="sec-title">Reserve your table</h2>
+          <p class="sec-lead">
+            Choose your party size and preferred time to build a WhatsApp table enquiry for Blaize &amp; Barrel in Mossel Bay.
+          </p>
+
+          <div class="table-split">
+            <div class="slip-builder hoop-frame reveal">
+              <div class="slip-group">
+                <span class="slip-label">Party size</span>
+                <div class="chip-row" role="group" aria-label="Party size">
+                  <button type="button" class="chip-btn" data-party="1">1</button>
+                  <button type="button" class="chip-btn is-active" data-party="2">2</button>
+                  <button type="button" class="chip-btn" data-party="4">4</button>
+                  <button type="button" class="chip-btn" data-party="6">6</button>
+                  <button type="button" class="chip-btn" data-party="8+">8+</button>
+                </div>
+              </div>
+
+              <div class="slip-group">
+                <span class="slip-label">Preferred time</span>
+                <div class="chip-row" role="group" aria-label="Preferred time">
+                  <button type="button" class="chip-btn" data-time="Morning">Morning</button>
+                  <button type="button" class="chip-btn" data-time="Afternoon">Afternoon</button>
+                  <button type="button" class="chip-btn is-active" data-time="Evening">Evening</button>
+                </div>
+              </div>
+
+              <div class="slip-preview" aria-live="polite">
+                <div class="slip-preview-head">
+                  <span>Reservation Slip</span>
+                  <span id="slip-summary-tag">2 Guests &middot; Evening</span>
+                </div>
+                <p class="slip-preview-text" id="slip-message-preview">
+                  Hi Blaize &amp; Barrel, could we enquire about a table for 2 in the Evening?
+                </p>
+              </div>
+
+              <div class="slip-actions">
+                <button type="button" class="btn btn-ember" id="slip-whatsapp-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                  <span>Ask on WhatsApp</span>
+                </button>
+                <a href="#contact" class="btn btn-copper" id="slip-fill-composer">Edit in composer</a>
+              </div>
+            </div>
+
+            <aside class="table-card-panel reveal" aria-label="Table enquiry details">
+              <svg class="table-card-visual" viewBox="0 0 320 150" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="304" height="134" rx="4" fill="#120d0b" stroke="#d18652" stroke-width="1.5"/>
+                <rect x="16" y="16" width="288" height="118" rx="2" stroke="rgba(209,134,82,0.3)" stroke-width="1"/>
+                <circle cx="72" cy="75" r="36" stroke="#d18652" stroke-width="1.5"/>
+                <circle cx="72" cy="75" r="24" fill="rgba(207,61,37,0.22)" stroke="#e6a370" stroke-width="1"/>
+                <text x="132" y="64" fill="#e6a370" font-family="Bebas Neue, sans-serif" font-size="24" letter-spacing="2">TABLE ENQUIRY</text>
+                <text x="132" y="86" fill="#d4c6b6" font-family="Barlow Semi Condensed, sans-serif" font-size="13" letter-spacing="1.2">MARSH STREET · MOSSEL BAY</text>
+                <text x="132" y="106" fill="#a99887" font-family="Barlow Semi Condensed, sans-serif" font-size="12" letter-spacing="1">+27 64 335 1501</text>
+              </svg>
+
+              <ul class="table-facts">
+                <li><strong>Area</strong><span>Mossel Bay</span></li>
+                <li><strong>Street</strong><span>Marsh Street</span></li>
+                <li><strong>Bookings</strong><span>Call or WhatsApp</span></li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: 'Eat & drink' (Menu-Card Layout with Headings Only) -->
+      <section class="sec menu-sec" id="eat-and-drink">
+        <div class="container">
+          <div class="menu-board hoop-frame reveal">
+            <div class="menu-board-head">
+              <div>
+                <span class="sec-kicker">Eat &amp; drink</span>
+                <h2 class="sec-title">Dining &amp; Drinks</h2>
+              </div>
+              <a href="#the-table" class="btn btn-copper">Book a table</a>
+            </div>
+
+            <div class="menu-grid">
+              <div class="menu-col">
+                <div class="menu-card-row is-featured">
+                  <div>
+                    <span class="menu-tag">Category</span>
+                    <h3 class="menu-heading">Menu</h3>
+                  </div>
+                  <span class="menu-num">01</span>
+                </div>
+                <div class="menu-card-row">
+                  <div>
+                    <span class="menu-tag">Category</span>
+                    <h3 class="menu-heading">Dining</h3>
+                  </div>
+                  <span class="menu-num">02</span>
+                </div>
+              </div>
+
+              <div class="menu-col">
+                <div class="menu-card-row">
+                  <div>
+                    <span class="menu-tag">Category</span>
+                    <h3 class="menu-heading">Drinks</h3>
+                  </div>
+                  <span class="menu-num">03</span>
+                </div>
+                <div class="menu-card-row">
+                  <div>
+                    <span class="menu-tag">Category</span>
+                    <h3 class="menu-heading">Table</h3>
+                  </div>
+                  <span class="menu-num">04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Booking Strip (Full-bleed Copper & Ember Band) -->
+      <section class="booking-strip" id="bookings">
+        <div class="container booking-strip-inner reveal">
+          <div>
+            <span class="sec-kicker" style="color:#f5efe6;">Bookings &middot; Mossel Bay</span>
+            <h2 class="booking-strip-title">Book a table by call or WhatsApp</h2>
+          </div>
+          <div class="booking-strip-actions">
+            <a href="tel:+27643351501" class="btn btn-dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Call +27 64 335 1501</span>
+            </a>
+            <a href="https://wa.me/27643351501" target="_blank" rel="noopener noreferrer" class="btn btn-dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Contact, WhatsApp Composer & FAQ Accordion -->
+      <section class="sec contact-sec" id="contact">
+        <div class="container">
+          <span class="sec-kicker">Contact &amp; Directions</span>
+          <h2 class="sec-title">Find Blaize &amp; Barrel</h2>
+          <p class="sec-lead">
+            Reach out by phone or WhatsApp, or open Marsh Street, Mossel Bay in maps for directions.
+          </p>
+
+          <div class="contact-layout">
+            <div class="contact-card hoop-frame reveal">
+              <div class="info-row">
+                <div>
+                  <span class="info-label">Phone &amp; WhatsApp</span>
+                  <a href="tel:+27643351501" class="info-value">+27 64 335 1501</a>
+                </div>
+                <button type="button" class="copy-btn" data-copy="+27 64 335 1501" aria-label="Copy phone number">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <div class="info-row">
+                <div>
+                  <span class="info-label">Address</span>
+                  <span class="info-value">Marsh Street, Mossel Bay</span>
+                </div>
+                <button type="button" class="copy-btn" data-copy="Marsh Street, Mossel Bay" aria-label="Copy address">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <div class="contact-links">
+                <a href="https://www.google.com/maps/search/?api=1&query=Marsh%20Street%2C%20Mossel%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer" class="btn btn-copper">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Open in Maps</span>
+                </a>
+                <a href="tel:+27643351501" class="btn btn-ember">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <span>Call now</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card hoop-frame reveal">
+              <form class="composer-form" id="wa-composer">
+                <div>
+                  <label class="field-label" for="wa-name">Your name</label>
+                  <input class="field-input" id="wa-name" name="name" type="text" placeholder="Enter your name">
+                </div>
+                <div>
+                  <label class="field-label" for="wa-message">WhatsApp message</label>
+                  <textarea class="field-textarea" id="wa-message" name="message" required>Hi Blaize &amp; Barrel, could we enquire about a table for 2 in the Evening?</textarea>
+                </div>
+                <button type="submit" class="btn btn-ember">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                  <span>Send on WhatsApp</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="faq-wrap reveal">
+            <span class="sec-kicker">Questions</span>
+            <h3 class="sec-title" style="font-size:clamp(1.8rem,4vw,2.5rem);">Before you visit</h3>
+            <div class="faq-grid">
+              <details class="faq-item">
+                <summary>
+                  <span>How do I get in touch?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </summary>
+                <div class="faq-body">
+                  Call or send a WhatsApp message to +27 64 335 1501 for table bookings and enquiries.
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  <span>Where is Blaize &amp; Barrel located?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </summary>
+                <div class="faq-body">
+                  Blaize &amp; Barrel is on Marsh Street in Mossel Bay. Use the Maps link above for directions.
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  <span>When can I call?</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </summary>
+                <div class="faq-body">
+                  You can call +27 64 335 1501 or leave a WhatsApp message anytime to ask about a table.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-brand">Blaize &amp; Barrel</div>
+          <div>Marsh Street, Mossel Bay &middot; +27 64 335 1501</div>
+        </div>
+        <div>Concept preview — final wording, photos and details to be supplied by the owner.</div>
+      </div>
+    </footer>
+
+    <!-- Sticky Mobile Action Bar -->
+    <nav class="mobile-dock" aria-label="Quick actions">
+      <a href="tel:+27643351501" class="dock-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Call</span>
+      </a>
+      <a href="https://wa.me/27643351501" target="_blank" rel="noopener noreferrer" class="dock-btn is-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Marsh%20Street%2C%20Mossel%20Bay%2C%20South%20Africa" target="_blank" rel="noopener noreferrer" class="dock-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Map</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      var header = document.getElementById('site-header');
+      var navToggle = document.getElementById('nav-toggle');
+      var navDrawer = document.getElementById('nav-drawer');
+
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 12) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }, { passive: true });
+
+      if (navToggle && navDrawer) {
+        navToggle.addEventListener('click', function () {
+          var expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!expanded));
+          navDrawer.classList.toggle('is-open', !expanded);
+        });
+
+        navDrawer.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navDrawer.classList.remove('is-open');
+          });
+        });
+      }
+
+      // Reservation-Slip Builder
+      var state = { party: '2', time: 'Evening' };
+      var partyBtns = document.querySelectorAll('[data-party]');
+      var timeBtns = document.querySelectorAll('[data-time]');
+      var slipTag = document.getElementById('slip-summary-tag');
+      var slipPreview = document.getElementById('slip-message-preview');
+      var waMessageInput = document.getElementById('wa-message');
+      var waNameInput = document.getElementById('wa-name');
+      var slipWaBtn = document.getElementById('slip-whatsapp-btn');
+      var slipFillBtn = document.getElementById('slip-fill-composer');
+
+      function buildSlipMessage() {
+        return 'Hi Blaize & Barrel, could we enquire about a table for ' + state.party + ' in the ' + state.time + '?';
+      }
+
+      function syncSlip() {
+        var msg = buildSlipMessage();
+        var guestLabel = state.party === '1' ? '1 Guest' : state.party + ' Guests';
+        if (slipTag) slipTag.textContent = guestLabel + ' \u00b7 ' + state.time;
+        if (slipPreview) slipPreview.textContent = msg;
+        if (waMessageInput) waMessageInput.value = msg;
+      }
+
+      partyBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          partyBtns.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          state.party = btn.getAttribute('data-party');
+          syncSlip();
+        });
+      });
+
+      timeBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          timeBtns.forEach(function (b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+          state.time = btn.getAttribute('data-time');
+          syncSlip();
+        });
+      });
+
+      function openWhatsApp(text) {
+        var url = 'https://wa.me/27643351501?text=' + encodeURIComponent(text);
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+
+      if (slipWaBtn) {
+        slipWaBtn.addEventListener('click', function () {
+          openWhatsApp(buildSlipMessage());
+        });
+      }
+
+      if (slipFillBtn) {
+        slipFillBtn.addEventListener('click', function () {
+          syncSlip();
+        });
+      }
+
+      // WhatsApp Enquiry Composer
+      var composerForm = document.getElementById('wa-composer');
+      if (composerForm) {
+        composerForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = waNameInput ? waNameInput.value.trim() : '';
+          var body = waMessageInput ? waMessageInput.value.trim() : '';
+          var fullText = name ? 'Hi, this is ' + name + '. ' + body : body;
+          if (fullText) openWhatsApp(fullText);
+        });
+      }
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var value = btn.getAttribute('data-copy');
+          var label = btn.querySelector('span');
+          if (!value || !navigator.clipboard) return;
+          navigator.clipboard.writeText(value).then(function () {
+            btn.classList.add('is-copied');
+            if (label) label.textContent = 'Copied';
+            setTimeout(function () {
+              btn.classList.remove('is-copied');
+              if (label) label.textContent = 'Copy';
+            }, 1800);
+          });
+        });
+      });
+
+      // Scroll Reveal
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
