@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 129,
+  "height": 73,
+  "bg_mode": "any",
+  "brand_colors": [
+    "#1d9a99",
+    "#fcb317"
+  ],
+  "source_url": "http://emoya.co.za/images/photos/EB-Home-Logo.png"
+}

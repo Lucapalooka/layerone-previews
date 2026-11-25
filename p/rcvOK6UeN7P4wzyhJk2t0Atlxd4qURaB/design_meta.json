@@ -1,0 +1,18 @@
+{
+  "business_id": 2314,
+  "archetype": "retail_general",
+  "archetype_label": "Local Shop & Services",
+  "skeleton": "swiss_grid",
+  "palette": "crimson",
+  "accent": "#c2241c",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "needs_dark",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 2556677498
+}

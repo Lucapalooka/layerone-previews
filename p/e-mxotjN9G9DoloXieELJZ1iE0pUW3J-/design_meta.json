@@ -1,0 +1,21 @@
+{
+  "business_id": 9347,
+  "archetype": "retail_general",
+  "archetype_label": "Local Shop & Services",
+  "skeleton": "swiss_grid",
+  "palette": "brand-8eb7d5",
+  "accent": "#8eb7d5",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#8eb7d5",
+    "#5495c4"
+  ],
+  "peer_count": 40,
+  "seed": 1741548017
+}

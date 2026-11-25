@@ -1,0 +1,18 @@
+{
+  "business_id": 762,
+  "archetype": "restaurant_bistro",
+  "archetype_label": "Restaurant & Bistro",
+  "skeleton": "cinema_bleed",
+  "palette": "ocean_dark",
+  "accent": "#f0a35a",
+  "fonts": [
+    "'Fraunces',Georgia,serif",
+    "'Nunito Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 2046955032
+}

@@ -1,0 +1,18 @@
+{
+  "business_id": 1545,
+  "archetype": "water_adventure",
+  "archetype_label": "Water Sports & Outdoor Tours",
+  "skeleton": "neighbourhood_counter",
+  "palette": "navybrass",
+  "accent": "#9a6c1c",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 536979410
+}

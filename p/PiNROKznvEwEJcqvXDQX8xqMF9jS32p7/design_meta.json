@@ -1,0 +1,18 @@
+{
+  "business_id": 8926,
+  "archetype": "water_adventure",
+  "archetype_label": "Water Sports & Outdoor Tours",
+  "skeleton": "kinetic_club",
+  "palette": "graphite",
+  "accent": "#d94f04",
+  "fonts": [
+    "'Newsreader',Georgia,serif",
+    "'Figtree',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 3245365209
+}

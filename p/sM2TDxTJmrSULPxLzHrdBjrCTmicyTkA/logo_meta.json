@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 340,
+  "height": 105,
+  "bg_mode": "any",
+  "brand_colors": [
+    "#cf6876",
+    "#fc8593"
+  ],
+  "source_url": "https://balletbarre.co.za/_WebmoduleData/Images/used/_CompanyLogo.png"
+}

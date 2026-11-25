@@ -1,0 +1,21 @@
+{
+  "business_id": 13201,
+  "archetype": "hotel_lodge",
+  "archetype_label": "Hotel & Lodge",
+  "skeleton": "atelier_lookbook",
+  "palette": "brand-c99b4a",
+  "accent": "#c99b4a",
+  "fonts": [
+    "'Barlow Condensed',Impact,sans-serif",
+    "'Barlow',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#c99b4a",
+    "#f0ec3c"
+  ],
+  "peer_count": 40,
+  "seed": 1847502485
+}

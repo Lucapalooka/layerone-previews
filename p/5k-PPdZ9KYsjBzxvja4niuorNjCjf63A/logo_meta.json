@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 340,
+  "height": 105,
+  "bg_mode": "any",
+  "brand_colors": [
+    "#c99b4a",
+    "#f0ec3c"
+  ],
+  "source_url": "https://oasishotel.co.za/images/logo.png"
+}

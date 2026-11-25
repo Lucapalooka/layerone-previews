@@ -1,0 +1,18 @@
+{
+  "business_id": 9401,
+  "archetype": "retail_general",
+  "archetype_label": "Local Shop & Services",
+  "skeleton": "neighbourhood_counter",
+  "palette": "wine_dark",
+  "accent": "#e8aa3b",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 257300148
+}

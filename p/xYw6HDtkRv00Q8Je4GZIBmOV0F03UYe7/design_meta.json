@@ -1,0 +1,18 @@
+{
+  "business_id": 3051,
+  "archetype": "butcher_farmshop",
+  "archetype_label": "Butchery & Farm Shop",
+  "skeleton": "editorial_split",
+  "palette": "ocean_dark",
+  "accent": "#f0a35a",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 17,
+  "seed": 1386232118
+}

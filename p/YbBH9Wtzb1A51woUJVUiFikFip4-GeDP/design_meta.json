@@ -1,0 +1,18 @@
+{
+  "business_id": 4324,
+  "archetype": "restaurant_bistro",
+  "archetype_label": "Restaurant & Bistro",
+  "skeleton": "cinema_bleed",
+  "palette": "forest_dark",
+  "accent": "#dbb55c",
+  "fonts": [
+    "'Syne',system-ui,sans-serif",
+    "'Space Grotesk',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 4062556998
+}

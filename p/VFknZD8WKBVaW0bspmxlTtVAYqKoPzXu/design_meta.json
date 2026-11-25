@@ -1,0 +1,21 @@
+{
+  "business_id": 13174,
+  "archetype": "construction_hardware",
+  "archetype_label": "Construction, Building & Hardware",
+  "skeleton": "swiss_grid",
+  "palette": "brand-ceebf9",
+  "accent": "#ceebf9",
+  "fonts": [
+    "'Big Shoulders Display',Impact,sans-serif",
+    "'Archivo',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#ceebf9",
+    "#0fa2de"
+  ],
+  "peer_count": 40,
+  "seed": 1255867108
+}

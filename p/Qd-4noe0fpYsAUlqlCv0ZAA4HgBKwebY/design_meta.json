@@ -1,0 +1,18 @@
+{
+  "business_id": 2973,
+  "archetype": "butcher_farmshop",
+  "archetype_label": "Butchery & Farm Shop",
+  "skeleton": "workshop_precision",
+  "palette": "teal",
+  "accent": "#137179",
+  "fonts": [
+    "'DM Serif Display',Georgia,serif",
+    "'Inter',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 17,
+  "seed": 2926267363
+}

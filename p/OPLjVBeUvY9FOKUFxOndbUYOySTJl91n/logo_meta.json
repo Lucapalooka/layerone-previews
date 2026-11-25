@@ -1,0 +1,11 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 178,
+  "height": 112,
+  "bg_mode": "needs_light",
+  "brand_colors": [
+    "#001631"
+  ],
+  "source_url": "http://altonalodge.com/_WebmoduleData/Images/used/_CompanyLogo.png"
+}

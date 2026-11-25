@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 74,
+  "height": 112,
+  "bg_mode": "any",
+  "brand_colors": [
+    "#2a326f",
+    "#fbe907"
+  ],
+  "source_url": "http://durnfordslodge.co.za/images/aalogo2006.jpg"
+}

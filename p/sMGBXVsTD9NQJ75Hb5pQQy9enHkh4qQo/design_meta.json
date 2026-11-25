@@ -1,0 +1,18 @@
+{
+  "business_id": 3398,
+  "archetype": "restaurant_bistro",
+  "archetype_label": "Restaurant & Bistro",
+  "skeleton": "editorial_split",
+  "palette": "cobalt",
+  "accent": "#1d4ed8",
+  "fonts": [
+    "'Unbounded',system-ui,sans-serif",
+    "'Manrope',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 4216335115
+}

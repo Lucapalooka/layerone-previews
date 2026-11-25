@@ -1,0 +1,21 @@
+{
+  "business_id": 2533,
+  "archetype": "camp_outdoor_stay",
+  "archetype_label": "Camp, Caravan & Chalets",
+  "skeleton": "cinema_bleed",
+  "palette": "brand-cdb49d",
+  "accent": "#cdb49d",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#cdb49d",
+    "#f66912"
+  ],
+  "peer_count": 40,
+  "seed": 2376811463
+}

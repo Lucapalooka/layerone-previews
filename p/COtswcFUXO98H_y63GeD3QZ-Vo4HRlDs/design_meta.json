@@ -1,0 +1,18 @@
+{
+  "business_id": 9111,
+  "archetype": "accountant_financial",
+  "archetype_label": "Accounting, Tax & Advisory",
+  "skeleton": "swiss_grid",
+  "palette": "crimson",
+  "accent": "#c2241c",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 3241469082
+}

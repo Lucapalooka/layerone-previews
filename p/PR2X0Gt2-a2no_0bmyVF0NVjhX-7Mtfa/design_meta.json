@@ -1,0 +1,21 @@
+{
+  "business_id": 8264,
+  "archetype": "hotel_lodge",
+  "archetype_label": "Hotel & Lodge",
+  "skeleton": "atelier_lookbook",
+  "palette": "brand-1d9a99",
+  "accent": "#1d9a99",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#1d9a99",
+    "#fcb317"
+  ],
+  "peer_count": 40,
+  "seed": 454600130
+}

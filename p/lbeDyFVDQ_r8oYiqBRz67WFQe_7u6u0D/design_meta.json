@@ -1,0 +1,18 @@
+{
+  "business_id": 4999,
+  "archetype": "lawyer_legal",
+  "archetype_label": "Attorneys & Legal Practice",
+  "skeleton": "swiss_grid",
+  "palette": "terracotta",
+  "accent": "#b34d24",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 18,
+  "seed": 2718546849
+}

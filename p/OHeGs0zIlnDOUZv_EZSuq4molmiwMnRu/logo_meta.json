@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 113,
+  "height": 112,
+  "bg_mode": "needs_dark",
+  "brand_colors": [
+    "#9b2e2e",
+    "#c88c8c"
+  ],
+  "source_url": "https://kapwein.com/apple-touch-icon-120x120-precomposed.png"
+}

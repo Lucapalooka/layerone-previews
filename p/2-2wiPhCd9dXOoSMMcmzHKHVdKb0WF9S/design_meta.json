@@ -1,0 +1,21 @@
+{
+  "business_id": 8236,
+  "archetype": "retail_general",
+  "archetype_label": "Local Shop & Services",
+  "skeleton": "neighbourhood_counter",
+  "palette": "brand-050432",
+  "accent": "#050432",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#050432",
+    "#8e8fb4"
+  ],
+  "peer_count": 40,
+  "seed": 2012778120
+}

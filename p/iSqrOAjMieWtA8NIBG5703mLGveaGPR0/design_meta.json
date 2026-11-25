@@ -1,0 +1,18 @@
+{
+  "business_id": 1590,
+  "archetype": "home_furniture_garden",
+  "archetype_label": "Home, Furniture & Nursery",
+  "skeleton": "swiss_grid",
+  "palette": "graphite",
+  "accent": "#d94f04",
+  "fonts": [
+    "'Oswald',Impact,sans-serif",
+    "'Mulish',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 1976541113
+}

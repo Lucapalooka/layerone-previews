@@ -1,0 +1,18 @@
+{
+  "business_id": 5005,
+  "archetype": "restaurant_bistro",
+  "archetype_label": "Restaurant & Bistro",
+  "skeleton": "editorial_split",
+  "palette": "graphite",
+  "accent": "#d94f04",
+  "fonts": [
+    "'Cormorant Garamond',Georgia,serif",
+    "'Karla',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 539205721
+}

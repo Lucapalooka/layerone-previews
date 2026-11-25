@@ -1,1336 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Grunters Restaurant &amp; Pub - Concept preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Patrick+Hand&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Grunters Restaurant & Pub", "telephone": "+27 66 285 5166"}</script>
 <style>
-:root{
-  --bg:#141619;
-  --bg-board:#1b1e22;
-  --bg-card:#22262c;
-  --bg-elev:#2a2f37;
-  --chalk:#f5f2eb;
-  --chalk-dim:#c9c3b8;
-  --amber:#e2952c;
-  --amber-bright:#f5b041;
-  --amber-deep:#a96312;
-  --foam:#fff8e8;
-  --border:rgba(245,242,235,0.16);
-  --border-chalk:rgba(245,242,235,0.34);
-  --font-display:'Gochi Hand','Comic Sans MS',cursive,sans-serif;
-  --font-body:'Patrick Hand',system-ui,-apple-system,sans-serif;
-  --radius:14px;
-  --shadow:0 16px 40px rgba(0,0,0,0.45);
-  --ease:cubic-bezier(0.22,1,0.36,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{
-  scroll-behavior:smooth;
-  overflow-x:clip;
-  background:var(--bg);
-  color:var(--chalk);
-  font-family:var(--font-body);
-  font-size:18px;
-  line-height:1.5;
-  -webkit-text-size-adjust:100%;
-}
-body{
-  margin:0;
-  overflow-x:clip;
-  padding-bottom:76px;
-  background-color:var(--bg);
-  background-image:
-    radial-gradient(circle at 18% 12%,rgba(226,149,44,0.10),transparent 42%),
-    radial-gradient(circle at 82% 28%,rgba(245,242,235,0.04),transparent 38%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-}
-.site-wrap{overflow-x:clip;position:relative}
-a{color:inherit;text-decoration:none}
-button,input,textarea{font:inherit;color:inherit}
-:focus-visible{
-  outline:3px solid var(--amber-bright);
-  outline-offset:3px;
-  border-radius:6px;
-}
-.container{width:100%;max-width:1200px;margin:0 auto;padding:0 18px}
-
-/* Top preview banner */
-.preview-banner{
-  background:var(--amber);
-  color:#141619;
-  text-align:center;
-  font-size:0.9rem;
-  font-weight:700;
-  letter-spacing:0.02em;
-  padding:7px 14px;
-  border-bottom:2px solid #141619;
-}
-
-/* Header & Nav */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(20,22,25,0.92);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-  transition:box-shadow 0.25s var(--ease),border-color 0.25s var(--ease);
-}
-.site-header.scrolled{
-  box-shadow:0 10px 28px rgba(0,0,0,0.55);
-  border-bottom-color:rgba(226,149,44,0.35);
-}
-.nav-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:62px;
-  gap:12px;
-}
-.brand-mark{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-family:var(--font-display);
-  font-size:1.35rem;
-  color:var(--chalk);
-  min-height:44px;
-  padding:4px 0;
-}
-.brand-mark svg{width:28px;height:28px;color:var(--amber-bright);flex-shrink:0}
-.menu-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:46px;
-  height:46px;
-  border-radius:10px;
-  border:1.5px solid var(--border-chalk);
-  background:var(--bg-board);
-  color:var(--chalk);
-  cursor:pointer;
-}
-.menu-btn svg{width:24px;height:24px}
-.menu-btn .icon-close{display:none}
-.menu-btn[aria-expanded="true"] .icon-open{display:none}
-.menu-btn[aria-expanded="true"] .icon-close{display:block}
-.nav-links{
-  display:none;
-  position:absolute;
-  left:0;
-  right:0;
-  top:100%;
-  background:var(--bg-board);
-  border-bottom:2px solid var(--amber);
-  padding:12px 18px 18px;
-  flex-direction:column;
-  gap:6px;
-  box-shadow:var(--shadow);
-}
-.nav-links.open{display:flex}
-.nav-links a{
-  display:flex;
-  align-items:center;
-  min-height:44px;
-  padding:8px 12px;
-  border-radius:8px;
-  font-size:1.15rem;
-  color:var(--chalk);
-  transition:background 0.2s,color 0.2s;
-}
-.nav-links a:hover{background:rgba(226,149,44,0.16);color:var(--amber-bright)}
-.nav-cta{
-  background:var(--amber);
-  color:#141619 !important;
-  font-weight:700;
-  justify-content:center;
-  margin-top:4px;
-}
-.nav-cta:hover{background:var(--amber-bright) !important}
-
-/* Shared Buttons */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  min-height:46px;
-  padding:10px 18px;
-  border-radius:10px;
-  font-size:1.05rem;
-  border:2px solid transparent;
-  cursor:pointer;
-  transition:transform 0.18s var(--ease),background 0.2s,border-color 0.2s,box-shadow 0.2s;
-  text-align:center;
-}
-.btn svg{width:19px;height:19px;flex-shrink:0}
-.btn:active{transform:translateY(1px) scale(0.98)}
-.btn-amber{
-  background:var(--amber);
-  color:#141619;
-  font-weight:700;
-  box-shadow:0 6px 18px rgba(226,149,44,0.28);
-}
-.btn-amber:hover{background:var(--amber-bright);transform:translateY(-2px)}
-.btn-chalk{
-  background:transparent;
-  color:var(--chalk);
-  border-color:var(--border-chalk);
-}
-.btn-chalk:hover{
-  background:rgba(245,242,235,0.08);
-  border-color:var(--amber-bright);
-  transform:translateY(-2px);
-}
-.btn-copy{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  min-height:44px;
-  padding:6px 12px;
-  border-radius:8px;
-  border:1.5px solid var(--border-chalk);
-  background:var(--bg-elev);
-  color:var(--chalk);
-  cursor:pointer;
-  font-size:0.95rem;
-  transition:background 0.2s,border-color 0.2s;
-}
-.btn-copy:hover{border-color:var(--amber-bright);background:#333943}
-.btn-copy svg{width:17px;height:17px}
-.btn-copy.copied{background:var(--amber);color:#141619;border-color:var(--amber)}
-
-/* Hero */
-.hero{
-  position:relative;
-  padding:28px 0 48px;
-  border-bottom:2px dashed rgba(245,242,235,0.18);
-  overflow:hidden;
-}
-.hero-bunting{
-  width:100%;
-  height:32px;
-  display:block;
-  margin-bottom:10px;
-  opacity:0.9;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:26px;
-  align-items:center;
-}
-.hero-copy{position:relative;z-index:2}
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:5px 14px;
-  border:1.5px dashed var(--amber);
-  border-radius:999px;
-  color:var(--amber-bright);
-  font-size:1rem;
-  letter-spacing:0.04em;
-  text-transform:uppercase;
-  margin-bottom:12px;
-  background:rgba(226,149,44,0.08);
-}
-h1{
-  font-family:var(--font-display);
-  font-size:clamp(2.35rem,8vw,4.3rem);
-  line-height:1.02;
-  margin:0 0 14px;
-  color:var(--chalk);
-  text-shadow:3px 3px 0 rgba(0,0,0,0.55);
-}
-.hero-sub{
-  font-size:1.2rem;
-  color:var(--chalk-dim);
-  margin:0 0 22px;
-  max-width:36ch;
-}
-.hero-actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.hero-actions .btn{flex:1 1 auto}
-.hero-taps{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:22px;
-  padding-top:16px;
-  border-top:1px solid var(--border);
-  color:var(--chalk-dim);
-  font-size:1rem;
-}
-.tap-pills{display:flex;flex-wrap:wrap;gap:8px}
-.tap-pill{
-  padding:3px 11px;
-  border-radius:6px;
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  color:var(--chalk);
-  font-size:0.95rem;
-}
-
-/* Hero Beer Glass Centerpiece */
-.hero-visual{
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:14px;
-}
-.chalk-frame{
-  position:relative;
-  width:100%;
-  max-width:390px;
-  background:linear-gradient(160deg,#1f2329 0%,#141619 100%);
-  border:3px solid var(--border-chalk);
-  border-radius:20px;
-  padding:22px 18px 18px;
-  box-shadow:var(--shadow),inset 0 0 0 6px rgba(245,242,235,0.04);
-}
-.chalk-frame::before{
-  content:"";
-  position:absolute;
-  inset:8px;
-  border:1.5px dashed rgba(245,242,235,0.22);
-  border-radius:14px;
-  pointer-events:none;
-}
-.pint-svg{
-  width:100%;
-  max-width:260px;
-  height:auto;
-  display:block;
-  margin:0 auto;
-  filter:drop-shadow(0 18px 26px rgba(0,0,0,0.6));
-}
-.bubble{animation:rise 4.5s infinite ease-in}
-.bubble.b2{animation-duration:3.7s;animation-delay:0.8s}
-.bubble.b3{animation-duration:5.1s;animation-delay:1.5s}
-.bubble.b4{animation-duration:4.1s;animation-delay:2.2s}
-.bubble.b5{animation-duration:3.4s;animation-delay:0.3s}
-@keyframes rise{
-  0%{transform:translateY(0);opacity:0}
-  20%{opacity:0.85}
-  80%{opacity:0.75}
-  100%{transform:translateY(-110px);opacity:0}
-}
-.frame-caption{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:10px;
-  padding-top:10px;
-  border-top:1px dashed var(--border);
-  font-family:var(--font-display);
-  font-size:1.25rem;
-  color:var(--amber-bright);
-}
-
-/* Staggered hero entrance */
-.js .hero-stagger{opacity:0;transform:translateY(16px);animation:heroIn 0.65s var(--ease) forwards}
-.js .hero-stagger.d2{animation-delay:0.1s}
-.js .hero-stagger.d3{animation-delay:0.2s}
-.js .hero-stagger.d4{animation-delay:0.3s}
-@keyframes heroIn{to{opacity:1;transform:none}}
-
-/* Section Headings */
-.sec{padding:54px 0}
-.sec-head{margin-bottom:26px}
-.sec-tag{
-  display:inline-block;
-  font-size:0.95rem;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:var(--amber-bright);
-  margin-bottom:4px;
-}
-h2{
-  font-family:var(--font-display);
-  font-size:clamp(2rem,6vw,3rem);
-  line-height:1.08;
-  margin:0;
-  color:var(--chalk);
-}
-
-/* Section 1: Pull up a stool (Asymmetric Split + Overlapping Bar Panels) */
-.stool-section{background:var(--bg-board);border-bottom:1px solid var(--border)}
-.stool-layout{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:24px;
-  align-items:center;
-}
-.stool-art{
-  position:relative;
-  background:var(--bg);
-  border:2px solid var(--border-chalk);
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-.stool-art svg{width:100%;height:auto;display:block}
-.stool-tiles{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.cat-tile{
-  background:var(--bg-card);
-  border:1.5px solid var(--border);
-  border-left:5px solid var(--amber);
-  border-radius:12px;
-  padding:18px 16px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  transition:transform 0.2s var(--ease),border-color 0.2s,background 0.2s;
-}
-.cat-tile:hover{
-  transform:translateY(-3px);
-  border-color:var(--amber-bright);
-  background:var(--bg-elev);
-}
-.cat-tile.wide{
-  grid-column:1 / -1;
-  background:linear-gradient(120deg,rgba(226,149,44,0.18),var(--bg-card) 65%);
-  border-left-width:7px;
-}
-.cat-name{
-  font-family:var(--font-display);
-  font-size:1.65rem;
-  color:var(--chalk);
-  line-height:1.1;
-}
-.cat-badge{
-  font-size:0.9rem;
-  color:var(--amber-bright);
-  border:1px dashed rgba(245,176,65,0.45);
-  border-radius:999px;
-  padding:2px 10px;
-}
-
-/* Section 2: On the board (Chalkboard Menu Headings + Chalk Write-in) */
-.board-section{
-  position:relative;
-  background:
-    radial-gradient(circle at 80% 20%,rgba(226,149,44,0.09),transparent 45%),
-    var(--bg);
-  border-bottom:1px solid var(--border);
-}
-.board-frame{
-  background:#181b1f;
-  border:8px solid #3c2a1a;
-  box-shadow:var(--shadow),inset 0 0 0 2px rgba(245,242,235,0.22);
-  border-radius:16px;
-  padding:26px 20px;
-  position:relative;
-}
-.board-top{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding-bottom:16px;
-  border-bottom:2px dashed rgba(245,242,235,0.25);
-  margin-bottom:22px;
-}
-.board-note{color:var(--chalk-dim);font-size:1.05rem;margin:4px 0 0}
-.chalk-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
-.chalk-item{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:14px 16px;
-  border-radius:10px;
-  background:rgba(255,255,255,0.025);
-  border-bottom:1.5px dashed rgba(245,242,235,0.2);
-}
-.chalk-num{
-  font-family:var(--font-display);
-  font-size:1.5rem;
-  color:var(--amber-bright);
-  min-width:34px;
-}
-.chalk-heading{
-  font-family:var(--font-display);
-  font-size:1.85rem;
-  color:var(--chalk);
-  letter-spacing:0.02em;
-}
-.chalk-line{
-  flex:1;
-  height:2px;
-  background:repeating-linear-gradient(90deg,rgba(245,242,235,0.35) 0 8px,transparent 8px 15px);
-}
-.chalk-write-path{
-  stroke-dasharray:260;
-  stroke-dashoffset:0;
-}
-.js .board-frame:not(.chalk-drawn) .chalk-item{opacity:0;transform:translateX(-14px)}
-.js .board-frame.chalk-drawn .chalk-item{
-  opacity:1;
-  transform:none;
-  transition:opacity 0.55s var(--ease),transform 0.55s var(--ease);
-}
-.js .board-frame.chalk-drawn .chalk-item:nth-child(2){transition-delay:0.08s}
-.js .board-frame.chalk-drawn .chalk-item:nth-child(3){transition-delay:0.16s}
-.js .board-frame.chalk-drawn .chalk-item:nth-child(4){transition-delay:0.24s}
-.js .board-frame.chalk-drawn .chalk-item:nth-child(5){transition-delay:0.32s}
-.js .board-frame.chalk-drawn .chalk-item:nth-child(6){transition-delay:0.4s}
-.js .board-frame:not(.chalk-drawn) .chalk-write-path{stroke-dashoffset:260}
-.js .board-frame.chalk-drawn .chalk-write-path{
-  stroke-dashoffset:0;
-  transition:stroke-dashoffset 1.1s var(--ease);
-}
-
-/* Section 3: Signature Swinging Pub Sign + Bookings Strip */
-.sign-bookings{
-  background:linear-gradient(180deg,var(--bg-board) 0%,#15171a 100%);
-  border-bottom:1px solid var(--border);
-}
-.sign-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:28px;
-  align-items:start;
-}
-.pub-sign-rig{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-  padding:10px 0;
-}
-.sign-beam{
-  width:240px;
-  height:14px;
-  background:linear-gradient(90deg,#3d2a18,#5b3f24,#3d2a18);
-  border-radius:6px;
-  border:2px solid #24180d;
-  position:relative;
-}
-.sign-chains{
-  display:flex;
-  justify-content:space-between;
-  width:150px;
-  height:26px;
-}
-.chain{
-  width:4px;
-  height:100%;
-  background:repeating-linear-gradient(180deg,var(--amber) 0 5px,#141619 5px 8px);
-}
-.pub-sign-btn{
-  width:100%;
-  max-width:330px;
-  background:linear-gradient(165deg,#252930 0%,#17191d 100%);
-  border:3px solid var(--amber);
-  border-radius:16px;
-  padding:22px 20px;
-  box-shadow:0 18px 34px rgba(0,0,0,0.6),inset 0 0 0 4px rgba(226,149,44,0.18);
-  cursor:pointer;
-  transform-origin:top center;
-  transition:border-color 0.2s,box-shadow 0.2s;
-  color:var(--chalk);
-}
-.pub-sign-btn:hover{border-color:var(--amber-bright)}
-.pub-sign-btn.swinging{animation:pubSwing 1.35s var(--ease)}
-@keyframes pubSwing{
-  0%{transform:rotate(0deg)}
-  18%{transform:rotate(-8deg)}
-  38%{transform:rotate(6.5deg)}
-  58%{transform:rotate(-4deg)}
-  76%{transform:rotate(2deg)}
-  100%{transform:rotate(0deg)}
-}
-.sign-title{
-  display:block;
-  font-family:var(--font-display);
-  font-size:1.75rem;
-  color:var(--chalk);
-  line-height:1.15;
-}
-.sign-sub{
-  display:block;
-  color:var(--amber-bright);
-  font-size:1.05rem;
-  margin-top:4px;
-}
-.sign-hint{
-  display:inline-block;
-  margin-top:12px;
-  padding:4px 12px;
-  border-radius:999px;
-  background:rgba(226,149,44,0.16);
-  border:1px solid rgba(226,149,44,0.5);
-  font-size:0.92rem;
-  color:var(--amber-bright);
-}
-.sign-reveal{
-  width:100%;
-  max-width:350px;
-  margin-top:14px;
-  background:var(--bg-card);
-  border:1.5px dashed var(--amber);
-  border-radius:12px;
-  padding:16px;
-  text-align:left;
-}
-.sign-reveal[hidden]{display:none}
-.sign-reveal-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:10px;
-}
-.sign-reveal-links{display:flex;flex-wrap:wrap;gap:8px}
-
-/* Bookings Strip */
-.bookings-strip{
-  background:linear-gradient(135deg,var(--amber) 0%,#c7781c 100%);
-  color:#141619;
-  border-radius:18px;
-  padding:26px 22px;
-  box-shadow:var(--shadow);
-  border:2px solid #f5b041;
-}
-.bookings-strip .sec-tag{color:#141619;opacity:0.85}
-.bookings-strip h2{color:#141619;margin-bottom:10px}
-.bookings-strip p{font-size:1.15rem;margin:0 0 18px;max-width:44ch}
-.bookings-actions{display:flex;flex-wrap:wrap;gap:10px}
-.btn-dark{
-  background:#141619;
-  color:var(--chalk);
-  border:2px solid #141619;
-}
-.btn-dark:hover{background:#23272d;transform:translateY(-2px)}
-.btn-dark-outline{
-  background:transparent;
-  color:#141619;
-  border:2px solid #141619;
-  font-weight:700;
-}
-.btn-dark-outline:hover{background:rgba(20,22,25,0.1);transform:translateY(-2px)}
-
-/* Section 4: Contact, WhatsApp Composer & FAQ */
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:24px;
-}
-.panel{
-  background:var(--bg-board);
-  border:1.5px solid var(--border);
-  border-radius:16px;
-  padding:22px 18px;
-  box-shadow:var(--shadow);
-}
-.panel h3{
-  font-family:var(--font-display);
-  font-size:1.65rem;
-  margin:0 0 14px;
-  color:var(--amber-bright);
-}
-.field{margin-bottom:14px}
-.field label{
-  display:block;
-  margin-bottom:6px;
-  color:var(--chalk);
-  font-size:1.05rem;
-}
-.field input,.field textarea{
-  width:100%;
-  background:var(--bg);
-  border:1.5px solid var(--border-chalk);
-  border-radius:10px;
-  padding:11px 13px;
-  color:var(--chalk);
-  font-size:1.05rem;
-  min-height:46px;
-}
-.field textarea{min-height:108px;resize:vertical}
-.field input:focus,.field textarea:focus{
-  border-color:var(--amber-bright);
-  outline:none;
-}
-.contact-list{display:grid;gap:12px;margin-bottom:22px}
-.contact-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  padding:12px 14px;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-}
-.contact-link{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  min-height:44px;
-  font-size:1.1rem;
-  color:var(--chalk);
-}
-.contact-link svg{width:20px;height:20px;color:var(--amber-bright);flex-shrink:0}
-.contact-link:hover{color:var(--amber-bright)}
-
-/* FAQ Accordion */
-.faq-list{display:grid;gap:10px}
-details.faq-item{
-  background:var(--bg);
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  padding:4px 14px;
-}
-details.faq-item[open]{border-color:var(--amber)}
-details.faq-item summary{
-  list-style:none;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  min-height:48px;
-  cursor:pointer;
-  font-size:1.1rem;
-  color:var(--chalk);
-}
-details.faq-item summary::-webkit-details-marker{display:none}
-details.faq-item summary svg{
-  width:18px;
-  height:18px;
-  color:var(--amber-bright);
-  transition:transform 0.2s;
-  flex-shrink:0;
-}
-details.faq-item[open] summary svg{transform:rotate(90deg)}
-details.faq-item p{
-  margin:0 0 14px;
-  color:var(--chalk-dim);
-  font-size:1.02rem;
-}
-
-/* Footer */
-.site-footer{
-  border-top:2px dashed var(--border);
-  padding:28px 0 36px;
-  text-align:center;
-  color:var(--chalk-dim);
-  font-size:0.98rem;
-}
-.footer-brand{
-  font-family:var(--font-display);
-  font-size:1.45rem;
-  color:var(--chalk);
-  margin-bottom:6px;
-}
-
-/* Sticky Mobile Action Bar */
-.mobile-bar{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:60;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  padding:8px 12px calc(8px + env(safe-area-inset-bottom));
-  background:rgba(20,22,25,0.96);
-  backdrop-filter:blur(10px);
-  border-top:2px solid var(--amber);
-}
-.mobile-bar a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  min-height:44px;
-  border-radius:9px;
-  font-size:0.98rem;
-  font-weight:700;
-  background:var(--bg-card);
-  border:1px solid var(--border-chalk);
-  color:var(--chalk);
-}
-.mobile-bar a.primary{
-  background:var(--amber);
-  color:#141619;
-  border-color:var(--amber);
-}
-.mobile-bar svg{width:17px;height:17px}
-
-/* Scroll Reveal */
-.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
-.js .reveal.visible{opacity:1;transform:none}
-
-/* Desktop Scaling */
-@media (min-width:768px){
-  body{padding-bottom:0}
-  .mobile-bar{display:none}
-  .menu-btn{display:none}
-  .nav-links{
-    display:flex;
-    position:static;
-    flex-direction:row;
-    align-items:center;
-    background:transparent;
-    border:0;
-    box-shadow:none;
-    padding:0;
-    gap:6px;
-  }
-  .nav-cta{margin-top:0;margin-left:6px;padding:8px 16px !important}
-  .hero{padding:44px 0 68px}
-  .hero-grid{grid-template-columns:1.15fr 0.85fr;gap:40px}
-  .hero-actions .btn{flex:0 0 auto}
-  .stool-layout{grid-template-columns:0.95fr 1.05fr;gap:34px}
-  .chalk-list{grid-template-columns:1fr 1fr;gap:16px 28px}
-  .sign-grid{grid-template-columns:0.9fr 1.1fr;gap:34px;align-items:center}
-  .contact-grid{grid-template-columns:1.05fr 0.95fr;gap:28px}
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .bubble,.pub-sign-btn.swinging,.js .hero-stagger{animation:none !important;opacity:1 !important;transform:none !important}
-  .js .reveal,.js .board-frame .chalk-item,.js .board-frame .chalk-write-path{
-    transition:none !important;
-    opacity:1 !important;
-    transform:none !important;
-    stroke-dashoffset:0 !important;
-  }
-}
+:root{--bg:#14120e;--surface:#211d17;--ink:#f4ecde;--muted:#c2b8a8;--accent:#ee7d3f;--accent-ink:#111111;--accent-t:#ee7d3f;--accent-d:#ee7d3f;--dark:#0d0b09;--dark-ink:#f4ecde;--tint:#2c261d;--display:'DM Serif Display',Georgia,serif;--body:'Inter',system-ui,sans-serif;--r:14px;--br:999px;--line:color-mix(in srgb,var(--ink) 15%,transparent);--shadow:0 4px 16px rgba(0,0,0,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:clip}body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;text-wrap:balance}p{margin:0;text-wrap:pretty}a{color:inherit}.ic{flex:none;display:inline-block}
+:focus-visible{outline:3px solid var(--accent-t);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+.banner{background:var(--dark);color:var(--dark-ink);font:600 12px/1.35 var(--body);text-align:center;padding:8px 14px}
+.nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:66px;padding-block:8px}
+.nav--centered .wrap{flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px/1.1 var(--display);min-width:0;max-width:75%}
+.brand-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brand-logo{display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:8px}
+.brand-logo img{height:38px;width:auto;max-width:150px;display:block;object-fit:contain}
+.logo-pill--dark{background:#14161a;padding:5px 10px}
+.logo-pill--light{background:#ffffff;padding:5px 10px}
+.links{display:flex;align-items:center;gap:22px}.links a{text-decoration:none;font-weight:600;font-size:14.5px;color:var(--muted)}.links a:hover{color:var(--ink)}
+.menu-btn{display:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);width:44px;height:44px;place-items:center;cursor:pointer;color:var(--ink)}
+.mob-drawer{display:none;flex-direction:column;gap:8px;padding:12px 20px 18px;border-top:1px solid var(--line);background:var(--surface)}.mob-drawer.open{display:flex}
+.mob-drawer a{text-decoration:none;font-weight:600;padding:8px 4px;border-bottom:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:var(--br);font:700 15px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s}
+.btn.pri{background:var(--accent);color:var(--accent-ink)}.btn.sec{background:transparent;color:var(--ink);border-color:var(--line)}.btn:hover{transform:translateY(-2px)}
+.hero{padding:clamp(34px,6vw,84px) 0}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+.skel-atelier_lookbook .hero-grid{grid-template-columns:1fr;text-align:center;justify-items:center}.skel-atelier_lookbook .cta{justify-content:center}
+.skel-cinema_bleed .hero{background:var(--dark);color:var(--dark-ink)}.skel-cinema_bleed .hero .eyebrow{color:var(--accent-d)}.skel-cinema_bleed .hero .tag{color:color-mix(in srgb,var(--dark-ink) 80%,transparent)}.skel-cinema_bleed .hero .btn.sec{color:var(--dark-ink);border-color:color-mix(in srgb,var(--dark-ink) 35%,transparent)}
+.skel-workshop_precision .hero h1{text-transform:uppercase;letter-spacing:.01em}
+.skel-workshop_precision .hero{border-bottom:6px solid var(--accent)}
+.skel-swiss_grid .hero .wrap{border:1px solid var(--line);padding:28px;background:var(--surface)}
+.eyebrow{display:inline-block;font:700 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-t);margin-bottom:12px}
+.hero h1{font-size:clamp(34px,5.8vw,72px)}.tag{font-size:clamp(16.5px,2vw,20px);color:var(--muted);margin-top:14px;max-width:40ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-art{max-width:340px;width:100%;margin:0 auto}.scene-svg{width:100%;height:auto;display:block}
+.marq{background:var(--dark);color:var(--dark-ink);overflow:hidden;border-block:1px solid var(--line);padding:12px 0}
+.marq .track{display:flex;gap:34px;width:max-content;animation:marq 28s linear infinite}.marq span{display:inline-flex;align-items:center;gap:34px;font:700 22px/1 var(--display);white-space:nowrap}.marq span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+section{padding:clamp(42px,5.5vw,78px) 0}.sec-h{max-width:640px;margin-bottom:26px}.sec-h h2{font-size:clamp(26px,4.2vw,44px)}.sec-h p{color:var(--muted);margin-top:10px}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.step-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}.step-num{font:800 26px/1 var(--display);color:var(--accent-t);display:block;margin-bottom:8px}
+.cards-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}.card h3,.step-card h3{font-size:19px;margin-bottom:6px}.card p,.step-card p{color:var(--muted);font-size:14.5px}
+.tab-board{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.tab-bar{display:flex;flex-wrap:wrap;gap:6px;padding:12px;border-bottom:1px solid var(--line);background:var(--tint)}
+.tab-btn{background:var(--surface);border:1px solid var(--line);border-radius:var(--br);padding:8px 14px;min-height:40px;font-weight:700;cursor:pointer;color:var(--ink)}
+.tab-btn.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.tab-body{padding:24px}.tab-panel{display:none}.tab-panel.on{display:block}.tab-panel h3{font-size:24px;margin-bottom:8px}.tab-panel p{color:var(--muted)}
+.ledger{border-top:1px solid var(--line)}.ledger-row{display:grid;grid-template-columns:54px 220px 1fr;gap:16px;align-items:baseline;padding:18px 4px;border-bottom:1px solid var(--line)}
+.ledger-num{font:700 22px/1 var(--display);color:var(--accent-t)}.ledger-row h3{font-size:20px}.ledger-row p{color:var(--muted)}
+.bento-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:14px}.bento-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:8px}
+.hero-bento{grid-row:span 3;background:var(--accent);color:var(--accent-ink);border-color:transparent;justify-content:flex-end}.hero-bento p{color:inherit;opacity:.92}.bento-idx{font:700 13px/1 var(--body);opacity:.7}
+.composer{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:grid;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip-btn{background:var(--tint);color:var(--ink);border:1px solid var(--line);border-radius:var(--br);padding:8px 14px;min-height:40px;font-weight:600;cursor:pointer}.chip-btn.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.composer input,.composer textarea{width:100%;padding:11px 13px;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;margin-bottom:10px}.faq summary{font-weight:700;cursor:pointer}.faq details p{color:var(--muted);margin-top:8px}
+.contact{background:var(--dark);color:var(--dark-ink)}.contact .sec-h p{color:color-mix(in srgb,var(--dark-ink) 78%,transparent)}.contact .eyebrow{color:var(--accent-d)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.cc{background:color-mix(in srgb,var(--dark-ink) 8%,transparent);border:1px solid color-mix(in srgb,var(--dark-ink) 18%,transparent);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:8px}
+.cc small{font-size:11.5px;text-transform:uppercase;letter-spacing:.12em;opacity:.75}.cc b{font-size:18px;overflow-wrap:anywhere}
+.cc-act{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px}.cc-act a{color:var(--accent-d);font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+.copy-btn{background:color-mix(in srgb,var(--dark-ink) 12%,transparent);color:var(--dark-ink);border:1px solid color-mix(in srgb,var(--dark-ink) 24%,transparent);border-radius:8px;padding:5px 10px;min-height:32px;cursor:pointer;font:600 12px/1 var(--body);display:inline-flex;align-items:center;gap:5px}
+footer{background:var(--dark);color:color-mix(in srgb,var(--dark-ink) 72%,transparent);border-top:1px solid color-mix(in srgb,var(--dark-ink) 14%,transparent);padding:22px 0;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+.bar{display:none}.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}.js .rv.in{opacity:1;transform:none}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(max-width:860px){.hero-grid,.bento-grid,.ledger-row{grid-template-columns:1fr}.hero-bento{grid-row:auto}.links{display:none}.menu-btn{display:grid}}
+@media(max-width:560px){footer{padding-bottom:88px}.btn{width:100%}.bar{display:flex;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;gap:8px;padding:8px;border-radius:16px;background:color-mix(in srgb,var(--dark) 94%,transparent);backdrop-filter:blur(10px);box-shadow:var(--shadow)}
+.bar a{flex:1;min-height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;font:700 14px/1 var(--body);color:var(--dark-ink);background:color-mix(in srgb,var(--dark-ink) 12%,transparent)}.bar a.p{background:var(--accent);color:var(--accent-ink)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 </style>
-</head>
-<body>
-<div class="site-wrap">
-  <div class="preview-banner">Concept preview made for Grunters Restaurant &amp; Pub — not their official website</div>
-
-  <header class="site-header" id="siteHeader">
-    <div class="container nav-row">
-      <a class="brand-mark" href="#top">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 4h11l-1.5 14a2 2 0 0 1-2 1.8H9.5a2 2 0 0 1-2-1.8L6 4Z"/>
-          <path d="M17 7h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2.5"/>
-          <path d="M6.5 8h10"/>
-        </svg>
-        <span>Grunters</span>
-      </a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
-        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#bar-grill">Bar &amp; Grill</a>
-        <a href="#board">On the Board</a>
-        <a href="#bookings">Bookings</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="tel:+27662855166">Call +27 66 285 5166</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <svg class="hero-bunting" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 4 Q 300 24 600 6 T 1200 8" fill="none" stroke="rgba(245,242,235,0.28)" stroke-width="2"/>
-        <polygon points="60,8 92,11 74,34" fill="#e2952c" opacity="0.85"/>
-        <polygon points="160,13 192,15 174,37" fill="#2a2f37" stroke="#f5f2eb" stroke-opacity="0.35"/>
-        <polygon points="260,16 292,16 276,38" fill="#e2952c" opacity="0.7"/>
-        <polygon points="360,14 392,12 378,35" fill="#2a2f37" stroke="#f5f2eb" stroke-opacity="0.35"/>
-        <polygon points="480,10 512,8 497,31" fill="#e2952c" opacity="0.85"/>
-        <polygon points="620,6 652,8 635,30" fill="#2a2f37" stroke="#f5f2eb" stroke-opacity="0.35"/>
-        <polygon points="740,9 772,11 755,33" fill="#e2952c" opacity="0.7"/>
-        <polygon points="860,11 892,12 875,35" fill="#2a2f37" stroke="#f5f2eb" stroke-opacity="0.35"/>
-        <polygon points="980,10 1012,10 996,33" fill="#e2952c" opacity="0.85"/>
-        <polygon points="1090,9 1122,8 1106,31" fill="#2a2f37" stroke="#f5f2eb" stroke-opacity="0.35"/>
-      </svg>
-
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow hero-stagger">Restaurant &amp; pub · Overberg</div>
-          <h1 id="hero-title" class="hero-stagger d2">Grunters Restaurant &amp; Pub</h1>
-          <p class="hero-sub hero-stagger d3">Overberg — call, message on WhatsApp, or follow directions on the map.</p>
-          <div class="hero-actions hero-stagger d4">
-            <a class="btn btn-amber" href="tel:+27662855166">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>Call +27 66 285 5166</span>
-            </a>
-            <a class="btn btn-chalk" href="https://wa.me/27662855166" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-              <span>WhatsApp</span>
-            </a>
-            <a class="btn btn-chalk" href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Directions</span>
-            </a>
-          </div>
-          <div class="hero-taps hero-stagger d4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f5b041" stroke-width="1.75" aria-hidden="true"><path d="M12 2v10M9 4h6M8 12h8l-1 8H9l-1-8Z"/></svg>
-            <div class="tap-pills" aria-label="Pub categories">
-              <span class="tap-pill">Pub</span>
-              <span class="tap-pill">Bar</span>
-              <span class="tap-pill">Grill</span>
-              <span class="tap-pill">Taps</span>
-              <span class="tap-pill">Tables</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-visual hero-stagger d3">
-          <div class="chalk-frame">
-            <svg class="pint-svg" viewBox="0 0 260 320" role="img" aria-label="Illustrated beer glass on a pub chalkboard">
-              <defs>
-                <linearGradient id="beerAmber" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#f7be4b"/>
-                  <stop offset="50%" stop-color="#df8b21"/>
-                  <stop offset="100%" stop-color="#9e530c"/>
-                </linearGradient>
-                <linearGradient id="glassShine" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
-                  <stop offset="35%" stop-color="#ffffff" stop-opacity="0.06"/>
-                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-                </linearGradient>
-                <clipPath id="glassBodyClip">
-                  <path d="M62 76 L198 76 L180 278 Q178 292 162 292 L98 292 Q82 292 80 278 Z"/>
-                </clipPath>
-              </defs>
-              <!-- Chalkboard glow ring -->
-              <circle cx="130" cy="175" r="112" fill="none" stroke="rgba(226,149,44,0.22)" stroke-width="2" stroke-dasharray="8 8"/>
-              <!-- Glass Handle -->
-              <path d="M193 114 L218 114 Q236 114 236 136 L236 206 Q236 228 216 228 L184 228" fill="none" stroke="#f5f2eb" stroke-width="10" stroke-linecap="round" opacity="0.88"/>
-              <path d="M193 114 L218 114 Q236 114 236 136 L236 206 Q236 228 216 228 L184 228" fill="none" stroke="#181b1f" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
-              <!-- Beer liquid inside glass -->
-              <g clip-path="url(#glassBodyClip)">
-                <rect x="55" y="96" width="150" height="205" fill="url(#beerAmber)"/>
-                <!-- Rising bubbles -->
-                <circle class="bubble b1" cx="102" cy="260" r="3.5" fill="#fff8e8"/>
-                <circle class="bubble b2" cx="132" cy="272" r="4.5" fill="#fff8e8"/>
-                <circle class="bubble b3" cx="156" cy="252" r="3" fill="#fff8e8"/>
-                <circle class="bubble b4" cx="118" cy="240" r="2.5" fill="#fff8e8"/>
-                <circle class="bubble b5" cx="145" cy="265" r="3.8" fill="#fff8e8"/>
-                <!-- Glass highlight -->
-                <rect x="74" y="76" width="32" height="218" fill="url(#glassShine)"/>
-              </g>
-              <!-- Foam Head -->
-              <path d="M58 84 Q56 58 84 56 Q96 36 128 38 Q154 34 172 54 Q202 56 202 84 Q194 98 176 94 Q158 106 142 94 Q124 108 106 94 Q88 104 74 94 Q62 96 58 84 Z" fill="#fff8e8"/>
-              <path d="M168 92 L168 122 Q168 130 160 130 Q152 130 152 122 L152 94 Z" fill="#fff8e8" opacity="0.95"/>
-              <path d="M96 92 L96 112 Q96 118 90 118 Q84 118 84 112 L84 94 Z" fill="#fff8e8" opacity="0.9"/>
-              <!-- Glass Outline & Base -->
-              <path d="M62 76 L80 278 Q82 292 98 292 L162 292 Q178 292 180 278 L198 76" fill="none" stroke="#f5f2eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M84 292 L176 292" stroke="#e2952c" stroke-width="6" stroke-linecap="round"/>
-              <!-- Chalk sparks -->
-              <path d="M36 62 L46 68 M32 82 L44 82 M220 58 L210 66 M226 80 L214 82" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-            <div class="frame-caption">
-              <span>Bar &amp; Grill</span>
-              <span>Overberg</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: PULL UP A STOOL -->
-    <section class="sec stool-section" id="bar-grill" aria-labelledby="stool-title">
-      <div class="container">
-        <div class="sec-head reveal">
-          <span class="sec-tag">Pub · Bar · Grill</span>
-          <h2 id="stool-title">Pull up a stool</h2>
-        </div>
-
-        <div class="stool-layout">
-          <div class="stool-art reveal" aria-hidden="true">
-            <svg viewBox="0 0 360 210">
-              <!-- Bar counter -->
-              <rect x="18" y="34" width="324" height="16" rx="6" fill="#e2952c"/>
-              <rect x="28" y="50" width="304" height="10" fill="#a96312"/>
-              <!-- Tap handles on counter -->
-              <g stroke="#f5f2eb" stroke-width="2.5" fill="#22262c">
-                <rect x="150" y="14" width="12" height="20" rx="3"/>
-                <rect x="174" y="8" width="12" height="26" rx="3" fill="#f5b041"/>
-                <rect x="198" y="14" width="12" height="20" rx="3"/>
-              </g>
-              <!-- Three bar stools -->
-              <g stroke="#f5f2eb" stroke-width="3" stroke-linecap="round">
-                <!-- Stool 1 -->
-                <rect x="52" y="96" width="56" height="12" rx="6" fill="#2a2f37"/>
-                <path d="M64 108 L54 190 M96 108 L106 190 M60 154 L100 154"/>
-                <!-- Stool 2 -->
-                <rect x="152" y="96" width="56" height="12" rx="6" fill="#2a2f37"/>
-                <path d="M164 108 L154 190 M196 108 L206 190 M160 154 L200 154"/>
-                <!-- Stool 3 -->
-                <rect x="252" y="96" width="56" height="12" rx="6" fill="#2a2f37"/>
-                <path d="M264 108 L254 190 M296 108 L306 190 M260 154 L300 154"/>
-              </g>
-            </svg>
-          </div>
-
-          <div class="stool-tiles reveal">
-            <div class="cat-tile wide">
-              <span class="cat-name">Bar &amp; Grill</span>
-              <span class="cat-badge">Pub</span>
-            </div>
-            <div class="cat-tile">
-              <span class="cat-name">Taps</span>
-              <span class="cat-badge">Bar</span>
-            </div>
-            <div class="cat-tile">
-              <span class="cat-name">Drinks</span>
-              <span class="cat-badge">Bar</span>
-            </div>
-            <div class="cat-tile">
-              <span class="cat-name">Grill</span>
-              <span class="cat-badge">Menu</span>
-            </div>
-            <div class="cat-tile">
-              <span class="cat-name">Tables</span>
-              <span class="cat-badge">Bookings</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: ON THE BOARD (Chalkboard Menu Headings + Chalk-Write Animation) -->
-    <section class="sec board-section" id="board" aria-labelledby="board-title">
-      <div class="container">
-        <div class="board-frame reveal" id="chalkBoard">
-          <div class="board-top">
-            <div>
-              <span class="sec-tag">Chalkboard</span>
-              <h2 id="board-title">On the board</h2>
-              <p class="board-note">Call or message on WhatsApp to ask about the menu and tables.</p>
-            </div>
-            <button class="btn btn-chalk" id="replayChalk" type="button">Replay chalk</button>
-          </div>
-
-          <ul class="chalk-list">
-            <li class="chalk-item">
-              <span class="chalk-num">01</span>
-              <span class="chalk-heading">Grill</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 12 Q 14 3 26 11 T 40 8" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-            <li class="chalk-item">
-              <span class="chalk-num">02</span>
-              <span class="chalk-heading">Taps</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 10 Q 15 16 26 6 T 40 12" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-            <li class="chalk-item">
-              <span class="chalk-num">03</span>
-              <span class="chalk-heading">Drinks</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 13 Q 14 4 28 13 T 40 7" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-            <li class="chalk-item">
-              <span class="chalk-num">04</span>
-              <span class="chalk-heading">Menu</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 8 Q 16 15 27 7 T 40 11" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-            <li class="chalk-item">
-              <span class="chalk-num">05</span>
-              <span class="chalk-heading">Bar</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 12 Q 16 3 28 12 T 40 9" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-            <li class="chalk-item">
-              <span class="chalk-num">06</span>
-              <span class="chalk-heading">Tables</span>
-              <span class="chalk-line" aria-hidden="true"></span>
-              <svg width="42" height="18" viewBox="0 0 42 18" aria-hidden="true"><path class="chalk-write-path" d="M2 9 Q 15 16 28 6 T 40 12" fill="none" stroke="#f5b041" stroke-width="2.5" stroke-linecap="round"/></svg>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: SWINGING PUB SIGN + BOOKINGS STRIP -->
-    <section class="sec sign-bookings" id="bookings" aria-labelledby="bookings-title">
-      <div class="container sign-grid">
-        <div class="pub-sign-rig reveal">
-          <div class="sign-beam" aria-hidden="true"></div>
-          <div class="sign-chains" aria-hidden="true">
-            <span class="chain"></span>
-            <span class="chain"></span>
-          </div>
-          <button class="pub-sign-btn" id="pubSignBtn" type="button" aria-expanded="false" aria-controls="signReveal">
-            <span class="sign-title">Grunters Restaurant &amp; Pub</span>
-            <span class="sign-sub">Overberg</span>
-            <span class="sign-hint" id="signHint">Tap sign to swing &amp; reveal contact</span>
-          </button>
-
-          <div class="sign-reveal" id="signReveal" hidden>
-            <div class="sign-reveal-row">
-              <strong>+27 66 285 5166</strong>
-              <button class="btn-copy" type="button" data-copy="+27 66 285 5166" aria-label="Copy phone number">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-            <div class="sign-reveal-links">
-              <a class="btn btn-amber" href="tel:+27662855166">Call</a>
-              <a class="btn btn-chalk" href="https://wa.me/27662855166" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn btn-chalk" href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" target="_blank" rel="noopener">Map</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="bookings-strip reveal">
-          <span class="sec-tag">Tables &amp; Bookings</span>
-          <h2 id="bookings-title">Bookings</h2>
-          <p>Call +27 66 285 5166 or send a WhatsApp message to enquire about tables and bookings.</p>
-          <div class="bookings-actions">
-            <a class="btn btn-dark" href="tel:+27662855166">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>Call to book</span>
-            </a>
-            <a class="btn btn-dark-outline" href="https://wa.me/27662855166" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-              <span>WhatsApp bookings</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: CONTACT, WHATSAPP COMPOSER & FAQ -->
-    <section class="sec" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="sec-head reveal">
-          <span class="sec-tag">Overberg</span>
-          <h2 id="contact-title">Get in touch</h2>
-        </div>
-
-        <div class="contact-grid">
-          <div class="panel reveal">
-            <h3>WhatsApp enquiry</h3>
-            <form id="waForm">
-              <div class="field">
-                <label for="waName">Your name</label>
-                <input id="waName" name="name" type="text" autocomplete="name" placeholder="Name">
-              </div>
-              <div class="field">
-                <label for="waMsg">Message</label>
-                <textarea id="waMsg" name="message" required placeholder="Tables, bookings, or general enquiry..."></textarea>
-              </div>
-              <button class="btn btn-amber" type="submit">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                <span>Send on WhatsApp</span>
-              </button>
-            </form>
-          </div>
-
-          <div class="panel reveal">
-            <h3>Direct details</h3>
-            <div class="contact-list">
-              <div class="contact-row">
-                <a class="contact-link" href="tel:+27662855166">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                  <span>+27 66 285 5166</span>
-                </a>
-                <button class="btn-copy" type="button" data-copy="+27 66 285 5166" aria-label="Copy phone number">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
-              <div class="contact-row">
-                <a class="contact-link" href="https://wa.me/27662855166" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                  <span>Message on WhatsApp</span>
-                </a>
-              </div>
-              <div class="contact-row">
-                <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Overberg — Open in Maps</span>
-                </a>
-              </div>
-            </div>
-
-            <h3>Questions</h3>
-            <div class="faq-list">
-              <details class="faq-item">
-                <summary>
-                  <span>How do I get in touch?</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                </summary>
-                <p>Call +27 66 285 5166 or send a WhatsApp message using the enquiry form.</p>
-              </details>
-              <details class="faq-item">
-                <summary>
-                  <span>Where to find us?</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                </summary>
-                <p>Grunters Restaurant &amp; Pub is in Overberg. Use the Maps link for directions.</p>
-              </details>
-              <details class="faq-item">
-                <summary>
-                  <span>When to call?</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-                </summary>
-                <p>You can call +27 66 285 5166 or message on WhatsApp anytime to enquire.</p>
-              </details>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-brand">Grunters Restaurant &amp; Pub · Overberg</div>
-      <p>Concept preview — final wording, photos and details to be supplied by the owner.</p>
-    </div>
-  </footer>
-
-  <!-- Sticky Mobile Action Bar -->
-  <nav class="mobile-bar" aria-label="Quick actions">
-    <a class="primary" href="tel:+27662855166">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>Call</span>
-    </a>
-    <a href="https://wa.me/27662855166" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-      <span>WhatsApp</span>
-    </a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-      <span>Map</span>
-    </a>
-  </nav>
-</div>
-
 <script>
-(function(){
-  var header = document.getElementById('siteHeader');
-  var menuBtn = document.getElementById('menuBtn');
-  var navLinks = document.getElementById('navLinks');
-
-  window.addEventListener('scroll', function(){
-    if(window.scrollY > 12){ header.classList.add('scrolled'); }
-    else{ header.classList.remove('scrolled'); }
-  }, {passive:true});
-
-  menuBtn.addEventListener('click', function(){
-    var open = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', String(!open));
-    navLinks.classList.toggle('open', !open);
+document.documentElement.classList.add('js');
+addEventListener('DOMContentLoaded',function(){
+  var mb=document.getElementById('menuBtn'),dr=document.getElementById('mobDrawer');
+  if(mb&&dr){
+    mb.onclick=function(){var ex=mb.getAttribute('aria-expanded')==='true';mb.setAttribute('aria-expanded',String(!ex));dr.classList.toggle('open',!ex)};
+    dr.querySelectorAll('a').forEach(function(a){a.onclick=function(){mb.setAttribute('aria-expanded','false');dr.classList.remove('open')}});
+  }
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    b.onclick=function(){
+      var t=b.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.toggle('on',x.dataset.tab===t)});
+      document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.toggle('on',p.dataset.panel===t)});
+    };
   });
-
-  navLinks.querySelectorAll('a').forEach(function(link){
-    link.addEventListener('click', function(){
-      menuBtn.setAttribute('aria-expanded', 'false');
-      navLinks.classList.remove('open');
-    });
+  var sel='';
+  document.querySelectorAll('.chip-btn').forEach(function(b){
+    b.onclick=function(){
+      document.querySelectorAll('.chip-btn').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');sel=b.dataset.chip||'';
+    };
   });
-
-  // Scroll reveal & chalkboard write-in
-  var reveals = document.querySelectorAll('.reveal');
-  var chalkBoard = document.getElementById('chalkBoard');
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          if(entry.target === chalkBoard){
-            chalkBoard.classList.add('chalk-drawn');
-          }
-          io.unobserve(entry.target);
-        }
+  var sb=document.getElementById('sendEnq');
+  if(sb){
+    sb.onclick=function(){
+      var n=(document.getElementById('enqName')||{}).value||'';
+      var t=(document.getElementById('enqNote')||{}).value||'';
+      var parts=['Hi Grunters Restaurant & Pub'];
+      if(sel) parts.push('Enquiry: '+sel);
+      if(n) parts.push('Name: '+n);
+      if(t) parts.push(t);
+      window.open('https://wa.me/27662855166?text='+encodeURIComponent(parts.join(' — ')),'_blank','noopener');
+    };
+  }
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.onclick=function(){
+      if(!navigator.clipboard) return;
+      navigator.clipboard.writeText(btn.dataset.copy||'').then(function(){
+        var sp=btn.querySelector('span');if(sp){var old=sp.textContent;sp.textContent='Copied';setTimeout(function(){sp.textContent=old},1600)}
       });
-    }, {threshold:0.15});
-    reveals.forEach(function(el){ io.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('visible'); });
-    if(chalkBoard){ chalkBoard.classList.add('chalk-drawn'); }
-  }
-
-  // Replay chalkboard animation
-  var replayBtn = document.getElementById('replayChalk');
-  if(replayBtn && chalkBoard){
-    replayBtn.addEventListener('click', function(){
-      chalkBoard.classList.remove('chalk-drawn');
-      void chalkBoard.offsetWidth;
-      chalkBoard.classList.add('chalk-drawn');
-    });
-  }
-
-  // Signature swinging pub sign
-  var pubSignBtn = document.getElementById('pubSignBtn');
-  var signReveal = document.getElementById('signReveal');
-  var signHint = document.getElementById('signHint');
-  if(pubSignBtn && signReveal){
-    pubSignBtn.addEventListener('click', function(){
-      pubSignBtn.classList.remove('swinging');
-      void pubSignBtn.offsetWidth;
-      pubSignBtn.classList.add('swinging');
-      var expanded = pubSignBtn.getAttribute('aria-expanded') === 'true';
-      pubSignBtn.setAttribute('aria-expanded', String(!expanded));
-      signReveal.hidden = expanded;
-      signHint.textContent = expanded ? 'Tap sign to swing & reveal contact' : 'Tap sign again to hide';
-    });
-  }
-
-  // Copy phone number buttons
-  document.querySelectorAll('.btn-copy').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var text = btn.getAttribute('data-copy') || '+27 66 285 5166';
-      var label = btn.querySelector('span');
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(text).then(function(){
-          btn.classList.add('copied');
-          if(label){ label.textContent = 'Copied'; }
-          setTimeout(function(){
-            btn.classList.remove('copied');
-            if(label){ label.textContent = 'Copy'; }
-          }, 1800);
-        });
-      }
-    });
+    };
   });
-
-  // WhatsApp enquiry composer
-  var waForm = document.getElementById('waForm');
-  if(waForm){
-    waForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      var nameVal = document.getElementById('waName').value.trim();
-      var msgVal = document.getElementById('waMsg').value.trim();
-      var fullMsg = nameVal ? ('Hi Grunters Restaurant & Pub, my name is ' + nameVal + '. ' + msgVal) : msgVal;
-      var url = 'https://wa.me/27662855166?text=' + encodeURIComponent(fullMsg);
-      window.open(url, '_blank', 'noopener');
-    });
-  }
-})();
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+});
 </script>
+</head>
+<body id="top" class="skel-cinema_bleed">
+<div class="banner">Concept preview made for Grunters Restaurant &amp; Pub — not their official website</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-logo"><img src="logo.svg" alt="Grunters Restaurant &amp; Pub logo"></span><span class="brand-name">Grunters Restaurant &amp; Pub</span></a>
+    <nav class="links" aria-label="Main"><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Toggle menu"><svg class="ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </div>
+  <nav class="mob-drawer" id="mobDrawer" aria-label="Mobile menu"><a href="#overview">Overview</a><a href="#enquire">Enquire</a><a href="#faq">Questions</a><a href="#contact">Contact</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="copy">
+          <span class="eyebrow">Pub, Bar &amp; Taproom · Overberg</span>
+          <h1>Grunters Restaurant &amp; Pub</h1>
+          <p class="tag">Pull up a stool in Overberg.</p>
+          <div class="cta"><a class="btn pri" href="tel:+27662855166"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call +27 66 285 5166</a><a class="btn sec" href="https://wa.me/27662855166" rel="noopener"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a></div>
+        </div>
+        <div class="hero-art"><svg viewBox="0 0 360 320" class="scene-svg" aria-hidden="true"><g transform="rotate(-6 180 160)"><circle cx="180" cy="160" r="118" fill="var(--accent)" fill-opacity="0.12" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 6"/><circle cx="180" cy="160" r="88" fill="var(--surface)" stroke="var(--ink)" stroke-opacity="0.28" stroke-width="2"/><circle cx="180" cy="160" r="58" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M54,95 L54,225 M46,95 L46,140 M62,95 L62,140 M46,140 Q54,152 62,140" fill="none" stroke="var(--ink)" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/><path d="M306,95 L306,225 M306,95 C322,115 322,148 306,158" fill="none" stroke="var(--ink)" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round"/><circle cx="276" cy="74" r="22" fill="var(--accent)" fill-opacity="0.22" stroke="var(--accent)" stroke-width="1.5"/></g></svg></div>
+      </div>
+    </div>
+  </section>
+  <div class="marq" aria-hidden="true"><div class="track"><span>Pub</span><span>Taproom</span><span>Tables</span><span>Bookings</span><span>Pub</span><span>Taproom</span><span>Tables</span><span>Bookings</span><span>Pub</span><span>Taproom</span><span>Tables</span><span>Bookings</span><span>Pub</span><span>Taproom</span><span>Tables</span><span>Bookings</span></div></div>
+  
+  <section id="overview">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">Highlights</span><h2>Find the venue. Book a table.</h2><p>High-contrast venue page with instant directions, table bookings, and space for your own drinks and event board.</p></div>
+      <div class="bento-grid"><div class="bento-card hero-bento rv"><span class="bento-idx">01</span><h3>On the board</h3><p>Space for your drinks and menu.</p></div><div class="bento-card rv"><span class="bento-idx">02</span><h3>Table bookings</h3><p>Reserve for groups by phone or message.</p></div><div class="bento-card rv"><span class="bento-idx">03</span><h3>Venue map</h3><p>One-tap directions to the door.</p></div><div class="bento-card rv"><span class="bento-idx">04</span><h3>Events</h3><p>Room for your own weekly schedule.</p></div></div>
+    </div>
+  </section>
+  <section id="enquire">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">Quick Enquiry</span><h2>Venue &amp; table enquiry</h2><p>Select a topic below and send a message or call directly.</p></div>
+      <div class="composer rv">
+        <div class="chips"><button type="button" class="chip-btn" data-chip="Table booking">Table booking</button><button type="button" class="chip-btn" data-chip="Group table">Group table</button><button type="button" class="chip-btn" data-chip="Event enquiry">Event enquiry</button><button type="button" class="chip-btn" data-chip="Directions">Directions</button></div>
+        <input id="enqName" type="text" placeholder="Your name (optional)">
+        <textarea id="enqNote" rows="3" placeholder="Short note (optional)"></textarea>
+        <div><button type="button" class="btn pri" id="sendEnq"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Send on WhatsApp</button></div>
+      </div>
+    </div>
+  </section>
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">Questions</span><h2>Common questions</h2></div>
+      <details class="rv"><summary>How do I get in touch?</summary><p>You can reach Grunters Restaurant &amp; Pub by phone on +27 66 285 5166.</p></details>
+      <details class="rv"><summary>Where are you located?</summary><p>Located in Overberg. Tap Google Maps below for directions.</p></details>
+      <details class="rv"><summary>Can I open directions on my phone?</summary><p>Yes — tap the Google Maps link in the contact section below for one-tap directions.</p></details>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="sec-h rv"><span class="eyebrow">Contact</span><h2>Reach Grunters Restaurant &amp; Pub</h2><p>Use the verified contact details below.</p></div>
+      <div class="cgrid"><div class="cc rv"><small>Location</small><b>Overberg</b><div class="cc-act"><a href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" rel="noopener">Google Maps <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div><div class="cc rv"><small>Telephone</small><b>+27 66 285 5166</b><div class="cc-act"><a href="tel:+27662855166">Call now <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><button type="button" class="copy-btn" data-copy="+27 66 285 5166"><svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy</span></button></div></div><div class="cc rv"><small>WhatsApp</small><b>+27 66 285 5166</b><div class="cc-act"><a href="https://wa.me/27662855166" rel="noopener">Message <svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div></div></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>Grunters Restaurant &amp; Pub · Overberg</span><span>Concept preview — final wording, photos and details to be supplied by the owner.</span></div></footer>
+<nav class="bar" aria-label="Quick actions"><a class="p" href="tel:+27662855166"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call</a><a href="https://wa.me/27662855166" rel="noopener"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=Grunters%20Restaurant%20%26%20Pub%2C%20Overberg%2C%20South%20Africa" rel="noopener"><svg class="ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Map</a></nav>
 </body>
 </html>

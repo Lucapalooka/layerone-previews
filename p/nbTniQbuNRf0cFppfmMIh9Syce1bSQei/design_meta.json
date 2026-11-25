@@ -1,0 +1,21 @@
+{
+  "business_id": 9691,
+  "archetype": "beauty_spa",
+  "archetype_label": "Beauty, Nails & Spa",
+  "skeleton": "clinical_calm",
+  "palette": "brand-29b99b",
+  "accent": "#29b99b",
+  "fonts": [
+    "'DM Serif Display',Georgia,serif",
+    "'Inter',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#29b99b",
+    "#723030"
+  ],
+  "peer_count": 40,
+  "seed": 220034074
+}

@@ -1,0 +1,18 @@
+{
+  "business_id": 1847,
+  "archetype": "jewelry_antiques_gifts",
+  "archetype_label": "Jewellery, Antiques & Gifts",
+  "skeleton": "cinema_bleed",
+  "palette": "ember_dark",
+  "accent": "#ee7d3f",
+  "fonts": [
+    "'Barlow Condensed',Impact,sans-serif",
+    "'Barlow',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 22,
+  "seed": 3525074561
+}

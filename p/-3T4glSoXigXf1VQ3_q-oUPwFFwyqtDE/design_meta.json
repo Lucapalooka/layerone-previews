@@ -1,0 +1,18 @@
+{
+  "business_id": 3594,
+  "archetype": "hotel_lodge",
+  "archetype_label": "Hotel & Lodge",
+  "skeleton": "cinema_bleed",
+  "palette": "wine_dark",
+  "accent": "#e8aa3b",
+  "fonts": [
+    "'Fraunces',Georgia,serif",
+    "'Nunito Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 2759856960
+}
