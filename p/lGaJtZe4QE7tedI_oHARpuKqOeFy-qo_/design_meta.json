@@ -1,0 +1,18 @@
+{
+  "business_id": 2658,
+  "archetype": "guest_house",
+  "archetype_label": "Guest House & B&B",
+  "skeleton": "neighbourhood_counter",
+  "palette": "espresso",
+  "accent": "#854520",
+  "fonts": [
+    "'Libre Baskerville',Georgia,serif",
+    "'Work Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 191931128
+}

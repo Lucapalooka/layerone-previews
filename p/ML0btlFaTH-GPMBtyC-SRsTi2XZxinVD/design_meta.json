@@ -1,0 +1,18 @@
+{
+  "business_id": 2384,
+  "archetype": "guest_house",
+  "archetype_label": "Guest House & B&B",
+  "skeleton": "atelier_lookbook",
+  "palette": "cobalt",
+  "accent": "#1d4ed8",
+  "fonts": [
+    "'Cormorant Garamond',Georgia,serif",
+    "'Karla',system-ui,sans-serif"
+  ],
+  "logo_kind": "crest",
+  "logo_file": "logo.svg",
+  "logo_bg_mode": "any",
+  "brand_colors": [],
+  "peer_count": 40,
+  "seed": 3617647777
+}

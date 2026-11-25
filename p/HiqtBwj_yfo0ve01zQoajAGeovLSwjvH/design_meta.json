@@ -1,0 +1,21 @@
+{
+  "business_id": 1225,
+  "archetype": "guest_house",
+  "archetype_label": "Guest House & B&B",
+  "skeleton": "neighbourhood_counter",
+  "palette": "brand-6b7231",
+  "accent": "#6b7231",
+  "fonts": [
+    "'Playfair Display',Georgia,serif",
+    "'DM Sans',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#6b7231",
+    "#72aef5"
+  ],
+  "peer_count": 40,
+  "seed": 4098096398
+}

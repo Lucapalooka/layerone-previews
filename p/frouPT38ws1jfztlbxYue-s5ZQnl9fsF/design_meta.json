@@ -1,0 +1,21 @@
+{
+  "business_id": 2337,
+  "archetype": "water_adventure",
+  "archetype_label": "Water Sports & Outdoor Adventures",
+  "skeleton": "neighbourhood_counter",
+  "palette": "brand-1e8fcc",
+  "accent": "#1e8fcc",
+  "fonts": [
+    "'Barlow Condensed',Impact,sans-serif",
+    "'Barlow',system-ui,sans-serif"
+  ],
+  "logo_kind": "web_png",
+  "logo_file": "logo.png",
+  "logo_bg_mode": "any",
+  "brand_colors": [
+    "#1e8fcc",
+    "#fbf2ba"
+  ],
+  "peer_count": 40,
+  "seed": 1154316521
+}

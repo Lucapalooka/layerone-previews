@@ -1,0 +1,12 @@
+{
+  "kind": "web_png",
+  "file": "logo.png",
+  "width": 84,
+  "height": 112,
+  "bg_mode": "any",
+  "brand_colors": [
+    "#6b7231",
+    "#72aef5"
+  ],
+  "source_url": "https://kensingtonplace.co.za/images/hotel/og-hotel.jpg"
+}
